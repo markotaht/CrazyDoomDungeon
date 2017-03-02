@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	// Use this for initialization
+    // Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -14,7 +13,7 @@ public class PlayerController : MonoBehaviour {
         var x = Input.GetAxisRaw("Horizontal") * Time.deltaTime * 6;
         var z = Input.GetAxisRaw("Vertical") * Time.deltaTime * 6;
 
-        Vector3 direction = Quaternion.AngleAxis(45,Vector3.up) * new Vector3(x, 0, z);
+        Vector3 direction = Quaternion.AngleAxis(0,Vector3.up) * new Vector3(x, 0, z);
         
         transform.Translate(direction);
 
