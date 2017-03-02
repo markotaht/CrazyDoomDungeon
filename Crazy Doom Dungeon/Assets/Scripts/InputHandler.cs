@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TuhiSkript : MonoBehaviour {
+public class InputHandler : MonoBehaviour {
 
+    private Dictionary<KeyCode, Command> keyMap = new Dictionary<KeyCode, Command>();
 	// Use this for initialization
 	void Start () {
 		
