@@ -80,15 +80,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
-    agentHeight: 2
-    agentSlope: 45
-    agentClimb: 0.4
+    agentRadius: 0.8
+    agentHeight: 1
+    agentSlope: 28.3
+    agentClimb: 0.5
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.26666668
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1 &272763962
@@ -469,7 +469,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &534343121
 MeshRenderer:
@@ -610,7 +610,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4785704239167198, guid: 73420d641d7d25042ad485a82f999b41, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.18
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4785704239167198, guid: 73420d641d7d25042ad485a82f999b41, type: 2}
       propertyPath: m_LocalPosition.z
