@@ -4,7 +4,8 @@ using System.Collections;
 public class CameraFollow : MonoBehaviour {
 
     [SerializeField]
-    protected Transform target;
+    public Transform target;
+
     protected Vector3 offset;
     private Vector3 vel = Vector3.zero;
     
@@ -19,7 +20,14 @@ public class CameraFollow : MonoBehaviour {
     }
 
 	void Update () {
+
         Vector3 movetarget = target.transform.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position, movetarget,ref vel, 0f);	
 	}
+
+    public void setTarget(Transform target)
+    {
+        this.target = target;
+        offset = transform.position - target.transform.position;
+    }
 }

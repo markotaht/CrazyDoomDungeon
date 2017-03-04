@@ -28,14 +28,19 @@ public class DungeonGenerator : MonoBehaviour {
     {
         player = Resources.Load<GameObject>("Characters/Player");
         player = Instantiate(player, new Vector3(0, 0.75f, 1.24f), Quaternion.identity);
-        var pos = player.transform.position;
-        pos.y = transform.position.y;
+        InputHandler handler = gameObject.AddComponent(typeof(InputHandler)) as InputHandler;
+        handler.setPlayer(player.GetComponent<PlayerController>());
+    //    var pos = player.transform.position;
+    //    pos.y = transform.position.y;
         Camera camera = Camera.main;
-        camera.transform.position = new Vector3(-10, 10, -10);
+        CameraFollow follow = camera.gameObject.AddComponent(typeof(CameraFollow)) as CameraFollow;
+        follow.setTarget(player.transform);
+    //    camera.GetComponent<CameraFollow>().setTarget(player.transform);
+      /*  camera.transform.position = new Vector3(-10, 10, -10);
         camera.transform.parent = player.transform;
         camera.transform.Rotate(new Vector3(30, 45, 0));
         camera.orthographic = true;
-        camera.orthographicSize = 5;
+        camera.orthographicSize = 5;*/
     }
 
 }

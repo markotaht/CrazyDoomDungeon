@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(Vector3.Distance(transform.position,target) > 1.1) { 
+        if(Vector3.Distance(transform.position,target) > 0.7) { 
             Vector3 direction = target- transform.position;
             direction.y = 0;
 

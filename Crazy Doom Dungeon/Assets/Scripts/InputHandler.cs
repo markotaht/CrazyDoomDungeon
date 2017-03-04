@@ -5,7 +5,7 @@ using UnityEngine;
 public class InputHandler : MonoBehaviour {
 
     [SerializeField]
-    private PlayerController currentActor;
+    public PlayerController currentActor;
 
     private Vector3 target;
     private MoveCommand move = new MoveCommand();
@@ -19,13 +19,13 @@ public class InputHandler : MonoBehaviour {
 	void Update () {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        Physics.Raycast(ray, out hit);
+        Physics.Raycast(ray, out hit,100);
 
         target = hit.point;
-
         if (Input.GetMouseButton(0))
         {
-            if (hit.collider.gameObject.tag != "Enemy")
+            //TODO Kuidagi tea midagi olukorras kus vajutatakse kaardilt välja....
+            if (hit.collider == null || hit.collider.gameObject.tag != "Enemy")
             {
                 move.Execute(target, currentActor);
             }
@@ -44,4 +44,9 @@ public class InputHandler : MonoBehaviour {
             move.Execute(currentActor.transform.position, currentActor);
         }
 	}
+
+    public void setPlayer(PlayerController controller)
+    {
+        currentActor = controller;
+    }
 }
