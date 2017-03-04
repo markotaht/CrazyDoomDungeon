@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Weapon
+  - Junction
+  - Corridor
+  - Room
+  - Exit
   layers:
   - Default
   - TransparentFX
