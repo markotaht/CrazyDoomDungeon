@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveCommand : Command {
-	
-    public MoveCommand()
-    {
-
-    }
+public class AttackCommand : Command {
+    
+    // Use this for initialization
+    void Start () {
+		
+	}
 
     public override void Execute()
     {
@@ -17,6 +17,6 @@ public class MoveCommand : Command {
 
     public override void Execute(Vector3 target, PlayerController controller)
     {
-        controller.Move(target);
+        controller.Attack(target);
     }
 }
