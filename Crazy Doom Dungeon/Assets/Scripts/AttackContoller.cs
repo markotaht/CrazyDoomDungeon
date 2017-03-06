@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class AttackContoller : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    private bool isAttacking = false;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -13,4 +15,18 @@ public class AttackContoller : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void Attack(Vector3 target, Weapon weapon)
+    {
+        isAttacking = true;
+        float dist = Vector3.Distance(transform.position, target);
+        if (dist > weapon.getRange())
+        {
+            GetComponent<MovementController>().Move(transform.position + (target - transform.position).normalized * (dist - 1.2f));
+        }
+        else
+        {
+            weapon.Attack((target - transform.position).normalized);
+        }
+    }
 }
