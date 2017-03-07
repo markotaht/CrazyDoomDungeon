@@ -31,6 +31,7 @@ public class InputHandler : MonoBehaviour {
             }
             else
             {
+
                 attack.Execute(hit.collider.gameObject.transform.position, currentActor);
             }
         }
