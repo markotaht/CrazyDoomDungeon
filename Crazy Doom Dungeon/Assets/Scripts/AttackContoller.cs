@@ -26,6 +26,9 @@ public class AttackContoller : MonoBehaviour {
         }
         else
         {
+            Vector3 direction = target - transform.position;
+            direction.y = 0;
+            transform.rotation = Quaternion.LookRotation(direction.normalized);
             weapon.Attack((target - transform.position).normalized);
         }
     }
