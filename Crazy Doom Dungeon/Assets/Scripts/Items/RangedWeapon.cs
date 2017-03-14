@@ -7,7 +7,7 @@ public class RangedWeapon : Weapon {
 
     //TODO projectile
     [SerializeField]
-    private float FireRate = 1.0f;
+    private float FireRate = 0.0f;
     private float NextFire = 0.0f;
     
     // Use this for initialization
