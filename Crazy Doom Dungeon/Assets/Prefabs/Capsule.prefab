@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23387530921905338}
   - component: {fileID: 114134122859491154}
   - component: {fileID: 111111444730256774}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -107,7 +107,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32fffa41b3efbc4786e4c7d4372c0a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 6
 --- !u!136 &136547311779617032
 CapsuleCollider:
   m_ObjectHideFlags: 1

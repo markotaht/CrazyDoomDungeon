@@ -8,6 +8,10 @@ public class RangedWeapon : Weapon {
     //TODO projectile
     [SerializeField]
     private float FireRate = 0.0f;
+
+    [SerializeField]
+    private float MaxRange = 10.0f;
+
     private float NextFire = 0.0f;
     
     // Use this for initialization
@@ -24,7 +28,7 @@ public class RangedWeapon : Weapon {
             cube.transform.position = transform.position + transform.rotation * Vector3.forward  * 2;
             cube.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             Projectile pro = cube.AddComponent(typeof(Projectile)) as Projectile;
-            pro.setDirection(direction);
+            pro.setDirection(direction.normalized * (direction.magnitude % MaxRange));
         }
     }
 }

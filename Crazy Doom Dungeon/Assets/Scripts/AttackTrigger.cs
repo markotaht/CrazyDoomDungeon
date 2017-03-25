@@ -9,6 +9,7 @@ public class AttackTrigger : MonoBehaviour {
         if(other.gameObject.tag == "Enemy")
         {
             other.gameObject.GetComponent<Renderer>().material.color = Color.red;
+            other.gameObject.GetComponent<BasicAI>().Die();
         }
     }
 }

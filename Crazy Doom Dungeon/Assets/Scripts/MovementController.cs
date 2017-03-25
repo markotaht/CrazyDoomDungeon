@@ -14,8 +14,7 @@ public class MovementController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         target = transform.position;
-        constant = Mathf.Sqrt(Mathf.Pow(GetComponent<CapsuleCollider>().height / 2, 2.0f) +
-            Mathf.Pow(GetComponent<CapsuleCollider>().radius, 2.0f));
+        constant = transform.position.y;
     }
 	
 	// Update is called once per frame
