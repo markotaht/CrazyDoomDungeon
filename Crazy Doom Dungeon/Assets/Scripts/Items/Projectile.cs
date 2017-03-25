@@ -25,6 +25,7 @@ public class Projectile : MonoBehaviour {
         if (other.gameObject.tag == "Enemy")
         {
             other.gameObject.GetComponent<Renderer>().material.color = Color.red;
+            other.gameObject.GetComponent<BasicAI>().Die();
         }
     }
 
@@ -36,6 +37,13 @@ public class Projectile : MonoBehaviour {
     public void setDirection(Vector3 direction)
     {
         this.direction = direction;
-        GetComponent<Rigidbody>().AddForce(this.direction*10f*Speed, ForceMode.Impulse);
+
+        float yOffset = 0;
+        float angle = 5 * Mathf.Deg2Rad;
+        float speed = (1/ Mathf.Cos(angle))* Mathf.Sqrt((0.5f * Physics.gravity.magnitude * Mathf.Pow(direction.magnitude, 2)) / (direction.magnitude * Mathf.Tan(angle) + yOffset));
+
+        Vector3 velocity = new Vector3(0,speed*Mathf.Sin(angle), speed*Mathf.Cos(angle));
+        Vector3 finalVel = Quaternion.LookRotation(direction)*velocity;
+        GetComponent<Rigidbody>().AddForce(finalVel*GetComponent<Rigidbody>().mass, ForceMode.Impulse);
     }
 }
