@@ -1,27 +1,116 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class DungeonGenerator : MonoBehaviour {
-    private int iterations;
+
+    [SerializeField]
+    private int iterations = 5;
     private GameObject[] dungeonParts;
+    private GameObject[] rooms;
     private GameObject player;
+    private List<GameObject> openExits = new List<GameObject>();
 
     private float trackingSpeed = 2.0f;
     private float zoomSpeed = 5.0f;
 
+    private Dictionary<string, string[]> rules = new Dictionary<string, string[]>()
+    {
+        {"Room", new string[] { "Corridor" } },
+        {"Corridor", new string[] {"Room", "Junction"} },
+        {"Junction", new string[] {"Corridor"} }
+    };
+
     // Use this for initialization
     void Start () {
         dungeonParts = Resources.LoadAll<GameObject>("DungeonParts");
-        GameObject dungeonPart = dungeonParts[Random.Range(0, dungeonParts.Length)];
-        AddDungeonPart(dungeonPart);
+        rooms = dungeonParts.Where(p => p.tag == "Room").ToArray<GameObject>();
+        GameObject startDungeonPart = dungeonParts[Random.Range(0, dungeonParts.Length)];
+        CreateDungeon(startDungeonPart, iterations);
         AddPlayer();
     }
 	
 
-    void AddDungeonPart(GameObject dungeonPart)
+    void CreateDungeon(GameObject startDungeonPart, int iterations)
     {
-        GameObject part = Instantiate(dungeonPart, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        GameObject part = Instantiate(startDungeonPart, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        openExits = getExits(part);
+        while(iterations > 0)
+        {
+            List<GameObject> newExits = new List<GameObject>();
+            foreach(GameObject exit in openExits)
+            {
+                GameObject newPart = ChooseNewPart(exit.transform.parent.tag);
+                newPart = Instantiate(newPart) as GameObject;
+                List<GameObject> newModuleExits = getExits(newPart);
+                GameObject chosenExit = newModuleExits[Random.Range(0, newModuleExits.Count)];
+                MatchExits(exit, chosenExit);
+                foreach(GameObject new_exit in newModuleExits)
+                {
+                    if(new_exit != chosenExit)
+                    {
+                        newExits.Add(new_exit);
+                    }
+                }
+            }
+            openExits = newExits;
+            iterations--;
+        }
+        CloseCorridors(openExits);
+    }
+
+    void CloseCorridors(List<GameObject> exits)
+    {
+        foreach(GameObject exit in exits)
+        {
+            if(exit.transform.parent.tag != "Room")
+            {
+                GameObject newPart = rooms[Random.Range(0, rooms.Length)];
+                newPart = Instantiate(newPart) as GameObject;
+                List<GameObject> newModuleExits = getExits(newPart);
+                GameObject chosenExit = newModuleExits[Random.Range(0, newModuleExits.Count)];
+                MatchExits(exit, chosenExit);
+            }
+        }
+    }
+
+    GameObject ChooseNewPart(string oldPart)
+    {
+        GameObject newPart;
+        do
+        {
+            newPart = dungeonParts[Random.Range(0, dungeonParts.Length)];
+        } while (!rules[oldPart].Any(tag => tag == newPart.tag));
+        return newPart;
+    }
+
+    List<GameObject> getExits(GameObject part)
+    {
+        List<GameObject> exits = new List<GameObject>();
+        for (int i = 0; i < part.transform.childCount; i++)
+        {
+            if (part.transform.GetChild(i).tag == "Exit")
+            {
+                exits.Add(part.transform.GetChild(i).gameObject);
+            }
+        }
+        return exits;
+    }
+
+    void MatchExits(GameObject exit1, GameObject exit2)
+    {
+        GameObject newPart = exit2.transform.parent.gameObject;
+        Vector3 forwardToMach = -exit1.transform.forward;
+        float correctiveRotation = Azimuth(forwardToMach) - Azimuth(exit2.transform.forward);
+        newPart.transform.RotateAround(exit2.transform.position, Vector3.up, correctiveRotation);
+        Vector3 correctiveTranslation = exit1.transform.position - exit2.transform.position;
+        newPart.transform.position += correctiveTranslation;
+    }
+
+    float Azimuth(Vector3 vector)
+    {
+        return Vector3.Angle(Vector3.forward, vector) * Mathf.Sign(vector.x);
     }
 
     void AddPlayer()
