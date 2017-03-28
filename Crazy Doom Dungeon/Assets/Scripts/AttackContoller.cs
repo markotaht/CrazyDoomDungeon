@@ -43,6 +43,7 @@ public class AttackContoller : MonoBehaviour {
         }
         else
         {
+            GetComponent<MovementController>().Move(transform.position);
             Vector3 planarTarget = new Vector3(target.x, 0, target.z);
             Vector3 planarPosition = new Vector3(transform.position.x, 0, transform.position.z);
             Vector3 direction = planarTarget - planarPosition;

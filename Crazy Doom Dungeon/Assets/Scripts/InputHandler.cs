@@ -10,6 +10,7 @@ public class InputHandler : MonoBehaviour {
     private Vector3 target;
     private MoveCommand move = new MoveCommand();
     private AttackCommand attack = new AttackCommand();
+    private SwapWeaponCommand swap = new SwapWeaponCommand();
 	// Use this for initialization
 	void Start () {
 		
@@ -31,13 +32,12 @@ public class InputHandler : MonoBehaviour {
             }
             else
             {
-
                 attack.Execute(hit.collider.gameObject.transform.position, currentActor);
             }
         }
-        if (Input.GetMouseButton(1))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            //TODO Special attack
+            swap.Execute(Vector3.up, currentActor);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))

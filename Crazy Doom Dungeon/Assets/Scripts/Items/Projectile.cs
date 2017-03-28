@@ -7,9 +7,6 @@ public class Projectile : MonoBehaviour {
 
     private Vector3 direction;
 
-    [SerializeField]
-    private float Speed = 2.0f;
-
     private Rigidbody rb;
 
     private float timetolive = 10;
