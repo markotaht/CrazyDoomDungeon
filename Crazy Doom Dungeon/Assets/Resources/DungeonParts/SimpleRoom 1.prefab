@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 23002000665252000}
   m_Layer: 0
   m_Name: S
-  m_TagString: Room
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,6 +159,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33983259719647614
 MeshFilter:

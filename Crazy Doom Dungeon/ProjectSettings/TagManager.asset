@@ -10,6 +10,7 @@ TagManager:
   - Corridor
   - Room
   - Exit
+  - Floor
   layers:
   - Default
   - TransparentFX

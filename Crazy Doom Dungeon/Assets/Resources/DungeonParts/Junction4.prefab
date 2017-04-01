@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 23322848343788052}
   m_Layer: 0
   m_Name: C2
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 23008964155381964}
   m_Layer: 0
   m_Name: C1
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,7 +156,7 @@ Transform:
   m_GameObject: {fileID: 1595094254977670}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 0.39999998, z: 16}
+  m_LocalScale: {x: 4, y: 0.4, z: 16}
   m_Children: []
   m_Father: {fileID: 4561524008704298}
   m_RootOrder: 1
@@ -249,6 +249,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23322848343788052
 MeshRenderer:
@@ -280,6 +281,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33231161154962436
 MeshFilter:
