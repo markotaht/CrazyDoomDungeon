@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114157339844308936}
   - component: {fileID: 114953320118149282}
   - component: {fileID: 114525219652601798}
+  - component: {fileID: 195677331660513930}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -76,6 +77,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33476388001635724
 MeshFilter:
@@ -96,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EquipedWeapon: {fileID: 0}
+  SecondaryWeapon: {fileID: 0}
 --- !u!114 &114171523118415310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -143,3 +146,24 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!195 &195677331660513930
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1765445111158404}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 6
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

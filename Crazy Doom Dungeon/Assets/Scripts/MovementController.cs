@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class MovementController : MonoBehaviour {
 
     private Vector3 target;
+    private NavMeshAgent agent;
 
     [SerializeField]
     private float MoveSpeed = 6.0f;
@@ -15,6 +18,7 @@ public class MovementController : MonoBehaviour {
     void Start () {
         target = transform.position;
         constant = transform.position.y;
+        agent = GetComponent<NavMeshAgent>();
     }
 	
 	// Update is called once per frame
@@ -40,6 +44,7 @@ public class MovementController : MonoBehaviour {
 
     public void Move(Vector3 target)
     {
-        this.target = target;
+        //  this.target = target;
+        agent.destination = target;
     }
 }

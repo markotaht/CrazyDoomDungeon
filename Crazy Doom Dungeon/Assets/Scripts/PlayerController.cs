@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour {
 
     private AttackContoller ac;
     private EquipmentHandler eqh;
+
+    //KAs on üldse vaja playerile?
     private MovementController mc;
 
     // Use this for initialization
