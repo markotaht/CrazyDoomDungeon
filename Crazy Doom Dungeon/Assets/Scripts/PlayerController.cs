@@ -27,5 +27,10 @@ public class PlayerController : MonoBehaviour {
     {
         ac.Attack(target, eqh.getWeapon());
     }
+
+    public void SwapWeapon()
+    {
+        eqh.swapWeapon();
+    }
 }
 

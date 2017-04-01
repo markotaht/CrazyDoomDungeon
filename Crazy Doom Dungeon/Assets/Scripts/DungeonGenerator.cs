@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using System.Linq;
 
 public class DungeonGenerator : MonoBehaviour {
 
     [SerializeField]
     private int iterations = 5;
+    [SerializeField]
     private GameObject[] dungeonParts;
+    [SerializeField]
     private GameObject[] rooms;
     private GameObject player;
     private List<GameObject> openExits = new List<GameObject>();
@@ -24,11 +27,12 @@ public class DungeonGenerator : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        dungeonParts = Resources.LoadAll<GameObject>("DungeonParts");
-        rooms = dungeonParts.Where(p => p.tag == "Room").ToArray<GameObject>();
+  //      dungeonParts = Resources.LoadAll<GameObject>("DungeonParts");
+   //     rooms = dungeonParts.Where(p => p.tag == "Room").ToArray<GameObject>();
         GameObject startDungeonPart = dungeonParts[Random.Range(0, dungeonParts.Length)];
         CreateDungeon(startDungeonPart, iterations);
         AddPlayer();
+        createNavMesh();
     }
 	
 
@@ -130,6 +134,19 @@ public class DungeonGenerator : MonoBehaviour {
         camera.transform.Rotate(new Vector3(30, 45, 0));
         camera.orthographic = true;
         camera.orthographicSize = 5;*/
+    }
+
+    void createNavMesh()
+    {
+        GameObject empty = new GameObject();
+        NavMeshSurface surface = empty.AddComponent<NavMeshSurface>();
+        GameObject[] floors = GameObject.FindGameObjectsWithTag("Floor");
+
+        for (int i = 0; i < floors.Length; i++)
+        {
+            floors[i].transform.parent = empty.transform;
+        }
+        surface.BuildNavMesh();
     }
 
 }

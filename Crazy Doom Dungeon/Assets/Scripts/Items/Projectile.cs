@@ -7,14 +7,11 @@ public class Projectile : MonoBehaviour {
 
     private Vector3 direction;
 
-    [SerializeField]
-    private float Speed = 2.0f;
-
     private Rigidbody rb;
 
     private float timetolive = 10;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = true;
         Destroy(gameObject, timetolive);
@@ -44,6 +41,6 @@ public class Projectile : MonoBehaviour {
 
         Vector3 velocity = new Vector3(0,speed*Mathf.Sin(angle), speed*Mathf.Cos(angle));
         Vector3 finalVel = Quaternion.LookRotation(direction)*velocity;
-        GetComponent<Rigidbody>().AddForce(finalVel*GetComponent<Rigidbody>().mass, ForceMode.Impulse);
+        rb.AddForce(finalVel*GetComponent<Rigidbody>().mass, ForceMode.Impulse);
     }
 }

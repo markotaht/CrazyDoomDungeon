@@ -12,6 +12,9 @@ public class RangedWeapon : Weapon {
     [SerializeField]
     private float MaxRange = 10.0f;
 
+    [SerializeField]
+    private GameObject ammoType;
+
     private float NextFire = 0.0f;
     
     // Use this for initialization
@@ -24,10 +27,10 @@ public class RangedWeapon : Weapon {
         if (Time.time > NextFire)
         {
             NextFire = Time.time + FireRate;
-            GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            cube.transform.position = transform.position + transform.rotation * Vector3.forward  * 2;
-            cube.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            Projectile pro = cube.AddComponent(typeof(Projectile)) as Projectile;
+            GameObject ammo = Instantiate(ammoType);
+            ammo.transform.position = transform.position + transform.rotation * Vector3.forward * 2;
+            ammo.transform.rotation = Quaternion.LookRotation(direction);
+            Projectile pro = ammo.GetComponent<Projectile>();
             pro.setDirection(direction.normalized * (direction.magnitude % MaxRange));
         }
     }
