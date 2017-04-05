@@ -31,8 +31,8 @@ public class DungeonGenerator : MonoBehaviour {
    //     rooms = dungeonParts.Where(p => p.tag == "Room").ToArray<GameObject>();
         GameObject startDungeonPart = dungeonParts[Random.Range(0, dungeonParts.Length)];
         CreateDungeon(startDungeonPart, iterations);
-        AddPlayer();
         createNavMesh();
+        AddPlayer();
     }
 	
 
