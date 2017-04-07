@@ -26,4 +26,9 @@ public class MovementController : MonoBehaviour {
         agent.destination = target;
         agent.speed = MoveSpeed;
     }
+
+    public void DetachAgent()
+    {
+        agent.enabled = false;
+    }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.AI;
 
 [RequireComponent(typeof(MovementController))]
 public class BasicAI : MonoBehaviour {
@@ -49,5 +50,6 @@ public class BasicAI : MonoBehaviour {
     public void Die()
     {
         Alive = false;
+        mc.DetachAgent();   
     }
 }

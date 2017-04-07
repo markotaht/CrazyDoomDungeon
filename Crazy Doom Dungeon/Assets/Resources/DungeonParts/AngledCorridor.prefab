@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4099796697712754}
   m_Layer: 0
   m_Name: AngledCorridor
-  m_TagString: Corridor
+  m_TagString: Junction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

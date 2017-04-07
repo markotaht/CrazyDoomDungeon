@@ -27,8 +27,7 @@ public class DungeonGenerator : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-  //      dungeonParts = Resources.LoadAll<GameObject>("DungeonParts");
-   //     rooms = dungeonParts.Where(p => p.tag == "Room").ToArray<GameObject>();
+        dungeonParts = dungeonParts.Concat(rooms).ToArray();
         GameObject startDungeonPart = dungeonParts[Random.Range(0, dungeonParts.Length)];
         CreateDungeon(startDungeonPart, iterations);
         createNavMesh();
