@@ -11,6 +11,11 @@ public class InputHandler : MonoBehaviour {
     private MoveCommand move = new MoveCommand();
     private AttackCommand attack = new AttackCommand();
     private SwapWeaponCommand swap = new SwapWeaponCommand();
+
+    private bool pressed = false;
+    private bool moving = false;
+    private GameObject attacking = null;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -25,15 +30,54 @@ public class InputHandler : MonoBehaviour {
         target = hit.point;
         if (Input.GetMouseButton(0))
         {
-            //TODO Kuidagi tea midagi olukorras kus vajutatakse kaardilt välja....
-            if (hit.collider == null || hit.collider.gameObject.tag != "Enemy")
+            if (!pressed)
             {
-                move.Execute(target, currentActor);
+                pressed = true;
+                //hit.collider == null || ??
+                if (hit.collider.gameObject.tag != "Enemy")
+                {
+                    moving = true;
+                    move.Execute(target, currentActor);
+                }
+                else
+                {
+                    attacking = hit.collider.gameObject;
+                    attack.Execute(hit.collider.gameObject.transform.position, currentActor);
+                }
+
             }
             else
             {
-                attack.Execute(hit.collider.gameObject.transform.position, currentActor);
+                if (moving)
+                {
+                    move.Execute(target, currentActor);
+                }
+                else
+                {
+                    if (!attacking.GetComponent<BasicAI>().isAlive())
+                    {
+                        if (hit.collider.gameObject.tag != "Enemy")
+                        {
+                            moving = true;
+                            move.Execute(target, currentActor);
+                        }
+                        else
+                        {
+                            attacking = hit.collider.gameObject;
+                            attack.Execute(attacking.transform.position, currentActor);
+                        }
+                    }
+                    else
+                    {
+                        attack.Execute(attacking.transform.position, currentActor);
+                    }
+                }
             }
+        }
+        else
+        {
+            pressed = false;
+            moving = false;
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {

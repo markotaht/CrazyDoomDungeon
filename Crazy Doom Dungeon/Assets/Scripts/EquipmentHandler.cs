@@ -13,6 +13,7 @@ public class EquipmentHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         SecondaryWeapon.gameObject.SetActive(false);
+        EquipedWeapon.gameObject.SetActive(true);
 	}
 	
     public Weapon getWeapon()

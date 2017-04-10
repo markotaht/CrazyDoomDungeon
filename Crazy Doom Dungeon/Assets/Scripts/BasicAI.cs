@@ -16,11 +16,11 @@ public class BasicAI : MonoBehaviour {
 
     private bool Alive = true;
 
-    private MovementController mc;
+    private MovementController movementController;
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        mc = GetComponent<MovementController>();
+        movementController = GetComponent<MovementController>();
         target = transform.position;
     }
 	
@@ -43,13 +43,19 @@ public class BasicAI : MonoBehaviour {
 
         if(Vector3.Distance(transform.position,target) > 2 && Alive)
         {
-            mc.Move(target);
+            movementController.Move(target);
         }
 	}
 
     public void Die()
     {
         Alive = false;
-        mc.DetachAgent();   
+        movementController.DetachAgent();
+        transform.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+    }
+
+   public bool isAlive()
+    {
+        return Alive;
     }
 }

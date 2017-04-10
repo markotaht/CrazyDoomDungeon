@@ -7,32 +7,32 @@ using UnityEngine;
 [RequireComponent (typeof(MovementController))]
 public class PlayerController : MonoBehaviour {
 
-    private AttackContoller ac;
-    private EquipmentHandler eqh;
+    private AttackContoller attackController;
+    private EquipmentHandler equipmentHandler;
 
     //KAs on üldse vaja playerile?
-    private MovementController mc;
+    private MovementController movementController;
 
     // Use this for initialization
 	void Start () {
-        ac = GetComponent<AttackContoller>();
-        eqh = GetComponent<EquipmentHandler>();
-        mc = GetComponent<MovementController>();
+        attackController = GetComponent<AttackContoller>();
+        equipmentHandler = GetComponent<EquipmentHandler>();
+        movementController = GetComponent<MovementController>();
 	}
 
     public void Move(Vector3 target)
     {
-        mc.Move(target);
+        movementController.Move(target);
     }
 
     public void Attack(Vector3 target)
     {
-        ac.Attack(target, eqh.getWeapon());
+        attackController.Attack(target, equipmentHandler.getWeapon());
     }
 
     public void SwapWeapon()
     {
-        eqh.swapWeapon();
+        equipmentHandler.swapWeapon();
     }
 }
 
