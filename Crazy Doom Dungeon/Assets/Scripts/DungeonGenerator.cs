@@ -44,7 +44,7 @@ public class DungeonGenerator : MonoBehaviour {
         GameObject part = Instantiate(startDungeonPart, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         openExits = getExits(part);
         part.transform.parent = transform;
-     //   array.AddRange(part.GetComponent<GenerateArray>().getArea());
+        array.AddRange(part.GetComponent<GenerateArray>().getArea());
         while (iterations > 0)
         {
             List<GameObject> newExits = new List<GameObject>();
@@ -56,7 +56,7 @@ public class DungeonGenerator : MonoBehaviour {
                 List<GameObject> newModuleExits = getExits(newPart);
                 GameObject chosenExit = newModuleExits[Random.Range(0, newModuleExits.Count)];
                 MatchExits(exit, chosenExit);
-        //        array.AddRange(newPart.GetComponent<GenerateArray>().getArea());
+                array.AddRange(newPart.GetComponent<GenerateArray>().getArea());
                 foreach (GameObject new_exit in newModuleExits)
                 {
                     if(new_exit != chosenExit)
@@ -89,7 +89,7 @@ public class DungeonGenerator : MonoBehaviour {
                 int index = Random.Range(0, newModuleExits.Count);
                 GameObject chosenExit = newModuleExits[index];
                 MatchExits(exit, chosenExit);
-              //  array.AddRange(newPart.GetComponent<GenerateArray>().getArea());
+                array.AddRange(newPart.GetComponent<GenerateArray>().getArea());
                 GameObject otherExit = newModuleExits[(index + 1) % 2];
                 GameObject newPart2 = rooms[Random.Range(0, rooms.Length)];
                 newPart2 = Instantiate(newPart2) as GameObject;
@@ -97,7 +97,7 @@ public class DungeonGenerator : MonoBehaviour {
                 List<GameObject> newModuleExits2 = getExits(newPart2);
                 GameObject chosenExit2 = newModuleExits2[Random.Range(0, newModuleExits2.Count)];
                 MatchExits(otherExit, chosenExit2);
-              //  array.AddRange(newPart2.GetComponent<GenerateArray>().getArea());
+                array.AddRange(newPart2.GetComponent<GenerateArray>().getArea());
             }
             else if(exit.transform.parent.tag == "Corridor")
             {
@@ -107,7 +107,7 @@ public class DungeonGenerator : MonoBehaviour {
                 List<GameObject> newModuleExits = getExits(newPart);
                 GameObject chosenExit = newModuleExits[Random.Range(0, newModuleExits.Count)];
                 MatchExits(exit, chosenExit);
-             //   array.AddRange(newPart.GetComponent<GenerateArray>().getArea());
+                array.AddRange(newPart.GetComponent<GenerateArray>().getArea());
             }
         }
     }
