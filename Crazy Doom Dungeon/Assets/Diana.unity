@@ -219,8 +219,9 @@ GameObject:
   m_Component:
   - component: {fileID: 240371634}
   - component: {fileID: 240371635}
+  - component: {fileID: 240371636}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -250,20 +251,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e18b2612520a5b40a61e0dba45ae1ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iterations: 4
+  iterations: 5
   dungeonParts:
-  - {fileID: 1042902373594078, guid: 728d60e4a8073bf45a1c196b6fb2d05e, type: 2}
+  - {fileID: 1641422114284536, guid: 9c47f4c998ec1de48897abdefe6138e0, type: 2}
   - {fileID: 1083997062042844, guid: 32534f0ddbb3f9947a5dc3f6d19311bb, type: 2}
   - {fileID: 1013881217811918, guid: e5f705d5c3bc4cf4cb4c8bb1f95cbb8f, type: 2}
-  - {fileID: 1550488701366228, guid: a49e47d52b370f74691a6439c6a33994, type: 2}
-  - {fileID: 1323028048058148, guid: 44177f5ca34681843aeb0a4a41ce9b60, type: 2}
   - {fileID: 1940562628976866, guid: 798cc4a944461ef49ae383d8948f725b, type: 2}
+  - {fileID: 1407487436945834, guid: 05139ffc9e283774dac629f9d8c4a730, type: 2}
   rooms:
   - {fileID: 1418511158193984, guid: 2595a02f9903fab499e391c7c6cb8282, type: 2}
   - {fileID: 1988383714399360, guid: 369277afde6b6b54b85315c93a4f6ade, type: 2}
   - {fileID: 1276517912072012, guid: d4537b5176cfea54aab2ff9a005f93f8, type: 2}
   - {fileID: 1274854362930664, guid: ff0f9b33ad0532f4d86d1a34909342ef, type: 2}
   - {fileID: 1240536833597114, guid: 95c6c1cf05ac9d6429242f229b094515, type: 2}
+--- !u!114 &240371636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 240371633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 0}
 --- !u!1 &1983715031
 GameObject:
   m_ObjectHideFlags: 0
