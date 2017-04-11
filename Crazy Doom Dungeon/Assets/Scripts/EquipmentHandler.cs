@@ -3,30 +3,57 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EquipmentHandler : MonoBehaviour {
-
+    /*
     [SerializeField]
-    private Weapon EquipedWeapon;
+    private Weapon[] weapons;
+    private Weapon EquippedWeapon;
 
     [SerializeField]
     private Weapon SecondaryWeapon;
-
+    
 	// Use this for initialization
 	void Start () {
         SecondaryWeapon.gameObject.SetActive(false);
-        EquipedWeapon.gameObject.SetActive(true);
+        EquippedWeapon.gameObject.SetActive(true);
 	}
 	
     public Weapon getWeapon()
     {
-        return EquipedWeapon;
+        return EquippedWeapon;
     }
 
     public void swapWeapon()
     {
-        Weapon temp = EquipedWeapon;
-        EquipedWeapon = SecondaryWeapon;
+        Weapon temp = EquippedWeapon;
+        EquippedWeapon = SecondaryWeapon;
         SecondaryWeapon = temp;
         SecondaryWeapon.gameObject.SetActive(false);
-        EquipedWeapon.gameObject.SetActive(true);
+        EquippedWeapon.gameObject.SetActive(true);
+    }*/
+
+    [SerializeField]
+    private Weapon EquippedWeapon;
+
+    [SerializeField]
+    private Weapon SecondaryWeapon;
+    
+	// Use this for initialization
+	void Start () {
+        SecondaryWeapon.gameObject.SetActive(false);
+        EquippedWeapon.gameObject.SetActive(true);
+	}
+	
+    public Weapon getWeapon()
+    {
+        return EquippedWeapon;
+    }
+
+    public void swapWeapon()
+    {
+        Weapon temp = EquippedWeapon;
+        EquippedWeapon = SecondaryWeapon;
+        SecondaryWeapon = temp;
+        SecondaryWeapon.gameObject.SetActive(false);
+        EquippedWeapon.gameObject.SetActive(true);
     }
 }

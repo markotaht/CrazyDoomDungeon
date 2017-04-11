@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weapon : MonoBehaviour{
+public abstract class Weapon : Item{
 
     [SerializeField]
     private float WeaponRange = 1.0f;
