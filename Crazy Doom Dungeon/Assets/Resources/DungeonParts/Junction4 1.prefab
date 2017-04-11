@@ -52,6 +52,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4140050024544046}
+  - component: {fileID: 114634881826492530}
   m_Layer: 0
   m_Name: Junction4 1
   m_TagString: Junction
@@ -240,3 +241,14 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: d1d67e3bb5465a141abba62b6374dc01, type: 3}
+--- !u!114 &114634881826492530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1407487436945834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3bf61b8e143924c8efeaa2ae4b5c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
