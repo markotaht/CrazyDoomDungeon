@@ -151,9 +151,35 @@ Prefab:
       propertyPath: m_Name
       value: BoxMonster (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1536768416759292, guid: d0574558cc139e945972177b6600db3a, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0574558cc139e945972177b6600db3a, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &100248351 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1183788142034944, guid: fc1d0f9161028724f94668283f83b8ea,
+    type: 2}
+  m_PrefabInternal: {fileID: 629149015}
+--- !u!95 &100248352
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 100248351}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a672b6b138802414d9b10ce4c1328396, type: 2}
+  m_CullingMode: 2
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &122362062 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1258064293585166, guid: 2ec9c8458298af5408ceca37566e8fab,
@@ -207,7 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  WeaponRange: 1
+  WeaponRange: 2
   WeaponDamage: 1
 --- !u!4 &336076735 stripped
 Transform:
@@ -364,6 +390,10 @@ Prefab:
     - target: {fileID: 1010646330385518, guid: d0574558cc139e945972177b6600db3a, type: 2}
       propertyPath: m_Name
       value: BoxMonster (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536768416759292, guid: d0574558cc139e945972177b6600db3a, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0574558cc139e945972177b6600db3a, type: 2}
@@ -642,6 +672,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1536768416759292, guid: d0574558cc139e945972177b6600db3a, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d0574558cc139e945972177b6600db3a, type: 2}
   m_IsPrefabParent: 0
@@ -810,6 +844,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4660510881582236, guid: 2ec9c8458298af5408ceca37566e8fab, type: 2}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95649447161262044, guid: 2ec9c8458298af5408ceca37566e8fab,
+        type: 2}
+      propertyPath: m_CullingMode
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -20,4 +20,9 @@ public abstract class Weapon : Item{
     }
 
     public abstract void Attack(Vector3 direction);
+
+    public Animator getAnimator()
+    {
+        return GetComponent<Animator>();
+    }
 }

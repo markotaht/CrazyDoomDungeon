@@ -6,7 +6,7 @@ public class AttackContoller : MonoBehaviour {
 
     private bool isAttacking = false;
 
-    private Vector3 target;
+    private Transform target;
     private float range;
     private Weapon weapon;
     // Use this for initialization
@@ -18,33 +18,46 @@ public class AttackContoller : MonoBehaviour {
 	void Update () {
         if (isAttacking)
         {
-            float dist = Vector3.Distance(transform.position, target);
+            float dist = Vector3.Distance(transform.position, target.position);
             if(dist <= range)
             {
-                Vector3 direction = target - transform.position;
+                weapon.getAnimator().SetBool("attacking", true);
+                Vector3 direction = target.position - transform.position;
                 direction.y = 0;
                 transform.rotation = Quaternion.LookRotation(direction.normalized);
-                weapon.Attack(target - transform.position);
+                weapon.Attack(target.position - transform.position);
                 isAttacking = false;
+            }
+            else
+            {
+                GetComponent<MovementController>().Move(transform.position + (target.position - transform.position).normalized * (dist-range+1));
+            }
+        }
+        else
+        {
+            if (weapon)
+            {
+                weapon.getAnimator().SetBool("attacking", false);
             }
         }
 	}
 
-    public void Attack(Vector3 target, Weapon weapon)
+    public void Attack(Transform target, Weapon weapon)
     {
         isAttacking = true;
         this.target = target;
         range = weapon.getRange();
         this.weapon = weapon;
-        float dist = Vector3.Distance(transform.position, target);
+        float dist = Vector3.Distance(transform.position, target.position);
         if (dist > range)
         {
-            GetComponent<MovementController>().Move(transform.position + (target - transform.position).normalized * (dist-range+1));
+            GetComponent<MovementController>().Move(transform.position + (target.position - transform.position).normalized * (dist-range+1));
         }
         else
         {
+            weapon.getAnimator().SetBool("attacking", true);
             GetComponent<MovementController>().Move(transform.position);
-            Vector3 planarTarget = new Vector3(target.x, 0, target.z);
+            Vector3 planarTarget = new Vector3(target.position.x, 0, target.position.z);
             Vector3 planarPosition = new Vector3(transform.position.x, 0, transform.position.z);
             Vector3 direction = planarTarget - planarPosition;
             transform.rotation = Quaternion.LookRotation(direction.normalized);

@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour {
         movementController.Move(target);
     }
 
-    public void Attack(Vector3 target)
+    public void Attack(Transform target)
     {
         attackController.Attack(target, equipmentHandler.getWeapon());
     }
@@ -33,6 +33,11 @@ public class PlayerController : MonoBehaviour {
     public void SwapWeapon()
     {
         equipmentHandler.swapWeapon();
+    }
+
+    public Weapon GetEquippedWeapon()
+    {
+        return equipmentHandler.getWeapon();
     }
 }
 
