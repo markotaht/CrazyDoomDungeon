@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent (typeof(AttackContoller))]
+[RequireComponent (typeof(AttackController))]
 [RequireComponent (typeof(EquipmentHandler))]
 [RequireComponent (typeof(MovementController))]
 public class PlayerController : MonoBehaviour {
 
-    private AttackContoller attackController;
+    private AttackController attackController;
     private EquipmentHandler equipmentHandler;
 
     //KAs on üldse vaja playerile?
@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
 	void Start () {
-        attackController = GetComponent<AttackContoller>();
+        attackController = GetComponent<AttackController>();
         equipmentHandler = GetComponent<EquipmentHandler>();
         movementController = GetComponent<MovementController>();
 	}

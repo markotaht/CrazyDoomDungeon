@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackContoller : MonoBehaviour {
+public class AttackController : MonoBehaviour {
 
-    private bool isAttacking = false;
+    private bool attacking = false;
 
     private Transform target;
     private float range;
@@ -16,12 +16,12 @@ public class AttackContoller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (isAttacking)
+        if (attacking)
         {
             if (!target.gameObject.GetComponent<BasicAI>().isAlive())
             {
                 Debug.Log("Target is dead, will stop attacking");
-                isAttacking = false;
+                attacking = false;
                 return;
             }
             Debug.Log("attacking " + target);
@@ -35,7 +35,7 @@ public class AttackContoller : MonoBehaviour {
                 transform.rotation = Quaternion.LookRotation(direction.normalized);
                 weapon.Attack(target.position - transform.position);
                 //Debug.Log("Stopping attacking " + target);
-                //isAttacking = false;
+                //attacking = false;
             }
             else
             {
@@ -54,7 +54,7 @@ public class AttackContoller : MonoBehaviour {
 
     public void Attack(Transform target, Weapon weapon)
     {
-        isAttacking = true;
+        attacking = true;
         this.target = target;
         range = weapon.getRange();
         this.weapon = weapon;
@@ -77,6 +77,11 @@ public class AttackContoller : MonoBehaviour {
     
     public void StopAttacking()
     {
-        isAttacking = false;
+        attacking = false;
+    }
+
+    public bool isAttacking()
+    {
+        return attacking;
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.AI;
+using System;
 
 [RequireComponent(typeof(MovementController))]
 public class BasicAI : MonoBehaviour {
@@ -23,9 +24,9 @@ public class BasicAI : MonoBehaviour {
         movementController = GetComponent<MovementController>();
         target = transform.position;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         RaycastHit hit;
         Vector3 dir = player.position - transform.position;
         LayerMask enemyView = 1 << 8;
@@ -58,4 +59,11 @@ public class BasicAI : MonoBehaviour {
     {
         return Alive;
     }
+
+    public void WasHit()
+    {
+        Die();
+    }
+
+
 }

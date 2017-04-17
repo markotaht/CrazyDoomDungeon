@@ -630,7 +630,13 @@ Prefab:
       propertyPath: WeaponRange
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114330628344539584, guid: fc1d0f9161028724f94668283f83b8ea,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114330628344539584, guid: fc1d0f9161028724f94668283f83b8ea, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fc1d0f9161028724f94668283f83b8ea, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &649692325
