@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour {
 
     public void Move(Vector3 target)
     {
+        attackController.StopAttacking();
         movementController.Move(target);
     }
 

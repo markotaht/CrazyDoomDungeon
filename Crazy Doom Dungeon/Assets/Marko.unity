@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  WeaponRange: 2
+  WeaponRange: 3
   WeaponDamage: 1
 --- !u!4 &336076735 stripped
 Transform:

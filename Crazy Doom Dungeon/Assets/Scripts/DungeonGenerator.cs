@@ -16,9 +16,7 @@ public class DungeonGenerator : MonoBehaviour {
     private List<GameObject> openExits = new List<GameObject>();
 
     private List<Vector3> array;
-
-    private float trackingSpeed = 2.0f;
-    private float zoomSpeed = 5.0f;
+    
 
     private Dictionary<string, string[]> rules = new Dictionary<string, string[]>()
     {

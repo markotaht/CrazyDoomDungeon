@@ -18,18 +18,28 @@ public class AttackContoller : MonoBehaviour {
 	void Update () {
         if (isAttacking)
         {
+            if (!target.gameObject.GetComponent<BasicAI>().isAlive())
+            {
+                Debug.Log("Target is dead, will stop attacking");
+                isAttacking = false;
+                return;
+            }
+            Debug.Log("attacking " + target);
             float dist = Vector3.Distance(transform.position, target.position);
             if(dist <= range)
             {
+                Debug.Log("In range of " + target);
                 weapon.getAnimator().SetBool("attacking", true);
                 Vector3 direction = target.position - transform.position;
                 direction.y = 0;
                 transform.rotation = Quaternion.LookRotation(direction.normalized);
                 weapon.Attack(target.position - transform.position);
-                isAttacking = false;
+                //Debug.Log("Stopping attacking " + target);
+                //isAttacking = false;
             }
             else
             {
+                Debug.Log("Not in range of " + target);
                 GetComponent<MovementController>().Move(transform.position + (target.position - transform.position).normalized * (dist-range+1));
             }
         }
@@ -63,5 +73,10 @@ public class AttackContoller : MonoBehaviour {
             transform.rotation = Quaternion.LookRotation(direction.normalized);
             weapon.Attack(direction);
         }
+    }
+    
+    public void StopAttacking()
+    {
+        isAttacking = false;
     }
 }
