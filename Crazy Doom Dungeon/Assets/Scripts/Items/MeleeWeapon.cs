@@ -14,8 +14,8 @@ public class MeleeWeapon : Weapon {
 		
 	}
 
-    public override void Attack(Vector3 direction)
+    public override void Attack(Transform target)
     {
-        
+        animator.SetTrigger("attack");
     }
 }

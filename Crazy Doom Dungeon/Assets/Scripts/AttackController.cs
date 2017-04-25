@@ -9,6 +9,11 @@ public class AttackController : MonoBehaviour {
     private Transform target;
     private float range;
     private Weapon weapon;
+
+    private float attackCountdown;
+    private float attackCooldown;
+    private bool inAttackAnim = false;
+
     // Use this for initialization
     void Start () {
 		
@@ -18,36 +23,38 @@ public class AttackController : MonoBehaviour {
 	void Update () {
         if (attacking)
         {
-            if (!target.gameObject.GetComponent<BasicAI>().isAlive())
+            if (inAttackAnim)
             {
-                Debug.Log("Target is dead, will stop attacking");
-                attacking = false;
-                return;
-            }
-            Debug.Log("attacking " + target);
-            float dist = Vector3.Distance(transform.position, target.position);
-            if(dist <= range)
-            {
-                Debug.Log("In range of " + target);
-                weapon.getAnimator().SetBool("attacking", true);
-                Vector3 direction = target.position - transform.position;
-                direction.y = 0;
-                transform.rotation = Quaternion.LookRotation(direction.normalized);
-                weapon.Attack(target.position - transform.position);
-                //Debug.Log("Stopping attacking " + target);
-                //attacking = false;
+                attackCountdown -= Time.deltaTime;
+                if(attackCountdown <= 0)
+                {
+                    bool killed = target.GetComponent<BasicAI>().WasHit();
+                    attackCooldown = weapon.getAttackSpeed() - weapon.getWindupSpeed();
+                    inAttackAnim = false;
+                    if (killed)
+                    {
+                        attacking = false;
+                        return;
+                    }
+                }
             }
             else
             {
-                Debug.Log("Not in range of " + target);
-                GetComponent<MovementController>().Move(transform.position + (target.position - transform.position).normalized * (dist-range+1));
-            }
-        }
-        else
-        {
-            if (weapon)
-            {
-                weapon.getAnimator().SetBool("attacking", false);
+                attackCooldown -= Time.deltaTime;
+                float dist = Vector3.Distance(transform.position, target.position);
+                if (dist <= range)
+                {
+                    if(attackCooldown <= 0)
+                    {
+                        weapon.Attack(target);
+                        attackCountdown = weapon.getWindupSpeed();
+                        inAttackAnim = true;
+                    }
+                }
+                else
+                {
+                    GetComponent<MovementController>().Move(transform.position + (target.position - transform.position).normalized * (dist - range + 1));
+                }
             }
         }
 	}
@@ -65,13 +72,16 @@ public class AttackController : MonoBehaviour {
         }
         else
         {
-            weapon.getAnimator().SetBool("attacking", true);
+            //Stop and turn to enemy
             GetComponent<MovementController>().Move(transform.position);
             Vector3 planarTarget = new Vector3(target.position.x, 0, target.position.z);
             Vector3 planarPosition = new Vector3(transform.position.x, 0, transform.position.z);
             Vector3 direction = planarTarget - planarPosition;
             transform.rotation = Quaternion.LookRotation(direction.normalized);
-            weapon.Attack(direction);
+            
+            weapon.Attack(target);
+            attackCountdown = weapon.getWindupSpeed();
+            inAttackAnim = true;
         }
     }
     
@@ -83,5 +93,9 @@ public class AttackController : MonoBehaviour {
     public bool isAttacking()
     {
         return attacking;
+    }
+    public Weapon getWep()
+    {
+        return weapon;
     }
 }

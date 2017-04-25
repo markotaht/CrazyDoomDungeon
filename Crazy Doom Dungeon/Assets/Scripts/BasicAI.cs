@@ -51,8 +51,9 @@ public class BasicAI : MonoBehaviour {
     public void Die()
     {
         Alive = false;
-        movementController.DetachAgent();
+      //  movementController.DetachAgent();
         transform.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+        GetComponent<Renderer>().material.color = Color.red;
     }
 
    public bool isAlive()
@@ -60,9 +61,10 @@ public class BasicAI : MonoBehaviour {
         return Alive;
     }
 
-    public void WasHit()
+    public bool WasHit()
     {
         Die();
+        return true;
     }
 
 
