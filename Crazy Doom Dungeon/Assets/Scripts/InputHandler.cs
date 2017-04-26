@@ -33,7 +33,6 @@ public class InputHandler : MonoBehaviour {
             if (!pressed)
             {
                 pressed = true;
-                //hit.collider == null || ??
                 if (hit.collider.gameObject.tag != "Enemy")
                 {
                     moving = true;
@@ -42,7 +41,7 @@ public class InputHandler : MonoBehaviour {
                 else
                 {
                     attacking = hit.collider.gameObject;
-                    attack.Execute(hit.collider.gameObject.transform.position, currentActor);
+                    attack.Execute(hit.collider.gameObject.transform, currentActor);
                 }
 
             }
@@ -56,20 +55,11 @@ public class InputHandler : MonoBehaviour {
                 {
                     if (!attacking.GetComponent<BasicAI>().isAlive())
                     {
-                        if (hit.collider.gameObject.tag != "Enemy")
-                        {
-                            moving = true;
-                            move.Execute(target, currentActor);
-                        }
-                        else
+                        if (hit.collider.gameObject.tag == "Enemy")
                         {
                             attacking = hit.collider.gameObject;
-                            attack.Execute(attacking.transform.position, currentActor);
+                            attack.Execute(attacking.transform, currentActor);
                         }
-                    }
-                    else
-                    {
-                        attack.Execute(attacking.transform.position, currentActor);
                     }
                 }
             }

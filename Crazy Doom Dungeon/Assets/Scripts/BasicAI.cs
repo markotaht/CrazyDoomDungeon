@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.AI;
+using System;
 
 [RequireComponent(typeof(MovementController))]
 public class BasicAI : MonoBehaviour {
@@ -18,17 +19,14 @@ public class BasicAI : MonoBehaviour {
 
     private MovementController movementController;
     // Use this for initialization
-    void Awake () {
+    void Start () {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         movementController = GetComponent<MovementController>();
         target = transform.position;
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if(player == null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
-        }
+
+    // Update is called once per frame
+    void Update () {
         RaycastHit hit;
         Vector3 dir = player.position - transform.position;
         LayerMask enemyView = 1 << 8;
@@ -53,12 +51,21 @@ public class BasicAI : MonoBehaviour {
     public void Die()
     {
         Alive = false;
-        movementController.DetachAgent();
+      //  movementController.DetachAgent();
         transform.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+        GetComponent<Renderer>().material.color = Color.red;
     }
 
    public bool isAlive()
     {
         return Alive;
     }
+
+    public bool WasHit()
+    {
+        Die();
+        return true;
+    }
+
+
 }

@@ -17,6 +17,11 @@ public class AttackCommand : Command {
 
     public override void Execute(Vector3 target, PlayerController controller)
     {
+        throw new NotImplementedException();
+    }
+
+    public override void Execute(Transform target, PlayerController controller)
+    {
         controller.Attack(target);
     }
 }

@@ -15,6 +15,11 @@ public class MoveCommand : Command {
         throw new NotImplementedException();
     }
 
+    public override void Execute(Transform target, PlayerController controller)
+    {
+        throw new NotImplementedException();
+    }
+
     public override void Execute(Vector3 target, PlayerController controller)
     {
         controller.Move(target);

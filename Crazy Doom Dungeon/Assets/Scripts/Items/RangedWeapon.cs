@@ -22,8 +22,11 @@ public class RangedWeapon : Weapon {
 		
 	}
 
-    public override void Attack(Vector3 direction)
+    public override void Attack(Transform target)
     {
+
+        animator.SetTrigger("attack");
+        /*
         if (Time.time > NextFire)
         {
             NextFire = Time.time + FireRate;
@@ -32,6 +35,6 @@ public class RangedWeapon : Weapon {
             ammo.transform.rotation = Quaternion.LookRotation(direction);
             Projectile pro = ammo.GetComponent<Projectile>();
             pro.setDirection(direction.normalized * (direction.magnitude % MaxRange));
-        }
+        }*/
     }
 }
