@@ -18,14 +18,17 @@ public class BasicAI : MonoBehaviour {
 
     private MovementController movementController;
     // Use this for initialization
-    void Start () {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+    void Awake () {
         movementController = GetComponent<MovementController>();
         target = transform.position;
     }
 	
 	// Update is called once per frame
 	void Update () {
+        if(player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+        }
         RaycastHit hit;
         Vector3 dir = player.position - transform.position;
         LayerMask enemyView = 1 << 8;
