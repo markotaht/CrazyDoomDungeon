@@ -11,6 +11,7 @@ TagManager:
   - Room
   - Exit
   - Floor
+  - Spawner
   layers:
   - Default
   - TransparentFX
