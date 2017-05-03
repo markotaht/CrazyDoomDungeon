@@ -14,8 +14,14 @@ public class BasicAI : MonoBehaviour {
     private float Detection_distance = 5.0f;
     [SerializeField]
     private float viewcone = 45f;
+    [SerializeField]
+    private float strength = 2;
 
     private bool Alive = true;
+    
+    private float attackCountdown;
+    private float attackCooldown;
+    private bool inAttackAnim = false;
 
     private MovementController movementController;
     // Use this for initialization
@@ -41,7 +47,6 @@ public class BasicAI : MonoBehaviour {
                 }
             }
         }
-
         if(Vector3.Distance(transform.position,target) > 2 && Alive)
         {
             movementController.Move(target);
