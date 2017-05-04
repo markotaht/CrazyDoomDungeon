@@ -26,7 +26,15 @@ public class RangedWeapon : Weapon {
     {
 
         animator.SetTrigger("attack");
+        //GameObject projectile = GameObject.FindGameObjectWithTag("Projectile");
+        Vector3 direction = target.position - transform.position;
+        GameObject ammo = Instantiate(ammoType);
+        ammo.transform.position = transform.position + transform.rotation * Vector3.forward * 2;
+        ammo.transform.rotation = Quaternion.LookRotation(direction);
+        Projectile pro = ammo.GetComponent<Projectile>();
+        pro.attack(target);
         /*
+        Vector3 direction = target.position - transform.position;
         if (Time.time > NextFire)
         {
             NextFire = Time.time + FireRate;
@@ -34,7 +42,8 @@ public class RangedWeapon : Weapon {
             ammo.transform.position = transform.position + transform.rotation * Vector3.forward * 2;
             ammo.transform.rotation = Quaternion.LookRotation(direction);
             Projectile pro = ammo.GetComponent<Projectile>();
-            pro.setDirection(direction.normalized * (direction.magnitude % MaxRange));
+            pro.attack(target);
+            //pro.setDirection(direction.normalized * (direction.magnitude % MaxRange));
         }*/
     }
 }

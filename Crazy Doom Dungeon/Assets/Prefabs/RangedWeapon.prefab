@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4684807139834674}
   - component: {fileID: 114233813826097878}
+  - component: {fileID: 95425064841766502}
   m_Layer: 0
   m_Name: RangedWeapon
   m_TagString: Weapon
@@ -38,7 +39,6 @@ GameObject:
   - component: {fileID: 33514918952761436}
   - component: {fileID: 65051995176806590}
   - component: {fileID: 23771839172810222}
-  - component: {fileID: 114330628344539584}
   - component: {fileID: 54468515309082422}
   m_Layer: 0
   m_Name: Cube (2)
@@ -136,10 +136,27 @@ BoxCollider:
   m_GameObject: {fileID: 1719899028226378}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &95425064841766502
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1183788142034944}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a672b6b138802414d9b10ce4c1328396, type: 2}
+  m_CullingMode: 2
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114233813826097878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,20 +168,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5ea369f8963fc40beaaa1b6710ebae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  WeaponRange: 20
+  sprite: {fileID: 21300000, guid: 4ab06e467846b8a40b1abe506d537fd3, type: 3}
+  WeaponRange: 10
   WeaponDamage: 1
+  WeaponWindupSpeed: 0.5
+  WeaponAttackSpeed: 3
   FireRate: 1
   MaxRange: 30
   ammoType: {fileID: 1884594999668720, guid: 555a4ef0555651a41a25a083216d6944, type: 2}
---- !u!114 &114330628344539584
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1719899028226378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49457c4d87b99db40b0537d7a9c429ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

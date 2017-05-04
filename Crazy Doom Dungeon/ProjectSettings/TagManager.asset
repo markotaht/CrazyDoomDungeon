@@ -12,6 +12,7 @@ TagManager:
   - Exit
   - Floor
   - Spawner
+  - Projectile
   layers:
   - Default
   - TransparentFX
