@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class DungeonGenerator : MonoBehaviour {
 
@@ -39,7 +40,7 @@ public class DungeonGenerator : MonoBehaviour {
     {
         if (Input.GetButton("Restart"))
         {
-            Application.LoadLevel("Diana");
+            SceneManager.LoadScene("Diana");
         }
     }
 

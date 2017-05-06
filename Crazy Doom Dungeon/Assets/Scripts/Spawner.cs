@@ -2,19 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEditor;
+[CustomEditor(typeof(Spawner))]
+public class SpawnerScriptEditor: Editor
+{
+    public override void OnInspectorGUI()
+    {
+        Spawner spawner = (Spawner)target;
+
+        spawner.item = (GameObject)EditorGUILayout.ObjectField("Item", spawner.item,typeof(GameObject));
+        spawner.maxAmount = EditorGUILayout.IntField("Max amount", spawner.maxAmount);
+        spawner.spawnOnce = EditorGUILayout.Toggle("Spawn once", true);
+        spawner.spawnTimer = EditorGUILayout.FloatField("Spawn timer", spawner.spawnTimer);
+    }
+}
+
 public class Spawner : MonoBehaviour {
 
-    [SerializeField]
-    private GameObject item;
-
-    [SerializeField]
-    private int maxAmount;
-
-    [SerializeField]
-    private bool spawnOnce = true;
-
-    [SerializeField]
-    private float spawnTimer = 1f;
+    public GameObject item;
+    public int maxAmount;
+    public bool spawnOnce = true;
+    public float spawnTimer = 1f;
 
     private float last_spawned = 0;
     private int spawned;
