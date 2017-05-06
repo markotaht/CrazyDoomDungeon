@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//[RequireComponent(typeof(Rigidbody))]
 public class Projectile : MonoBehaviour {
     [SerializeField]
     private float speed;
@@ -13,22 +12,11 @@ public class Projectile : MonoBehaviour {
     private Rigidbody rb;
 
     private float timetolive = 10;
+
 	// Use this for initialization
 	void Awake () {
-        //rb = GetComponent<Rigidbody>();
-        //rb.useGravity = true;
-        //Destroy(gameObject, timetolive);
 	}
-    /*
-    void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            other.gameObject.GetComponent<Renderer>().material.color = Color.red;
-            other.gameObject.GetComponent<BasicAI>().Die();
-        }
-    }
-    */
+
     // Update is called once per frame
     void Update () {
         if (attacking)

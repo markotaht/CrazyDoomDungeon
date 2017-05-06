@@ -9,8 +9,7 @@ public class PlayerController : MonoBehaviour {
 
     private AttackController attackController;
     private EquipmentHandler equipmentHandler;
-
-    //KAs on üldse vaja playerile?
+    
     private MovementController movementController;
 
     // Use this for initialization
@@ -22,13 +21,19 @@ public class PlayerController : MonoBehaviour {
 
     public void Move(Vector3 target)
     {
-        attackController.StopAttacking();
-        movementController.Move(target);
+        if (attackController.canMove())
+        {
+            attackController.StopAttacking();
+            movementController.Move(target);
+        }
     }
 
     public void Attack(Transform target)
     {
-        attackController.Attack(target, equipmentHandler.getWeapon());
+        if (target.gameObject.GetComponent<BasicAI>().isAlive())
+        {
+            attackController.Attack(target, equipmentHandler.getWeapon());
+        }
     }
 
     public void SwapWeapon()

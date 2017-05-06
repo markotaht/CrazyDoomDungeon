@@ -171,8 +171,6 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 4ab06e467846b8a40b1abe506d537fd3, type: 3}
   WeaponRange: 10
   WeaponDamage: 1
-  WeaponWindupSpeed: 0.5
-  WeaponAttackSpeed: 3
-  FireRate: 1
-  MaxRange: 30
+  WeaponWindupSpeed: 0.05
+  WeaponWinddownSpeed: 0.05
   ammoType: {fileID: 1884594999668720, guid: 555a4ef0555651a41a25a083216d6944, type: 2}

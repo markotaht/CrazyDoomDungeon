@@ -1,19 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackController : MonoBehaviour {
 
-    private bool attacking = false;
+    enum State { READY_TO_ATTACK, ATTACK_WINDUP, ATTACK_WINDDOWN };
+    private State current_state = State.READY_TO_ATTACK;
 
     private Transform target;
     private float range;
     private Weapon weapon;
+    
+    private float attackWinddown;
+    private float attackWindup;
 
     private float attackCountdown;
-    private float attackCooldown;
-    private bool inAttackAnim = false;
-
+    
     // Use this for initialization
     void Start () {
 		
@@ -21,78 +24,137 @@ public class AttackController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (attacking)
+        attackCountdown -= Time.deltaTime;
+        switch (current_state)
         {
-            if (inAttackAnim)
-            {
-                attackCountdown -= Time.deltaTime;
+            case State.READY_TO_ATTACK:
+                if (target != null && target.GetComponent<BasicAI>().isAlive())
+                {
+                    float dist = Vector3.Distance(transform.position, target.position);
+                    if (dist > range)
+                    {
+                        GetComponent<MovementController>().Move(transform.position + (target.position - transform.position).normalized * (dist - range + 1));
+                    }
+                    else
+                    {
+
+                        //Stop and turn to enemy
+                        GetComponent<MovementController>().Move(transform.position);
+                        Vector3 planarTarget = new Vector3(target.position.x, 0, target.position.z);
+                        Vector3 planarPosition = new Vector3(transform.position.x, 0, transform.position.z);
+                        Vector3 direction = planarTarget - planarPosition;
+                        transform.rotation = Quaternion.LookRotation(direction.normalized);
+
+                        weapon.StartAttack(target);
+                        attackCountdown = attackWindup;
+                        current_state = State.ATTACK_WINDUP;
+                    }
+                }
+                break;
+
+            case State.ATTACK_WINDUP:
                 if(attackCountdown <= 0)
                 {
-                    bool killed = target.GetComponent<BasicAI>().WasHit();
-                    attackCooldown = weapon.getAttackSpeed() - weapon.getWindupSpeed();
-                    inAttackAnim = false;
-                    if (killed)
-                    {
-                        attacking = false;
-                        return;
-                    }
+                    weapon.DoAttack(target);
+                    attackCountdown = attackWinddown;
+                    current_state = State.ATTACK_WINDDOWN;
                 }
-            }
-            else
-            {
-                attackCooldown -= Time.deltaTime;
-                float dist = Vector3.Distance(transform.position, target.position);
-                if (dist <= range)
+                break;
+
+            case State.ATTACK_WINDDOWN:
+                if(attackCountdown <= 0)
                 {
-                    if(attackCooldown <= 0)
-                    {
-                        weapon.Attack(target);
-                        attackCountdown = weapon.getWindupSpeed();
-                        inAttackAnim = true;
-                    }
+                    target = null;
+                    current_state = State.READY_TO_ATTACK;
                 }
-                else
-                {
-                    GetComponent<MovementController>().Move(transform.position + (target.position - transform.position).normalized * (dist - range + 1));
-                }
-            }
+                break;
         }
 	}
 
     public void Attack(Transform target, Weapon weapon)
     {
-        attacking = true;
+        switch (current_state)
+        {
+            case State.READY_TO_ATTACK:
+                //start attacking new
+                SetTargetAndWeapon(target, weapon);
+
+                float dist = Vector3.Distance(transform.position, target.position);
+                if (dist > range)
+                {
+                    current_state = State.READY_TO_ATTACK;
+                    GetComponent<MovementController>().Move(transform.position + (target.position - transform.position).normalized * (dist - range + 1));
+                }
+                else
+                {
+                    current_state = State.ATTACK_WINDUP;
+
+                    //Stop and turn to enemy
+                    GetComponent<MovementController>().Move(transform.position);
+                    Vector3 planarTarget = new Vector3(target.position.x, 0, target.position.z);
+                    Vector3 planarPosition = new Vector3(transform.position.x, 0, transform.position.z);
+                    Vector3 direction = planarTarget - planarPosition;
+                    transform.rotation = Quaternion.LookRotation(direction.normalized);
+
+                    weapon.StartAttack(target);
+                    attackCountdown = attackWindup;
+                }
+                break;
+                
+            case State.ATTACK_WINDDOWN:
+            case State.ATTACK_WINDUP:
+                break;
+        }
+    }
+    private void SetTargetAndWeapon(Transform target, Weapon weapon)
+    {
         this.target = target;
-        range = weapon.getRange();
         this.weapon = weapon;
-        float dist = Vector3.Distance(transform.position, target.position);
-        if (dist > range)
-        {
-            GetComponent<MovementController>().Move(transform.position + (target.position - transform.position).normalized * (dist-range+1));
-        }
-        else
-        {
-            //Stop and turn to enemy
-            GetComponent<MovementController>().Move(transform.position);
-            Vector3 planarTarget = new Vector3(target.position.x, 0, target.position.z);
-            Vector3 planarPosition = new Vector3(transform.position.x, 0, transform.position.z);
-            Vector3 direction = planarTarget - planarPosition;
-            transform.rotation = Quaternion.LookRotation(direction.normalized);
-            
-            weapon.Attack(target);
-            attackCountdown = weapon.getWindupSpeed();
-            inAttackAnim = true;
-        }
+        range = weapon.getRange();
+        attackWindup = weapon.getWindupSpeed();
+        attackWinddown = weapon.getWinddownSpeed();
     }
     
     public void StopAttacking()
     {
-        attacking = false;
+        switch (current_state)
+        {
+            case State.READY_TO_ATTACK:
+                target = null;
+                break;
+                
+            case State.ATTACK_WINDUP:
+            case State.ATTACK_WINDDOWN:
+                break;
+        }
+    }
+
+    public bool canMove()
+    {
+        switch (current_state)
+        {
+            case State.READY_TO_ATTACK:
+                return true;
+                
+            case State.ATTACK_WINDUP:
+            case State.ATTACK_WINDDOWN:
+                return false;
+        }
+        return false;
     }
 
     public bool isAttacking()
     {
-        return attacking;
+        switch (current_state)
+        {
+            case State.READY_TO_ATTACK:
+                return false;
+                
+            case State.ATTACK_WINDUP:
+            case State.ATTACK_WINDDOWN:
+                return true;
+        }
+        return false;
     }
     public Weapon getWep()
     {
