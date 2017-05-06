@@ -7,11 +7,11 @@ public abstract class Weapon : Item{
     [SerializeField]
     private float WeaponRange = 1.0f;
     [SerializeField]
-    private float WeaponDamage = 1.0f;
+    private float WeaponDamage = 1.0f; //unused
     [SerializeField]
     private float WeaponWindupSpeed = 0.5f;
     [SerializeField]
-    private float WeaponAttackSpeed = 1.0f;
+    private float WeaponWinddownSpeed = 0.5f;
 
     protected Animator animator;
 
@@ -19,6 +19,12 @@ public abstract class Weapon : Item{
     {
         animator = GetComponent<Animator>();
     }
+
+
+    public abstract void StartAttack(Transform target);
+    public abstract void DoAttack(Transform target);
+
+
 
     public float getRange()
     {
@@ -30,8 +36,6 @@ public abstract class Weapon : Item{
         return WeaponDamage;
     }
 
-    public abstract void Attack(Transform target);
-
     public Animator getAnimator()
     {
         return animator;
@@ -42,8 +46,10 @@ public abstract class Weapon : Item{
         return WeaponWindupSpeed;
     }
 
-    public float getAttackSpeed()
+    public float getWinddownSpeed()
     {
-        return WeaponAttackSpeed;
+        return WeaponWinddownSpeed;
     }
+
+    
 }

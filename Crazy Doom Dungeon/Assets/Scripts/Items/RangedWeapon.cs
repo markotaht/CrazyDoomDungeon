@@ -4,46 +4,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RangedWeapon : Weapon {
-
-    //TODO projectile
-    [SerializeField]
-    private float FireRate = 0.0f;
-
-    [SerializeField]
-    private float MaxRange = 10.0f;
-
+    
     [SerializeField]
     private GameObject ammoType;
-
-    private float NextFire = 0.0f;
     
     // Use this for initialization
     void Start () {
 		
 	}
 
-    public override void Attack(Transform target)
+    public override void StartAttack(Transform target)
     {
 
         animator.SetTrigger("attack");
-        //GameObject projectile = GameObject.FindGameObjectWithTag("Projectile");
+    }
+
+    public override void DoAttack(Transform target)
+    {
         Vector3 direction = target.position - transform.position;
         GameObject ammo = Instantiate(ammoType);
         ammo.transform.position = transform.position + transform.rotation * Vector3.forward * 2;
         ammo.transform.rotation = Quaternion.LookRotation(direction);
         Projectile pro = ammo.GetComponent<Projectile>();
         pro.attack(target);
-        /*
-        Vector3 direction = target.position - transform.position;
-        if (Time.time > NextFire)
-        {
-            NextFire = Time.time + FireRate;
-            GameObject ammo = Instantiate(ammoType);
-            ammo.transform.position = transform.position + transform.rotation * Vector3.forward * 2;
-            ammo.transform.rotation = Quaternion.LookRotation(direction);
-            Projectile pro = ammo.GetComponent<Projectile>();
-            pro.attack(target);
-            //pro.setDirection(direction.normalized * (direction.magnitude % MaxRange));
-        }*/
     }
 }
