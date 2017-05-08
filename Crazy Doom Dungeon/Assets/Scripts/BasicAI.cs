@@ -17,6 +17,8 @@ public class BasicAI : MonoBehaviour {
     [SerializeField]
     private float strength = 2;
 
+    private Animator animator;
+
     private bool Alive = true;
     
     private float attackCountdown;
@@ -29,6 +31,7 @@ public class BasicAI : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         movementController = GetComponent<MovementController>();
         target = transform.position;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -40,9 +43,11 @@ public class BasicAI : MonoBehaviour {
         {
             if(hit.transform == player)
             {
-                float angle = Vector3.Dot(dir, transform.rotation * Vector3.left);
-                if (Mathf.Acos(angle) <= viewcone)
+                float angle = Vector3.Dot(dir.normalized, transform.rotation * Vector3.forward);
+                if (Mathf.Rad2Deg*Mathf.Acos(angle) <= viewcone)
                 {
+                    Debug.Log(angle + ", " + Mathf.Rad2Deg * Mathf.Acos(angle));
+                    Debug.DrawRay(transform.position, dir);
                     target = player.position;
                 }
             }
@@ -51,14 +56,22 @@ public class BasicAI : MonoBehaviour {
         {
             movementController.Move(target);
         }
+        else if(Vector3.Distance(transform.position,target) <= 2 && Alive)
+        {
+            animator.SetTrigger("attack");
+        }
 	}
 
     public void Die()
     {
         Alive = false;
-      //  movementController.DetachAgent();
+        movementController.DetachAgent();
         transform.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
-        GetComponent<Renderer>().material.color = Color.red;
+        //TODO: remove
+        if (GetComponent<Renderer>())
+        {
+            GetComponent<Renderer>().material.color = Color.red;
+        }
     }
 
    public bool isAlive()
