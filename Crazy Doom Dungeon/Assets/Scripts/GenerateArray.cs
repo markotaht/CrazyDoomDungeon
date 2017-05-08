@@ -25,27 +25,18 @@ public class GenerateArray : MonoBehaviour {
             {
                
                 Vector3 size = child.GetComponent<Renderer>().bounds.size;
-                if (name == "AngledCorridor 1(Clone)")
-                {
-                    Debug.Log(size);
-                }
                 Vector3 offset = child.transform.position-size/2;
-
-                for(int x = 0; x < size.x; x++)
+                for (int y = 0; y < size.y; y++)
                 {
-                    for(int y = 0; y < Mathf.Ceil(size.y); y++)
+                    for (int x = 0; x < size.x; x++)
                     {
-                        for(int z = 0; z< size.z; z++)
+                        for (int z = 0; z< size.z; z++)
                         {
-                            coveredArea.Add(new Vector3(x + offset.x, y + offset.y, z + offset.z));
+                            coveredArea.Add(new Vector3(x + offset.x, y+offset.y , z + offset.z));
                         }
                     }
                 }
             }
-        }
-        if (name == "AngledCorridor 1(Clone)")
-        {
-            Debug.Log(coveredArea.Count);
         }
     }
 	

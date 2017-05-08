@@ -19,6 +19,7 @@ public class DungeonGenerator : MonoBehaviour {
     private byte[,,] map = new byte[500,10,500];
     private Vector3 center = new Vector3(250, 5, 250);
 
+    private bool navmesh = false;
     private Dictionary<string, string[]> rules = new Dictionary<string, string[]>()
     {
         {"Room", new string[] { "Corridor" } },
@@ -31,9 +32,8 @@ public class DungeonGenerator : MonoBehaviour {
         dungeonParts = dungeonParts.Concat(rooms).ToArray();
         GameObject startDungeonPart = dungeonParts[Random.Range(0, dungeonParts.Length)];
         CreateDungeon(startDungeonPart, iterations);
-        createNavMesh();
-        AddPlayer();
-        visualizeMap();
+        
+       // visualizeMap();
     }
 
     private void Update()
@@ -41,6 +41,12 @@ public class DungeonGenerator : MonoBehaviour {
         if (Input.GetButton("Restart"))
         {
             SceneManager.LoadScene("Diana");
+        }
+        if (!navmesh)
+        {
+            createNavMesh();
+            AddPlayer();
+            navmesh = true;
         }
     }
 
@@ -64,8 +70,66 @@ public class DungeonGenerator : MonoBehaviour {
             }
         }
     }
-	
 
+    bool CreateDungeon(GameObject prefab, int depth, GameObject exit = null)
+    {   
+        GameObject part = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
+        List<GameObject> exits = getExits(part);
+        if (exit)
+        { 
+            List<GameObject> unTestedExits = getExits(part);
+            bool fits = false;
+            while (!fits) {
+                if (unTestedExits.Count == 0) break;
+
+                GameObject chosenExit = unTestedExits[Random.Range(0, unTestedExits.Count)];
+                unTestedExits.Remove(chosenExit);
+                   
+                MatchExits(exit, chosenExit);
+                if (CheckFit(part))
+                {
+                    AddToMap(part);
+                    exits.Remove(chosenExit);
+                    fits = true;
+                }
+            }
+            if (!fits)
+            {
+                DestroyObject(part);
+                return false;
+            }
+        }else
+        {
+            AddToMap(part);
+        }
+        bool anymatch = false;
+        while (depth - 1 >= 0 && exits.Count > 0)
+        {
+            GameObject nextExit = exits[Random.Range(0, exits.Count)];
+            exits.Remove(nextExit);
+
+            List<GameObject> testedParts = new List<GameObject>();
+            while (testedParts.Count != dungeonParts.Length)
+            {
+                GameObject newPart = ChooseNewPart(nextExit.transform.parent.tag);
+                testedParts.Add(newPart);
+                if (CreateDungeon(newPart, depth - 1, nextExit))
+                {
+                    anymatch = true;
+                    break;
+                }
+            }
+        }
+        if (!anymatch && part.tag != "Room")
+        {
+            DestroyObject(part);
+            RemoveFromMap(part);
+            return false;
+        }
+        part.transform.parent = transform;
+        return true;
+    }
+/*
     void CreateDungeon(GameObject startDungeonPart, int iterations)
     {
         GameObject part = Instantiate(startDungeonPart, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
@@ -79,6 +143,7 @@ public class DungeonGenerator : MonoBehaviour {
             {
                 List<GameObject> newModuleExits;
                 GameObject chosenExit;
+                bool match = false;
                 while (true)
                 {
                     GameObject newPart = ChooseNewPart(exit.transform.parent.tag);
@@ -104,7 +169,7 @@ public class DungeonGenerator : MonoBehaviour {
         }
         CloseCorridors(openExits);
     }
-
+*/
     void CloseCorridors(List<GameObject> exits)
     {
         foreach(GameObject exit in exits)
@@ -175,23 +240,11 @@ public class DungeonGenerator : MonoBehaviour {
         GameObject newPart = exit2.transform.parent.gameObject;
         Vector3 forwardToMach = -exit1.transform.forward;
         float correctiveRotation = Azimuth(forwardToMach) - Azimuth(exit2.transform.forward);
-        newPart.transform.RotateAround(exit2.transform.position, Vector3.up, correctiveRotation);
+        newPart.transform.RotateAround(exit2.transform.position, Vector3.up, Mathf.Round(correctiveRotation));
         Vector3 correctiveTranslation = exit1.transform.position - exit2.transform.position;
         newPart.transform.position += correctiveTranslation;
     }
-
-    bool CheckOverlap(GameObject part)
-    {
-        List<Vector3> coords = part.GetComponent<GenerateArray>().getArea();
-        for (int i = 0; i < coords.Count; i++)
-        {
-            Vector3 point = coords[i];
-            int y = (int)(point.y / 4 + center.y);
-            if(map[(int)(point.x + center.x), y, (int)(point.z + center.z)]!= 0) return true;
-        }
-        return false;
-    }
-
+    
     void AddToMap(GameObject part)
     {
         List<Vector3> coords = part.GetComponent<GenerateArray>().getArea();
@@ -200,9 +253,34 @@ public class DungeonGenerator : MonoBehaviour {
         for (int i = 0; i < coords.Count; i++)
         {
             Vector3 point = coords[i];
-            int y = (int)(point.y / 4 + center.y) ;
+            int y = (int)(point.y / 4 + center.y);
             map[(int)(point.x+ center.x), y, (int)(point.z + center.z)] = id;
         }
+    }
+
+    void RemoveFromMap(GameObject part)
+    {
+        List<Vector3> coords = part.GetComponent<GenerateArray>().getArea();
+        byte id = part.GetComponent<GenerateArray>().getId();
+
+        for (int i = 0; i < coords.Count; i++)
+        {
+            Vector3 point = coords[i];
+            int y = (int)(point.y / 4 + center.y);
+            map[(int)(point.x + center.x), y, (int)(point.z + center.z)] = 0;
+        }
+    }
+
+    bool CheckFit(GameObject part)
+    {
+        List<Vector3> coords = part.GetComponent<GenerateArray>().getArea();
+        for (int i = 0; i < coords.Count; i++)
+        {
+            Vector3 point = coords[i];
+            int y = (int)(point.y / 4 + center.y);
+            if(map[(int)(point.x + center.x), y, (int)(point.z + center.z)] != 0) return false;
+        }
+        return true;
     }
 
     float Azimuth(Vector3 vector)
