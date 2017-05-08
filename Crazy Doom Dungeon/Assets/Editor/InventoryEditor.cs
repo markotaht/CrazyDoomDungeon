@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+
 [CustomEditor(typeof(Inventory))]
 public class InventoryEditor : Editor
 {
@@ -13,6 +14,7 @@ public class InventoryEditor : Editor
         itemImagesProperty = serializedObject.FindProperty(inventoryPropItemImagesName);
         itemsProperty = serializedObject.FindProperty(inventoryPropItemsName);
     }
+
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
