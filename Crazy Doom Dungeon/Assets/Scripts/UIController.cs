@@ -10,7 +10,7 @@ public class UIController : MonoBehaviour {
 
     public void updateHealth(float life)
     {
-        hp.value = life/100f;
+        hp.value = life;
     }
 
     public void gotHit()
@@ -20,7 +20,9 @@ public class UIController : MonoBehaviour {
 
     IEnumerator Flash()
     {
+        Debug.Log(GameObject.FindGameObjectWithTag("Hit"));
         Image hit = GameObject.FindGameObjectWithTag("Hit").GetComponent<Image>();
+        Debug.Log(hit);
         hit.enabled = true;
         yield return new WaitForSeconds(0.2f);
         hit.enabled = false;

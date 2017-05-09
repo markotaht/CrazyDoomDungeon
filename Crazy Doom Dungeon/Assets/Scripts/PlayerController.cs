@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
     
     private MovementController movementController;
 
+    private UIController uicontroller;
     private float health = 100.0f;
 
     // Use this for initialization
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour {
         attackController = GetComponent<AttackController>();
         equipmentHandler = GetComponent<EquipmentHandler>();
         movementController = GetComponent<MovementController>();
+        uicontroller = GameObject.FindObjectOfType<UIController>() as UIController;
 	}
 
     void Update()
@@ -56,6 +58,8 @@ public class PlayerController : MonoBehaviour {
     public bool WasHit(float strenght)
     {
         health -= strenght;
+        uicontroller.gotHit();
+        uicontroller.updateHealth(health);
         return health <= 0;
     }
 }
