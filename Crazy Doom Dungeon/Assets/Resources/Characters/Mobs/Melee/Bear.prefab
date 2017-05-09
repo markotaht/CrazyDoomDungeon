@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 114779778756980414}
   - component: {fileID: 65533150524965046}
   - component: {fileID: 54476044715857814}
+  - component: {fileID: 95201654550274690}
   m_Layer: 0
   m_Name: Bear
   m_TagString: Enemy
@@ -438,6 +439,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.25, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &95201654550274690
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1218667005047870}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 35497ee584b79b74f8df89d3555eb7df, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114688127840249308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -461,9 +479,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f160af6618821034db01a4618e2606a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Detection_distance: 10
+  detectionDistance: 10
   viewcone: 80
   strength: 2
+  range: 2.5
+  attackWinddown: 0.2
+  attackWindup: 1
 --- !u!195 &195245738964531862
 NavMeshAgent:
   m_ObjectHideFlags: 1

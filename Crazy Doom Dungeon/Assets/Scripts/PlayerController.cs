@@ -12,12 +12,19 @@ public class PlayerController : MonoBehaviour {
     
     private MovementController movementController;
 
+    private float health = 100.0f;
+
     // Use this for initialization
 	void Start () {
         attackController = GetComponent<AttackController>();
         equipmentHandler = GetComponent<EquipmentHandler>();
         movementController = GetComponent<MovementController>();
 	}
+
+    void Update()
+    {
+        Debug.Log(health);
+    }
 
     public void Move(Vector3 target)
     {
@@ -44,6 +51,12 @@ public class PlayerController : MonoBehaviour {
     public Weapon GetEquippedWeapon()
     {
         return equipmentHandler.getWeapon();
+    }
+
+    public bool WasHit(float strenght)
+    {
+        health -= strenght;
+        return health <= 0;
     }
 }
 
