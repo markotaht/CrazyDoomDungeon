@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour {
 
-    public GameObject item;
+    [SerializeField]
+    private GameObject item;
     public int maxAmount;
     public bool spawnOnce = true;
     public float spawnTimer = 1f;
@@ -26,7 +27,7 @@ public class Spawner : MonoBehaviour {
             int amount = Random.RandomRange(1, maxAmount);
             for (int i = 0; i < amount; i++)
             {
-                Instantiate(item, transform.parent.position + Vector3.up, Quaternion.Euler(0, 0, 0));
+                Instantiate(item, transform.position + Vector3.up, Quaternion.Euler(0, Random.RandomRange(0, 360), 0));
             }
             enabled = false;
         }

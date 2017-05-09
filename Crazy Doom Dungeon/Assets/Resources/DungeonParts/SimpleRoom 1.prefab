@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e394521e61f75488290efb97b19701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 1010646330385518, guid: d0574558cc139e945972177b6600db3a, type: 2}
+  item: {fileID: 1218667005047870, guid: 7eb4da176fc388042840dadce1695176, type: 2}
   maxAmount: 1
   spawnOnce: 1
   spawnTimer: 1
