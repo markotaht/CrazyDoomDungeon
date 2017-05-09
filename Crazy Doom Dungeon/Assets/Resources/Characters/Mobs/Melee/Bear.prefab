@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4781010507522018}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Kapp 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 65533150524965046}
   - component: {fileID: 54476044715857814}
   - component: {fileID: 95201654550274690}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bear
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4161696114046740}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Kapp 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4039221368658990}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 33962307328100988}
   - component: {fileID: 23559098988281050}
   - component: {fileID: 65149741047934710}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Kapp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 33601472124010936}
   - component: {fileID: 23543479968975160}
   - component: {fileID: 65501244136647874}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Kapp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 33711524412917450}
   - component: {fileID: 23837093720399490}
   - component: {fileID: 64503543585749944}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4811596182625496}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Claws
   m_TagString: Untagged
   m_Icon: {fileID: 0}
