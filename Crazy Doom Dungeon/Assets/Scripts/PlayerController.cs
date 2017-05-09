@@ -12,11 +12,14 @@ public class PlayerController : MonoBehaviour {
     
     private MovementController movementController;
 
+    private UIController uicontroller;
+
     // Use this for initialization
 	void Start () {
         attackController = GetComponent<AttackController>();
         equipmentHandler = GetComponent<EquipmentHandler>();
         movementController = GetComponent<MovementController>();
+        uicontroller = GameObject.FindObjectOfType<UIController>();
 	}
 
     public void Move(Vector3 target)

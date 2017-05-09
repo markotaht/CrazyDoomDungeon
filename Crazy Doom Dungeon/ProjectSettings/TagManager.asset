@@ -13,6 +13,7 @@ TagManager:
   - Floor
   - Spawner
   - Projectile
+  - Hit
   layers:
   - Default
   - TransparentFX
