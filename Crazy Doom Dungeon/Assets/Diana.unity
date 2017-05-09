@@ -420,10 +420,20 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 223540029290411400, guid: 84b98b0912534c649ae13bf6c68e6a68,
+        type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 198808485}
+    - target: {fileID: 224102337953292532, guid: 84b98b0912534c649ae13bf6c68e6a68,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224102337953292532, guid: 84b98b0912534c649ae13bf6c68e6a68,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84b98b0912534c649ae13bf6c68e6a68, type: 2}
