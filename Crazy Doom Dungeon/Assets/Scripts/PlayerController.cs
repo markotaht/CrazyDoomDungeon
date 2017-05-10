@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
 
     private UIController uicontroller;
     private float health = 100.0f;
+    private bool alive = true;
 
     // Use this for initialization
 	void Start () {
@@ -25,15 +26,16 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
-        if(health <= 0)
+        if(!alive)
         {
-            Debug.Log("YOU ARE DEAD");
+            //TODO: show death
+            //Debug.Log("YOU ARE DEAD");
         }
     }
 
     public void Move(Vector3 target)
     {
-        if (attackController.canMove())
+        if (alive && attackController.canMove())
         {
             attackController.StopAttacking();
             movementController.Move(target);
@@ -42,7 +44,7 @@ public class PlayerController : MonoBehaviour {
 
     public void Attack(Transform target)
     {
-        if (target.gameObject.GetComponent<BasicAI>().isAlive())
+        if (alive && target.gameObject.GetComponent<BasicAI>().isAlive())
         {
             attackController.Attack(target, equipmentHandler.getWeapon());
         }
@@ -50,7 +52,10 @@ public class PlayerController : MonoBehaviour {
 
     public void SwapWeapon()
     {
-        equipmentHandler.swapWeapon();
+        if (alive)
+        {
+            equipmentHandler.swapWeapon();
+        }
     }
 
     public Weapon GetEquippedWeapon()
@@ -60,9 +65,22 @@ public class PlayerController : MonoBehaviour {
 
     public bool WasHit(float strenght)
     {
-        health -= strenght;
-        uicontroller.TakeDamage(strenght);
+        if (alive)
+        {
+            health -= strenght;
+            uicontroller.TakeDamage(strenght);;
+            if (health <= 0)
+            {
+                Die();
+            }
+        }
         return health <= 0;
+    }
+
+    private void Die()
+    {
+        Debug.Log("YOU ARE DEAD");
+        alive = false;
     }
 }
 
