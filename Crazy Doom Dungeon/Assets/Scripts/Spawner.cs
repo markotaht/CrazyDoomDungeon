@@ -24,10 +24,10 @@ public class Spawner : MonoBehaviour {
 	void Update () {
         if (spawn)
         {
-            int amount = Random.RandomRange(1, maxAmount);
+            int amount = Random.Range(1, maxAmount);
             for (int i = 0; i < amount; i++)
             {
-                Instantiate(item, transform.position + Vector3.up, Quaternion.Euler(0, Random.RandomRange(0, 360), 0));
+                Instantiate(item, transform.position + Vector3.up, Quaternion.Euler(0, Random.Range(0, 360), 0));
             }
             enabled = false;
         }

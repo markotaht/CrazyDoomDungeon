@@ -25,7 +25,10 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
-        Debug.Log(health);
+        if(health <= 0)
+        {
+            Debug.Log("YOU ARE DEAD");
+        }
     }
 
     public void Move(Vector3 target)
