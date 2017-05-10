@@ -61,8 +61,7 @@ public class PlayerController : MonoBehaviour {
     public bool WasHit(float strenght)
     {
         health -= strenght;
-        uicontroller.gotHit();
-        uicontroller.updateHealth(health);
+        uicontroller.TakeDamage(strenght);
         return health <= 0;
     }
 }
