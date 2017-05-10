@@ -251,10 +251,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1682708683337244, guid: 84b98b0912534c649ae13bf6c68e6a68, type: 2}
-      propertyPath: m_Name
-      value: Hit
-      objectReference: {fileID: 0}
     - target: {fileID: 224102337953292532, guid: 84b98b0912534c649ae13bf6c68e6a68,
         type: 2}
       propertyPath: m_AnchorMax.x
