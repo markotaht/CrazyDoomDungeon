@@ -440,7 +440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -639,7 +639,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f1b1657fe5b384cadfb7083fbaa515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: {fileID: 0}
+  currentHealth: {fileID: 2064859487}
+  healthText: {fileID: 287186628}
 --- !u!114 &1406272477
 MonoBehaviour:
   m_ObjectHideFlags: 0
