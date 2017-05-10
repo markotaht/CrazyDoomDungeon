@@ -22,6 +22,6 @@ public class MeleeWeapon : Weapon {
 
     public override void DoAttack(Transform target)
     {
-        bool killed = target.GetComponent<BasicAI>().WasHit();
+        bool killed = target.GetComponent<BasicAI>().WasHit(getDamage());
     }
 }

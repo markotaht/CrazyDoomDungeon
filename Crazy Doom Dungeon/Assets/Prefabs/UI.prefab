@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 222730078245103632}
   - component: {fileID: 114458432168432314}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Hit
   m_TagString: Hit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -431,13 +431,13 @@ RectTransform:
   m_GameObject: {fileID: 1682708683337244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.505313, y: 2.774957, z: 1}
+  m_LocalScale: {x: 5.610832, y: 3.2253911, z: 1}
   m_Children: []
   m_Father: {fileID: 224560106754647422}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.92003, y: -0.0027618}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 166.57, y: 159.91}
   m_Pivot: {x: 0.5, y: 0.5}

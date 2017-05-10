@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33867595836409720}
   - component: {fileID: 65700706577800980}
   - component: {fileID: 23382235168012674}
-  - component: {fileID: 114501507019399156}
+  - component: {fileID: 114726605389332490}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -94,7 +94,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114501507019399156
+--- !u!114 &114726605389332490
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -106,3 +106,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  damage: 1

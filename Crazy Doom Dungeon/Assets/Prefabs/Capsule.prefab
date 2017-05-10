@@ -489,7 +489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
   WeaponRange: 3
-  WeaponDamage: 1
+  WeaponDamage: 2
   WeaponWindupSpeed: 0.5
   WeaponWinddownSpeed: 0.5
 --- !u!136 &136809941369580970

@@ -7,6 +7,14 @@ public class UIController : MonoBehaviour {
 
     [SerializeField]
     private Slider hp;
+    private Image hit;
+
+    private void Start()
+    {
+
+        //Debug.Log(GameObject.FindGameObjectWithTag("Hit"));
+        hit = GameObject.FindGameObjectWithTag("Hit").GetComponent<Image>();
+    }
 
     public void updateHealth(float life)
     {
@@ -20,9 +28,7 @@ public class UIController : MonoBehaviour {
 
     IEnumerator Flash()
     {
-        Debug.Log(GameObject.FindGameObjectWithTag("Hit"));
-        Image hit = GameObject.FindGameObjectWithTag("Hit").GetComponent<Image>();
-        Debug.Log(hit);
+        //Debug.Log(hit);
         hit.enabled = true;
         yield return new WaitForSeconds(0.2f);
         hit.enabled = false;

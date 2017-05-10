@@ -11,6 +11,8 @@ public class BasicAI : MonoBehaviour {
     bool targetSelf = true;
     Transform player;
 
+    private float health = 100;
+
     enum State { READY_TO_ATTACK, ATTACK_WINDUP, ATTACK_WINDDOWN };
     private State current_state = State.READY_TO_ATTACK;
 
@@ -21,11 +23,15 @@ public class BasicAI : MonoBehaviour {
     [SerializeField]
     private float strength;
     [SerializeField]
+    private float defence; //cannot be 0, <1 make attacks worse
+    [SerializeField]
     private float range;
 
     private Animator animator;
 
     private bool Alive = true;
+    private bool sawPlayer = false;
+    private float fromSeeingPlayer = 0;
 
     [SerializeField]
     private float attackWinddown;
@@ -33,7 +39,7 @@ public class BasicAI : MonoBehaviour {
     private float attackWindup;
 
     private float attackCountdown;
-    //private float attackCooldown;
+
     private bool inAttackAnim = false;
 
     private MovementController movementController;
@@ -41,18 +47,21 @@ public class BasicAI : MonoBehaviour {
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         movementController = GetComponent<MovementController>();
-        target = transform.position;
         animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update ()
     {
-        attackCountdown -= Time.deltaTime;
-       // Debug.Log(current_state);
-        if (CanSeePlayer() && Alive)
+        if (!Alive)
         {
-            //Debug.Log("CAN see");
+            return;
+        }
+        attackCountdown -= Time.deltaTime;
+        if (CanSeePlayer() || current_state == State.ATTACK_WINDUP)
+        {
+            sawPlayer = true;
+            fromSeeingPlayer = 0;
             float dist;
             switch (current_state)
             {
@@ -75,7 +84,7 @@ public class BasicAI : MonoBehaviour {
                         attackCountdown = attackWindup;
                         current_state = State.ATTACK_WINDUP;
                     }
-                    break;
+                    return;
 
                 case State.ATTACK_WINDUP:
                     dist = Vector3.Distance(transform.position, target);
@@ -89,41 +98,21 @@ public class BasicAI : MonoBehaviour {
                         attackCountdown = attackWinddown;
                         current_state = State.ATTACK_WINDDOWN;
                     }
-                    break;
+                    return;
 
                 case State.ATTACK_WINDDOWN:
                     if (attackCountdown <= 0)
                     {
-                        //target = null;
                         current_state = State.READY_TO_ATTACK;
                     }
-                    break;
+                    return;
             }
-            /*
-            float dist = Vector3.Distance(transform.position, target);
-            if (dist <= range)
-            {
-                Debug.Log("ATTACK");
-                //TODO
-            }
-            else
-            {
-                movementController.Move(transform.position + (target - transform.position).normalized * (dist - range + 1));
-            }*/
         }
-        else
+        else if (sawPlayer && fromSeeingPlayer < 3)
         {
-            //Debug.Log("can't see");
+            fromSeeingPlayer += Time.deltaTime;
+            transform.rotation *= Quaternion.Euler(0, Time.deltaTime*Mathf.Rad2Deg*2, 0);
         }
-        /*if(Vector3.Distance(transform.position,target) > range && Alive && !targetSelf)
-        {
-            movementController.Move(target);
-        }
-        else if (Vector3.Distance(transform.position,target) <= range && Alive && !targetSelf)
-        {
-            Debug.Log(Vector3.Distance(transform.position, target) + ", " + transform.position + " and "  + target);
-            animator.SetTrigger("attack");
-        }*/
 	}
 
     private bool CanSeePlayer()
@@ -150,6 +139,7 @@ public class BasicAI : MonoBehaviour {
 
     public void Die()
     {
+        animator.SetTrigger("die");
         Alive = false;
         movementController.DetachAgent();
         transform.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
@@ -165,11 +155,16 @@ public class BasicAI : MonoBehaviour {
         return Alive;
     }
 
-    public bool WasHit()
+    public bool WasHit(float wepStrength)
     {
-        Die();
-        return true;
+        float hitStrength = 100 * wepStrength / defence;
+        health -= hitStrength;
+        Debug.Log(health);
+        if (health <= 0)
+        {
+            Die();
+            return true;
+        }
+        return false;
     }
-
-
 }

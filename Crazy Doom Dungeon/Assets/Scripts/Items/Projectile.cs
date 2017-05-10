@@ -5,6 +5,9 @@ using UnityEngine;
 public class Projectile : MonoBehaviour {
     [SerializeField]
     private float speed;
+    [SerializeField]
+    private float damage;
+
     private Vector3 direction;
     private bool attacking = false;
     private Transform target;
@@ -24,7 +27,7 @@ public class Projectile : MonoBehaviour {
             Vector3 destination = target.position;
             if(Vector3.Distance(destination, transform.position) < 1)
             {
-                target.GetComponent<BasicAI>().WasHit();
+                target.GetComponent<BasicAI>().WasHit(damage);
                 Destroy(gameObject);
             }
             Vector3 direction = (target.position - transform.position).normalized;
