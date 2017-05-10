@@ -166,6 +166,11 @@ public class BasicAI : MonoBehaviour {
             Die();
             return true;
         }
+        if (!sawPlayer || sawPlayer && fromSeeingPlayer > 3)
+        {
+            sawPlayer = true;
+            fromSeeingPlayer = 0;
+        }
         return false;
     }
 }
