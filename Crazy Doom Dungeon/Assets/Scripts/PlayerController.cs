@@ -68,8 +68,7 @@ public class PlayerController : MonoBehaviour {
         if (alive)
         {
             health -= strenght;
-            uicontroller.gotHit();
-            uicontroller.updateHealth(health);
+            uicontroller.TakeDamage(strenght);;
             if (health <= 0)
             {
                 Die();
