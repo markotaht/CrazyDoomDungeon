@@ -449,8 +449,8 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 4ab06e467846b8a40b1abe506d537fd3, type: 3}
   WeaponRange: 8
   WeaponDamage: 1
-  WeaponWindupSpeed: 0.2
-  WeaponWinddownSpeed: 0.2
+  WeaponWindupSpeed: 0.25
+  WeaponWinddownSpeed: 0.4
   ammoType: {fileID: 1884594999668720, guid: 555a4ef0555651a41a25a083216d6944, type: 2}
 --- !u!114 &114618231426836904
 MonoBehaviour:
@@ -489,7 +489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
   WeaponRange: 3
-  WeaponDamage: 1
+  WeaponDamage: 2
   WeaponWindupSpeed: 0.5
   WeaponWinddownSpeed: 0.5
 --- !u!136 &136809941369580970

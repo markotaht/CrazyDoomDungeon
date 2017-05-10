@@ -32,39 +32,45 @@ public class InputHandler : MonoBehaviour {
         {
             if (!pressed)
             {
-                pressed = true;
-                if (hit.collider.gameObject.tag != "Enemy")
+                if (hit.collider)
                 {
-                    moving = true;
-                    move.Execute(target, currentActor);
+                    pressed = true;
+                    Debug.Log(hit.collider.gameObject);
+                    if (hit.collider.gameObject.tag != "Enemy")
+                    {
+                        moving = true;
+                        move.Execute(target, currentActor);
+                    }
+                    else
+                    {
+                        attacking = hit.collider.gameObject;
+                        attack.Execute(hit.collider.gameObject.transform, currentActor);
+                    }
                 }
-                else
-                {
-                    attacking = hit.collider.gameObject;
-                    attack.Execute(hit.collider.gameObject.transform, currentActor);
-                }
-
             }
             else
             {
-                if (moving)
+                if (hit.collider)
                 {
-                    move.Execute(target, currentActor);
-                }
-                else
-                {
-                    if (!attacking.GetComponent<BasicAI>().isAlive())
+                    if (moving)
                     {
-                        if (hit.collider.gameObject.tag == "Enemy")
+                        move.Execute(target, currentActor);
+                    }
+                    else
+                    {
+                        if (!attacking.GetComponent<BasicAI>().isAlive())
                         {
-                            if (hit.collider.gameObject.GetComponent<BasicAI>().isAlive())
+                            if (hit.collider.gameObject.tag == "Enemy")
                             {
-                                attacking = hit.collider.gameObject;
-                                attack.Execute(attacking.transform, currentActor);
+                                if (hit.collider.gameObject.GetComponent<BasicAI>().isAlive())
+                                {
+                                    attacking = hit.collider.gameObject;
+                                    attack.Execute(attacking.transform, currentActor);
+                                }
                             }
                         }
+                        attack.Execute(attacking.transform, currentActor);
                     }
-                    attack.Execute(attacking.transform, currentActor);
                 }
             }
         }
