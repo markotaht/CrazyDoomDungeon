@@ -253,7 +253,7 @@ public class DungeonGenerator : MonoBehaviour {
         for (int i = 0; i < coords.Count; i++)
         {
             Vector3 point = coords[i];
-            int y = (int)(point.y / 4 + center.y);
+            int y = (int)(point.y / 8 + center.y);
             map[(int)(point.x+ center.x), y, (int)(point.z + center.z)] = id;
         }
     }
@@ -266,7 +266,7 @@ public class DungeonGenerator : MonoBehaviour {
         for (int i = 0; i < coords.Count; i++)
         {
             Vector3 point = coords[i];
-            int y = (int)(point.y / 4 + center.y);
+            int y = (int)(point.y / 8 + center.y);
             map[(int)(point.x + center.x), y, (int)(point.z + center.z)] = 0;
         }
     }
@@ -277,7 +277,7 @@ public class DungeonGenerator : MonoBehaviour {
         for (int i = 0; i < coords.Count; i++)
         {
             Vector3 point = coords[i];
-            int y = (int)(point.y / 4 + center.y);
+            int y = (int)(point.y / 8 + center.y);
             if(map[(int)(point.x + center.x), y, (int)(point.z + center.z)] != 0) return false;
         }
         return true;

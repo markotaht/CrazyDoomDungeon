@@ -49,7 +49,7 @@ public class BasicAI : MonoBehaviour {
     void Update ()
     {
         attackCountdown -= Time.deltaTime;
-        Debug.Log(current_state);
+       // Debug.Log(current_state);
         if (CanSeePlayer() && Alive)
         {
             //Debug.Log("CAN see");

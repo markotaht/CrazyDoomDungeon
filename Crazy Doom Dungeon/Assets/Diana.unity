@@ -165,7 +165,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: -3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
@@ -254,13 +254,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e18b2612520a5b40a61e0dba45ae1ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iterations: 7
+  iterations: 9
   dungeonParts:
   - {fileID: 1749270712707910, guid: 1278ea61e30171548a8cbc09ac134cb5, type: 2}
   - {fileID: 1083997062042844, guid: 32534f0ddbb3f9947a5dc3f6d19311bb, type: 2}
   - {fileID: 1958417633872032, guid: 72727ab2890277048894863f218173f6, type: 2}
   - {fileID: 1373284769023358, guid: e5172c0e9e9274a4ea2d48246e053dfe, type: 2}
-  - {fileID: 1940562628976866, guid: 798cc4a944461ef49ae383d8948f725b, type: 2}
+  - {fileID: 1073410660532700, guid: 2b73007428151fc4a9c1c558cf67d27b, type: 2}
   rooms:
   - {fileID: 1418511158193984, guid: 2595a02f9903fab499e391c7c6cb8282, type: 2}
   - {fileID: 1988383714399360, guid: 369277afde6b6b54b85315c93a4f6ade, type: 2}

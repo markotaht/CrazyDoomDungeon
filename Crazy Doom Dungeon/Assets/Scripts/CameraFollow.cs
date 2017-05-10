@@ -28,6 +28,11 @@ public class CameraFollow : MonoBehaviour {
     public void setTarget(Transform target)
     {
         this.target = target;
-        offset = transform.position - target.transform.position;
+
+        Vector3 dir = Quaternion.Euler(30f,45f,0f) * Vector3.back;
+        Vector3 position = target.transform.position + dir * 9;
+        Debug.Log(position);
+        transform.position = position;
+        //offset = transform.position - target.transform.position;
     }
 }

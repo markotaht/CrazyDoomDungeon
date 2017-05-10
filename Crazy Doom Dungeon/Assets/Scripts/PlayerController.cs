@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
-        Debug.Log(health);
+      //  Debug.Log(health);
     }
 
     public void Move(Vector3 target)
