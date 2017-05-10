@@ -139,6 +139,7 @@ public class BasicAI : MonoBehaviour {
 
     public void Die()
     {
+        animator.SetTrigger("die");
         Alive = false;
         movementController.DetachAgent();
         transform.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
@@ -157,8 +158,8 @@ public class BasicAI : MonoBehaviour {
     public bool WasHit(float wepStrength)
     {
         float hitStrength = 100 * wepStrength / defence;
-        Debug.Log(hitStrength);
         health -= hitStrength;
+        Debug.Log(health);
         if (health <= 0)
         {
             Die();
