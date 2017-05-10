@@ -32,6 +32,7 @@ public class BasicAI : MonoBehaviour {
     private bool Alive = true;
     private bool sawPlayer = false;
     private float fromSeeingPlayer = 0;
+    private bool playerKilled = false;
 
     [SerializeField]
     private float attackWinddown;
@@ -53,7 +54,7 @@ public class BasicAI : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        if (!Alive)
+        if (!Alive || playerKilled)
         {
             return;
         }
@@ -94,7 +95,7 @@ public class BasicAI : MonoBehaviour {
                     }
                     if (attackCountdown <= 0)
                     {
-                        bool killed = player.GetComponent<PlayerController>().WasHit(strength);
+                        playerKilled = player.GetComponent<PlayerController>().WasHit(strength);
                         attackCountdown = attackWinddown;
                         current_state = State.ATTACK_WINDDOWN;
                     }
