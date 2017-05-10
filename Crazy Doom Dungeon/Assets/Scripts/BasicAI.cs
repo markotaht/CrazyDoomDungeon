@@ -11,6 +11,8 @@ public class BasicAI : MonoBehaviour {
     bool targetSelf = true;
     Transform player;
 
+    private float health = 100;
+
     enum State { READY_TO_ATTACK, ATTACK_WINDUP, ATTACK_WINDDOWN };
     private State current_state = State.READY_TO_ATTACK;
 
@@ -20,6 +22,8 @@ public class BasicAI : MonoBehaviour {
     private float viewcone;
     [SerializeField]
     private float strength;
+    [SerializeField]
+    private float defence; //cannot be 0, <1 make attacks worse
     [SerializeField]
     private float range;
 
@@ -150,11 +154,16 @@ public class BasicAI : MonoBehaviour {
         return Alive;
     }
 
-    public bool WasHit()
+    public bool WasHit(float wepStrength)
     {
-        Die();
-        return true;
+        float hitStrength = 100 * wepStrength / defence;
+        Debug.Log(hitStrength);
+        health -= hitStrength;
+        if (health <= 0)
+        {
+            Die();
+            return true;
+        }
+        return false;
     }
-
-
 }

@@ -482,6 +482,7 @@ MonoBehaviour:
   detectionDistance: 10
   viewcone: 80
   strength: 2
+  defence: 10
   range: 2.5
   attackWinddown: 0.2
   attackWindup: 1

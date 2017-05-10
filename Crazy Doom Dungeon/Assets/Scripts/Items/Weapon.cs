@@ -5,13 +5,13 @@ using UnityEngine;
 public abstract class Weapon : Item{
 
     [SerializeField]
-    private float WeaponRange = 1.0f;
+    private float WeaponRange;
     [SerializeField]
-    private float WeaponDamage = 1.0f; //unused
+    private float WeaponDamage;
     [SerializeField]
-    private float WeaponWindupSpeed = 0.5f;
+    private float WeaponWindupSpeed;
     [SerializeField]
-    private float WeaponWinddownSpeed = 0.5f;
+    private float WeaponWinddownSpeed;
 
     protected Animator animator;
 

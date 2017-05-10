@@ -18,7 +18,7 @@ public class AttackTrigger : MonoBehaviour {
             {
                 controller.getWep().getAnimator().SetTrigger("attack");
                 other.gameObject.GetComponent<Renderer>().material.color = Color.red;
-                other.gameObject.GetComponent<BasicAI>().WasHit();
+                other.gameObject.GetComponent<BasicAI>().WasHit(1);
             }
         }
     }
