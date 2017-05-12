@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour {
     {
         Debug.Log("YOU ARE DEAD");
         alive = false;
+        equipmentHandler.getWeapon().getAnimator().SetTrigger("die");
     }
 }
 
