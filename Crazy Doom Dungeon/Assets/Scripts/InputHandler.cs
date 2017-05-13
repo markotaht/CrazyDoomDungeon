@@ -35,7 +35,6 @@ public class InputHandler : MonoBehaviour {
                 if (hit.collider)
                 {
                     pressed = true;
-                    Debug.Log(hit.collider.gameObject);
                     if (hit.collider.gameObject.tag != "Enemy")
                     {
                         moving = true;

@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 65533150524965046}
   - component: {fileID: 54476044715857814}
   - component: {fileID: 95264146373484412}
+  - component: {fileID: 114136967276583062}
   m_Layer: 9
   m_Name: Bear
   m_TagString: Enemy
@@ -456,6 +457,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114136967276583062
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1218667005047870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07194b623da5d8346b5be5103408c2e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - {fileID: 1564079223435970, guid: 59cb363771cd1b440bac04b80d2b5970, type: 2}
+  droprate:
+  - 0.4
 --- !u!114 &114688127840249308
 MonoBehaviour:
   m_ObjectHideFlags: 1

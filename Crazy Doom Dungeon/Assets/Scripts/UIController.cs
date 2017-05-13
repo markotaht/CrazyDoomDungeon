@@ -25,7 +25,7 @@ public class UIController : MonoBehaviour {
         loadingText = GameObject.FindGameObjectWithTag("Loading").GetComponent<Text>();
     }
 
-    private void updateHealthBar()
+    public void UpdateHealthBar()
     {
         float ratio = health / maxHealth;
         currentHealth.rectTransform.localScale = new Vector3(ratio, 1, 1);
@@ -39,8 +39,14 @@ public class UIController : MonoBehaviour {
         {
             health = 0;
         }
-        updateHealthBar();
-        gotHit();
+        UpdateHealthBar();
+        GotHit();
+    }
+
+    public void GiveHealth(float hp)
+    {
+        health = Mathf.Min(health + hp, maxHealth);
+        UpdateHealthBar();
     }
 
     public void ShowDeathScreen()
@@ -56,14 +62,13 @@ public class UIController : MonoBehaviour {
         loadingText.enabled = show;
     }
 
-    public void gotHit()
+    public void GotHit()
     {
         StartCoroutine(Flash());
     }
 
     IEnumerator Flash()
     {
-        //Debug.Log(hit);
         hit.enabled = true;
         yield return new WaitForSeconds(0.2f);
         hit.enabled = false;

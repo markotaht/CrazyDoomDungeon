@@ -144,6 +144,7 @@ public class BasicAI : MonoBehaviour {
         Alive = false;
         movementController.DetachAgent();
         transform.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+        transform.SendMessage("DropSomething");
         //TODO: remove
         if (GetComponent<Renderer>())
         {
@@ -160,7 +161,6 @@ public class BasicAI : MonoBehaviour {
     {
         float hitStrength = 100 * wepStrength / defence;
         health -= hitStrength;
-        Debug.Log(health);
         if (health <= 0)
         {
             Die();

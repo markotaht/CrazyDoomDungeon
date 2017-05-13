@@ -16,6 +16,7 @@ TagManager:
   - Hit
   - DeathScreen
   - Loading
+  - HealthOrb
   layers:
   - Default
   - TransparentFX

@@ -413,7 +413,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press R to reset everything
+  m_Text: Press R to try again
 --- !u!114 &114745578913231452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -514,7 +514,7 @@ MonoBehaviour:
     m_LineSpacing: 1.2
   m_Text: 'Q - swap weapon
 
-    R - reload map'
+    R - reset everything'
 --- !u!114 &114868472464670590
 MonoBehaviour:
   m_ObjectHideFlags: 1
