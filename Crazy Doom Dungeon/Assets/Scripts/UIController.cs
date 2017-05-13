@@ -19,8 +19,7 @@ public class UIController : MonoBehaviour {
 
     private void Start()
     {
-
-        //Debug.Log(GameObject.FindGameObjectWithTag("Hit"));
+        
         hit = GameObject.FindGameObjectWithTag("Hit").GetComponent<Image>();
         deathScreen = GameObject.FindGameObjectsWithTag("DeathScreen");
         loadingText = GameObject.FindGameObjectWithTag("Loading").GetComponent<Text>();
