@@ -305,26 +305,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224102337953292532, guid: 84b98b0912534c649ae13bf6c68e6a68,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224102337953292532, guid: 84b98b0912534c649ae13bf6c68e6a68,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224102337953292532, guid: 84b98b0912534c649ae13bf6c68e6a68,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224102337953292532, guid: 84b98b0912534c649ae13bf6c68e6a68,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84b98b0912534c649ae13bf6c68e6a68, type: 2}
   m_IsPrefabParent: 0
@@ -1115,10 +1095,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 4174014648995300, guid: 7eb4da176fc388042840dadce1695176, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7eb4da176fc388042840dadce1695176, type: 2}
   m_IsPrefabParent: 0
@@ -1228,28 +1204,6 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1972732931}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 35497ee584b79b74f8df89d3555eb7df, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!1 &2140082152 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1218667005047870, guid: 7eb4da176fc388042840dadce1695176,
-    type: 2}
-  m_PrefabInternal: {fileID: 1320464244}
---- !u!95 &2140082153
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2140082152}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 35497ee584b79b74f8df89d3555eb7df, type: 2}

@@ -88,6 +88,12 @@ public class InputHandler : MonoBehaviour {
         {
             move.Execute(currentActor.transform.position, currentActor);
         }
+
+        if (Input.GetKey("escape"))
+        {
+            Debug.Log("Quit");
+            Application.Quit();
+        }
 	}
 
     public void setPlayer(PlayerController controller)

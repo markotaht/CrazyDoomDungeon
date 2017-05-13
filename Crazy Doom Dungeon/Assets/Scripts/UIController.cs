@@ -14,12 +14,16 @@ public class UIController : MonoBehaviour {
     private float maxHealth=100;
     private float health = 100;
     private Image hit;
+    private GameObject[] deathScreen;
+    private Text loadingText;
 
     private void Start()
     {
 
         //Debug.Log(GameObject.FindGameObjectWithTag("Hit"));
         hit = GameObject.FindGameObjectWithTag("Hit").GetComponent<Image>();
+        deathScreen = GameObject.FindGameObjectsWithTag("DeathScreen");
+        loadingText = GameObject.FindGameObjectWithTag("Loading").GetComponent<Text>();
     }
 
     private void updateHealthBar()
@@ -38,6 +42,19 @@ public class UIController : MonoBehaviour {
         }
         updateHealthBar();
         gotHit();
+    }
+
+    public void ShowDeathScreen()
+    {
+        foreach(GameObject ds in deathScreen)
+        {
+            ds.GetComponent<Text>().enabled = true;
+        }
+    }
+
+    public void ShowLoading(bool show)
+    {
+        loadingText.enabled = show;
     }
 
     public void gotHit()
