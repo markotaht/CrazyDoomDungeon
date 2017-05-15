@@ -21,6 +21,7 @@ public class UIController : MonoBehaviour {
     private int mobCount = 0;
     private Text mobCounter;
     private Text timeCounter;
+    private bool countingTime = true;
 
     private void Start()
     {
@@ -30,6 +31,15 @@ public class UIController : MonoBehaviour {
         loadingText = GameObject.FindGameObjectWithTag("Loading").GetComponent<Text>();
         mobCounter = GameObject.FindGameObjectWithTag("EnemyCounter").GetComponent<Text>();
         timeCounter = GameObject.FindGameObjectWithTag("TimeCounter").GetComponent<Text>();
+    }
+
+    private void Update()
+    {
+        int timer = (int) Time.timeSinceLevelLoad;
+        if(countingTime)
+        {
+            timeCounter.text = "Time: " + (timer / 60).ToString("D2") + ":" + ((timer % 3600) % 60).ToString("D2");
+        }
     }
 
     public void UpdateHealthBar()
@@ -68,6 +78,7 @@ public class UIController : MonoBehaviour {
 
     public void ShowDeathScreen()
     {
+        countingTime = false;
         foreach(GameObject ds in deathScreen)
         {
             ds.GetComponent<Text>().enabled = true;
@@ -76,6 +87,7 @@ public class UIController : MonoBehaviour {
 
     public void ShowWinScreen()
     {
+        countingTime = false;
         foreach(GameObject ws in winScreen)
         {
             ws.GetComponent<Text>().enabled = true;

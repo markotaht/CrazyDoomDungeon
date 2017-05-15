@@ -67,7 +67,6 @@ public class BasicAI : MonoBehaviour {
         Vector2 target_pos;
         target_pos = Camera.main.WorldToScreenPoint(transform.position);
         GUI.depth = 100;
-        Debug.Log(GUI.depth);
         GUI.BeginGroup(new Rect(target_pos.x - 30, Screen.height - target_pos.y - 50, 60, 5));
             GUI.DrawTexture(new Rect(0, 0, 60, 5), healthEmpty);
             GUI.BeginGroup(new Rect(0, 0, 60 * health/maxHealth, 5));
