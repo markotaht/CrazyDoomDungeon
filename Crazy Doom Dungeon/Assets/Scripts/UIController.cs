@@ -16,13 +16,16 @@ public class UIController : MonoBehaviour {
     private Image hit;
     private GameObject[] deathScreen;
     private Text loadingText;
+    private Text mobCounter;
+    private Text timeCounter;
 
     private void Start()
     {
-        
         hit = GameObject.FindGameObjectWithTag("Hit").GetComponent<Image>();
         deathScreen = GameObject.FindGameObjectsWithTag("DeathScreen");
         loadingText = GameObject.FindGameObjectWithTag("Loading").GetComponent<Text>();
+        mobCounter = GameObject.FindGameObjectWithTag("EnemyCounter").GetComponent<Text>();
+        timeCounter = GameObject.FindGameObjectWithTag("TimeCounter").GetComponent<Text>();
     }
 
     public void UpdateHealthBar()
@@ -30,6 +33,11 @@ public class UIController : MonoBehaviour {
         float ratio = health / maxHealth;
         currentHealth.rectTransform.localScale = new Vector3(ratio, 1, 1);
         healthText.text = health + "/" + maxHealth;
+    }
+
+    public void UpdateMobCounter(int count)
+    {
+        mobCounter.text = "Bears: " + count;
     }
 
     public void TakeDamage(float damage)
