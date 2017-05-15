@@ -7,6 +7,8 @@ using System;
 [RequireComponent(typeof(MovementController))]
 public class BasicAI : MonoBehaviour {
 
+    private static int mobCounter = 0;
+
     Vector3 target;
     bool targetSelf = true;
     Transform player;
@@ -47,6 +49,7 @@ public class BasicAI : MonoBehaviour {
     private Texture2D healthEmpty;
     private Texture2D healthFull;
 
+    private UIController uicontroller;
     private MovementController movementController;
     // Use this for initialization
     void Start () {
@@ -57,6 +60,9 @@ public class BasicAI : MonoBehaviour {
         healthEmpty = Resources.Load("HealthbarEmptyColor") as Texture2D;
         healthFull = Resources.Load("HealthbarColor") as Texture2D;
 
+        uicontroller = GameObject.FindGameObjectWithTag("UI").GetComponent<UIController>();
+        mobCounter++;
+        uicontroller.UpdateMobCounter(mobCounter);
     }
 
     private void OnGUI()
@@ -172,6 +178,8 @@ public class BasicAI : MonoBehaviour {
         {
             GetComponent<Renderer>().material.color = Color.red;
         }
+        mobCounter--;
+        uicontroller.UpdateMobCounter(mobCounter);
     }
 
    public bool isAlive()
