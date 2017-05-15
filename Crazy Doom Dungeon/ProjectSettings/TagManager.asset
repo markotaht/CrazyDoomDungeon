@@ -20,6 +20,7 @@ TagManager:
   - EnemyCounter
   - TimeCounter
   - UI
+  - WinScreen
   layers:
   - Default
   - TransparentFX
