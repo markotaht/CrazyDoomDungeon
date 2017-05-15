@@ -11,7 +11,8 @@ public class BasicAI : MonoBehaviour {
     bool targetSelf = true;
     Transform player;
 
-    private float health = 100;
+    private float maxHealth = 100;
+    private float health;
 
     enum State { READY_TO_ATTACK, ATTACK_WINDUP, ATTACK_WINDDOWN };
     private State current_state = State.READY_TO_ATTACK;
@@ -43,12 +44,33 @@ public class BasicAI : MonoBehaviour {
 
     private bool inAttackAnim = false;
 
+    private Texture2D healthEmpty;
+    private Texture2D healthFull;
+
     private MovementController movementController;
     // Use this for initialization
     void Start () {
+        health = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         movementController = GetComponent<MovementController>();
         animator = GetComponent<Animator>();
+        healthEmpty = Resources.Load("HealthbarEmptyColor") as Texture2D;
+        healthFull = Resources.Load("HealthbarColor") as Texture2D;
+
+    }
+
+    private void OnGUI()
+    {
+        Vector2 target_pos;
+        target_pos = Camera.main.WorldToScreenPoint(transform.position);
+        GUI.depth = 100;
+        Debug.Log(GUI.depth);
+        GUI.BeginGroup(new Rect(target_pos.x - 30, Screen.height - target_pos.y - 50, 60, 5));
+            GUI.DrawTexture(new Rect(0, 0, 60, 5), healthEmpty);
+            GUI.BeginGroup(new Rect(0, 0, 60 * health/maxHealth, 5));
+                GUI.DrawTexture(new Rect(0, 0, 60, 5), healthFull);
+            GUI.EndGroup();
+        GUI.EndGroup();
     }
 
     // Update is called once per frame
