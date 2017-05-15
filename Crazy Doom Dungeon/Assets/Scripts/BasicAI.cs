@@ -7,6 +7,8 @@ using System;
 [RequireComponent(typeof(MovementController))]
 public class BasicAI : MonoBehaviour {
 
+    private static int mobCounter = 0;
+
     Vector3 target;
     bool targetSelf = true;
     Transform player;
@@ -43,12 +45,16 @@ public class BasicAI : MonoBehaviour {
 
     private bool inAttackAnim = false;
 
+    private UIController uicontroller;
     private MovementController movementController;
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         movementController = GetComponent<MovementController>();
         animator = GetComponent<Animator>();
+        uicontroller = GameObject.FindGameObjectWithTag("UI").GetComponent<UIController>();
+        mobCounter++;
+        uicontroller.UpdateMobCounter(mobCounter);
     }
 
     // Update is called once per frame
@@ -150,6 +156,8 @@ public class BasicAI : MonoBehaviour {
         {
             GetComponent<Renderer>().material.color = Color.red;
         }
+        mobCounter--;
+        uicontroller.UpdateMobCounter(mobCounter);
     }
 
    public bool isAlive()

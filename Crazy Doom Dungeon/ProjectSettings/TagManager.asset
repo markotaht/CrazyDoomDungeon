@@ -17,6 +17,9 @@ TagManager:
   - DeathScreen
   - Loading
   - HealthOrb
+  - EnemyCounter
+  - TimeCounter
+  - UI
   layers:
   - Default
   - TransparentFX
