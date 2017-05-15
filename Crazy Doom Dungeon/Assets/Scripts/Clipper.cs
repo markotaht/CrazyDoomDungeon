@@ -12,7 +12,7 @@ public class Clipper : MonoBehaviour
     float height = 0.0f;
 
     [SerializeField]
-    Transform Player;
+    public Transform Player;
 
     void Awake()
     {
@@ -24,8 +24,9 @@ public class Clipper : MonoBehaviour
         mcamera.projectionMatrix = projection;
         Matrix4x4 obliqueProjection = projection;
 
-        Vector4 cameraSpaceClipPlane = CameraSpacePlane(mcamera, new Vector3(0.0f, transform.position.y+height, 0.0f), Vector3.up, 1.0f);
-  //      Debug.Log(CalculateObliqueMatrix(ref obliqueProjection, cameraSpaceClipPlane));
+        Vector4 cameraSpaceClipPlane = CameraSpacePlane(mcamera, new Vector3(0.0f, Player.position.y+height, 0.0f), Vector3.up, 1.0f);
+        Vector4 clipplane = new Vector4(0, 1, 0, 0);
+        CalculateObliqueMatrix(ref obliqueProjection, clipplane);
   //      Debug.Log(cameraSpaceClipPlane);
         mcamera.projectionMatrix = obliqueProjection;
     }
@@ -51,10 +52,10 @@ public class Clipper : MonoBehaviour
         );
         Vector4 c = clipPlane * (2.0F / (Vector4.Dot(clipPlane, q)));
         // third row = clip plane - fourth row
-        projection[2] = c.x - projection[3];
-        projection[6] = c.y - projection[7];
-        projection[10] = c.z - projection[11];
-        projection[14] = c.w - projection[15];
+        projection[2] = c.x;
+        projection[6] = c.y;
+        projection[10] = c.z;
+        projection[14] = c.w - 1.0f;
         return projection;
     }
 }

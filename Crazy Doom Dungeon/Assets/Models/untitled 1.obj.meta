@@ -1,24 +1,18 @@
 fileFormatVersion: 2
-guid: d1d67e3bb5465a141abba62b6374dc01
-timeCreated: 1491826824
+guid: 7761573936a1abb4ab9dc95ca7ea1191
+timeCreated: 1494711568
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Exit1
-    100002: Exit2
-    100004: Exit3
-    100006: Exit4
-    100008: //RootNode
-    400000: Exit1
-    400002: Exit2
-    400004: Exit3
-    400006: Exit4
-    400008: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cube
-    6400000: //RootNode
+    100000: default
+    100002: //RootNode
+    400000: default
+    400002: //RootNode
+    2300000: default
+    3300000: default
+    4300000: default
+    6400000: default
   materials:
     importMaterials: 1
     materialName: 0

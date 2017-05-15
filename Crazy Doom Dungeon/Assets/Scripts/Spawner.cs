@@ -27,7 +27,8 @@ public class Spawner : MonoBehaviour {
             int amount = Random.Range(1, maxAmount);
             for (int i = 0; i < amount; i++)
             {
-                Instantiate(item, transform.position + Vector3.up, Quaternion.Euler(0, Random.Range(0, 360), 0));
+                GameObject obj = Instantiate(item, transform.position + Vector3.up, Quaternion.Euler(0, Random.Range(0, 360), 0));
+                transform.parent.parent.SendMessage("AddEnemy", obj);
             }
             enabled = false;
         }
