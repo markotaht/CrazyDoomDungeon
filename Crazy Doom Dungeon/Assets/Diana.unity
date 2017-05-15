@@ -225,7 +225,6 @@ GameObject:
   - component: {fileID: 198808484}
   - component: {fileID: 198808483}
   - component: {fileID: 198808482}
-  - component: {fileID: 198808487}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -303,20 +302,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
---- !u!114 &198808487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 198808481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e4ba439471e0434f8344e9064faa49d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mcamera: {fileID: 198808485}
-  height: 0
-  Player: {fileID: 0}
 --- !u!1 &240371633
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,11 +346,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iterations: 9
   dungeonParts:
-  - {fileID: 1749270712707910, guid: 1278ea61e30171548a8cbc09ac134cb5, type: 2}
+  - {fileID: 1370990458400754, guid: a688b3dd57dc8a24099adfbbd617c465, type: 2}
   - {fileID: 1083997062042844, guid: 32534f0ddbb3f9947a5dc3f6d19311bb, type: 2}
-  - {fileID: 1958417633872032, guid: 72727ab2890277048894863f218173f6, type: 2}
-  - {fileID: 1373284769023358, guid: e5172c0e9e9274a4ea2d48246e053dfe, type: 2}
-  - {fileID: 1073410660532700, guid: 2b73007428151fc4a9c1c558cf67d27b, type: 2}
+  - {fileID: 1298090859512046, guid: 81511c5f169dbd140a5d9453e7eb8175, type: 2}
+  - {fileID: 1408342409501188, guid: 3bc14d08459bc8c42a84369ea954954d, type: 2}
+  - {fileID: 1054615971014564, guid: 8b60f479179bc954fb3026dc4ef0d00d, type: 2}
   rooms:
   - {fileID: 1418511158193984, guid: 2595a02f9903fab499e391c7c6cb8282, type: 2}
   - {fileID: 1988383714399360, guid: 369277afde6b6b54b85315c93a4f6ade, type: 2}
