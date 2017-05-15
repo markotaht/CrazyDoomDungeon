@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour {
     private float speed;
     [SerializeField]
     private float damage;
+    [SerializeField]
+    private Vector3 rotation;
 
     private Vector3 direction;
     private bool attacking = false;

@@ -7,10 +7,12 @@ public class RangedWeapon : Weapon {
     
     [SerializeField]
     private GameObject ammoType;
+    [SerializeField]
+    private Transform positionOffset;
     
     // Use this for initialization
     void Start () {
-		
+
 	}
 
     public override void StartAttack(Transform target)
@@ -23,8 +25,15 @@ public class RangedWeapon : Weapon {
     {
         Vector3 direction = target.position - transform.position;
         GameObject ammo = Instantiate(ammoType);
-        ammo.transform.position = transform.position + transform.rotation * Vector3.forward * 2;
+        Debug.Log(direction);
+        Debug.Log(direction + ammo.transform.rotation.eulerAngles);
+        direction += ammo.transform.rotation.eulerAngles;
+        Debug.Log(direction);
+        //ammo.transform.position = transform.position + transform.rotation * Vector3.forward * 2;
+        ammo.transform.position = positionOffset.position;// + transform.rotation * Vector3.forward * 0.5f; //for arrow
+        Debug.Log(Quaternion.LookRotation(direction));
         ammo.transform.rotation = Quaternion.LookRotation(direction);
+        Debug.Log(ammo.transform.rotation.eulerAngles);
         Projectile pro = ammo.GetComponent<Projectile>();
         pro.attack(target);
     }

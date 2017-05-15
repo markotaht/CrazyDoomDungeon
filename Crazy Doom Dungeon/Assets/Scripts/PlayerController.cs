@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour {
     private MovementController movementController;
 
     private UIController uicontroller;
-    private float health = 100.0f;
+    private float maxHealth = 100.0f;
+    private float health;
     private bool alive = true;
 
     // Use this for initialization
@@ -22,15 +23,12 @@ public class PlayerController : MonoBehaviour {
         equipmentHandler = GetComponent<EquipmentHandler>();
         movementController = GetComponent<MovementController>();
         uicontroller = GameObject.FindObjectOfType<UIController>() as UIController;
+        health = maxHealth;
 	}
 
     void Update()
     {
-        if(!alive)
-        {
-            //TODO: show death
-            //Debug.Log("YOU ARE DEAD");
-        }
+
     }
 
     public void Move(Vector3 target)
@@ -79,8 +77,17 @@ public class PlayerController : MonoBehaviour {
 
     private void Die()
     {
-        Debug.Log("YOU ARE DEAD");
         alive = false;
+        equipmentHandler.getWeapon().getAnimator().SetTrigger("die");
+        uicontroller.ShowDeathScreen();
+        Time.timeScale = 0;
     }
+
+    public void GiveHealth(float hp)
+    {
+        health = Mathf.Min(health + hp, maxHealth);
+        uicontroller.GiveHealth(hp);
+    }
+
 }
 
