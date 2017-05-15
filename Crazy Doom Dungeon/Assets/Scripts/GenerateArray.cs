@@ -21,7 +21,7 @@ public class GenerateArray : MonoBehaviour {
         for(int i = 0; i < childrencount; i++)
         {
             GameObject child = transform.GetChild(i).gameObject;
-            if(child.tag != "Exit" && child.tag != "Spawner")
+            if(child.tag == "Floor")
             {
                
                 Vector3 size = child.GetComponent<Renderer>().bounds.size;

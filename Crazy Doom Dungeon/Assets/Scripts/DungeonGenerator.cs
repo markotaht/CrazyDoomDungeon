@@ -14,6 +14,8 @@ public class DungeonGenerator : MonoBehaviour {
     [SerializeField]
     private GameObject[] rooms;
     private GameObject player;
+    private List<GameObject> usedParts = new List<GameObject>();
+    private List<GameObject> enemies = new List<GameObject>();
     private List<GameObject> openExits = new List<GameObject>();
 
     private byte[,,] map = new byte[500,10,500];
@@ -46,7 +48,35 @@ public class DungeonGenerator : MonoBehaviour {
         {
             createNavMesh();
             AddPlayer();
+            
+       //     visualizeMap();
             navmesh = true;
+        }
+        else
+        {
+            for (int i = 0; i < usedParts.Count; i++)
+            {
+                if(usedParts[i].transform.position.y > player.transform.position.y+4)
+                {
+                    usedParts[i].SetActive(false);
+                }
+                else
+                {
+                    usedParts[i].SetActive(true);
+                }
+            }
+
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                if (enemies[i].transform.position.y > player.transform.position.y + 4)
+                {
+                    enemies[i].SetActive(false);
+                }
+                else
+                {
+                    enemies[i].SetActive(true);
+                }
+            }
         }
     }
 
@@ -101,18 +131,18 @@ public class DungeonGenerator : MonoBehaviour {
         }else
         {
             AddToMap(part);
+            usedParts.Add(part);
         }
         bool anymatch = false;
-        while (depth - 1 >= 0 && exits.Count > 0)
+        while (depth >= 0 && exits.Count > 0)
         {
             GameObject nextExit = exits[Random.Range(0, exits.Count)];
             exits.Remove(nextExit);
-
-            List<GameObject> testedParts = new List<GameObject>();
-            while (testedParts.Count != dungeonParts.Length)
+            List<GameObject> possible = dungeonParts.Where(c => rules[part.tag].Any(tag => tag == c.tag)).ToList();
+            while (possible.Count > 0)
             {
-                GameObject newPart = ChooseNewPart(nextExit.transform.parent.tag);
-                testedParts.Add(newPart);
+                GameObject newPart = possible[Random.Range(0, possible.Count)];
+                possible.Remove(newPart);
                 if (CreateDungeon(newPart, depth - 1, nextExit))
                 {
                     anymatch = true;
@@ -126,6 +156,7 @@ public class DungeonGenerator : MonoBehaviour {
             RemoveFromMap(part);
             return false;
         }
+        usedParts.Add(part);
         part.transform.parent = transform;
         return true;
     }
@@ -277,8 +308,10 @@ public class DungeonGenerator : MonoBehaviour {
         for (int i = 0; i < coords.Count; i++)
         {
             Vector3 point = coords[i];
+            int x = (int)(point.x + center.x);
             int y = (int)(point.y / 8 + center.y);
-            if(map[(int)(point.x + center.x), y, (int)(point.z + center.z)] != 0) return false;
+            int z = (int)(point.z + center.z);
+            if (map[x, y, z] != 0) return false;
         }
         return true;
     }
@@ -300,7 +333,7 @@ public class DungeonGenerator : MonoBehaviour {
         CameraFollow follow = camera.gameObject.AddComponent(typeof(CameraFollow)) as CameraFollow;
         follow.setTarget(player.transform);
 
-    //    camera.GetComponent<Clipper>().player = player.transform;
+     //   camera.GetComponent<Clipper>().Player = player.transform;
     //    camera.GetComponent<CameraFollow>().setTarget(player.transform);
       /*  camera.transform.position = new Vector3(-10, 10, -10);
         camera.transform.parent = player.transform;
@@ -318,6 +351,11 @@ public class DungeonGenerator : MonoBehaviour {
             surfaces[i].BuildNavMesh();
         }
         Spawner.spawn = true;
+    }
+
+    public void AddEnemy(GameObject enemy)
+    {
+        enemies.Add(enemy);
     }
 
 }
