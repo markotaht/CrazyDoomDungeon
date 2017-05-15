@@ -17,6 +17,7 @@ public class DungeonGenerator : MonoBehaviour {
     private List<GameObject> usedParts = new List<GameObject>();
     private List<GameObject> enemies = new List<GameObject>();
     private List<GameObject> openExits = new List<GameObject>();
+    private UIController uicontroller;
 
     private byte[,,] map = new byte[500,10,500];
     private Vector3 center = new Vector3(250, 5, 250);
@@ -31,9 +32,11 @@ public class DungeonGenerator : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        uicontroller = GameObject.FindObjectOfType<UIController>() as UIController;
         dungeonParts = dungeonParts.Concat(rooms).ToArray();
         GameObject startDungeonPart = dungeonParts[Random.Range(0, dungeonParts.Length)];
         CreateDungeon(startDungeonPart, iterations);
+
         
        // visualizeMap();
     }
@@ -42,6 +45,8 @@ public class DungeonGenerator : MonoBehaviour {
     {
         if (Input.GetButton("Restart"))
         {
+            Time.timeScale = 1;
+            uicontroller.ShowLoading(true);
             SceneManager.LoadScene("Diana");
         }
         if (!navmesh)
@@ -51,6 +56,7 @@ public class DungeonGenerator : MonoBehaviour {
             
        //     visualizeMap();
             navmesh = true;
+            uicontroller.ShowLoading(false);
         }
         else
         {

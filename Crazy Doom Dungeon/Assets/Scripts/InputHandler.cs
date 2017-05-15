@@ -35,7 +35,6 @@ public class InputHandler : MonoBehaviour {
                 if (hit.collider)
                 {
                     pressed = true;
-                    Debug.Log(hit.collider.gameObject);
                     if (hit.collider.gameObject.tag != "Enemy")
                     {
                         moving = true;
@@ -87,6 +86,12 @@ public class InputHandler : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             move.Execute(currentActor.transform.position, currentActor);
+        }
+
+        if (Input.GetKey("escape"))
+        {
+            Debug.Log("Quit");
+            Application.Quit();
         }
 	}
 
