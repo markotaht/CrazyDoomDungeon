@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using System;
+//using System;
 
 [RequireComponent(typeof(MovementController))]
 public class BasicAI : MonoBehaviour {
@@ -42,6 +42,8 @@ public class BasicAI : MonoBehaviour {
 
     private float attackCountdown;
 
+    private int turningDirection;
+
     private bool inAttackAnim = false;
 
     private Texture2D healthEmpty;
@@ -57,6 +59,7 @@ public class BasicAI : MonoBehaviour {
         animator = GetComponent<Animator>();
         healthEmpty = Resources.Load("HealthbarEmptyColor") as Texture2D;
         healthFull = Resources.Load("HealthbarColor") as Texture2D;
+        turningDirection = (Random.value > 0.5f) ? 1 : -1;
 
         uicontroller = GameObject.FindGameObjectWithTag("UI").GetComponent<UIController>();
         uicontroller.UpdateMobCounter(1);
@@ -136,7 +139,7 @@ public class BasicAI : MonoBehaviour {
         else if (sawPlayer && fromSeeingPlayer < 3)
         {
             fromSeeingPlayer += Time.deltaTime;
-            transform.rotation *= Quaternion.Euler(0, Time.deltaTime*Mathf.Rad2Deg*2, 0);
+            transform.rotation *= Quaternion.Euler(0, turningDirection*Time.deltaTime*Mathf.Rad2Deg*2, 0);
         }
 	}
 
