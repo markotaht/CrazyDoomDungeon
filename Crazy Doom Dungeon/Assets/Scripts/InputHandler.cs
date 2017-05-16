@@ -71,6 +71,10 @@ public class InputHandler : MonoBehaviour {
                         attack.Execute(attacking.transform, currentActor);
                     }
                 }
+                else if(!moving && attacking.GetComponent<BasicAI>().isAlive())
+                {
+                    attack.Execute(attacking.transform, currentActor);
+                }
             }
         }
         else
