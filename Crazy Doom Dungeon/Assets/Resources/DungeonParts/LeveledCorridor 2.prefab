@@ -143,7 +143,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 20031ec2e73875b4ba1440ae5579f4f2, type: 2}
+  - {fileID: 2100000, guid: 9b1f88bc80f195749b24b269867fdd31, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -168,7 +168,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1397867920897638}
-  m_Mesh: {fileID: 4300000, guid: 7761573936a1abb4ab9dc95ca7ea1191, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 570e97bd2da927343b9b0b6268ece046, type: 3}
 --- !u!64 &64730238340177308
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -182,7 +182,7 @@ MeshCollider:
   m_Convex: 0
   m_InflateMesh: 0
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 7761573936a1abb4ab9dc95ca7ea1191, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 570e97bd2da927343b9b0b6268ece046, type: 3}
 --- !u!114 &114442415558487748
 MonoBehaviour:
   m_ObjectHideFlags: 1
