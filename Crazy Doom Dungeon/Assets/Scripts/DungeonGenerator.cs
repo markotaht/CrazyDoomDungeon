@@ -23,6 +23,7 @@ public class DungeonGenerator : MonoBehaviour {
     private Vector3 center = new Vector3(250, 5, 250);
 
     private bool navmesh = false;
+    private bool hide = false;
     private Dictionary<string, string[]> rules = new Dictionary<string, string[]>()
     {
         {"Room", new string[] { "Corridor" } },
@@ -56,8 +57,11 @@ public class DungeonGenerator : MonoBehaviour {
             
        //     visualizeMap();
             navmesh = true;
-            hideElements(player.transform.position.y);
             uicontroller.ShowLoading(false);
+        }else if (!hide)
+        {
+            hideElements(player.transform.position.y+2);
+            hide = true;
         }
     }
 
@@ -65,7 +69,7 @@ public class DungeonGenerator : MonoBehaviour {
     {
         for (int i = 0; i < usedParts.Count; i++)
         {
-            if (usedParts[i].transform.position.y > y + 2)
+            if (usedParts[i].transform.position.y > y)
             {
                 usedParts[i].SetActive(false);
             }
@@ -77,7 +81,7 @@ public class DungeonGenerator : MonoBehaviour {
 
         for (int i = 0; i < enemies.Count; i++)
         {
-            if (enemies[i].transform.position.y > y + 2)
+            if (enemies[i].transform.position.y > y)
             {
                 enemies[i].SetActive(false);
             }
