@@ -5,6 +5,8 @@ using UnityEngine;
 public class LevelHider : MonoBehaviour {
 
     DungeonGenerator gen;
+    [SerializeField]
+    private float offset;
 	// Use this for initialization
 	void Start () {
         gen = GameObject.FindObjectOfType<DungeonGenerator>();
@@ -14,7 +16,7 @@ public class LevelHider : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
-            gen.hideElements(transform.position.y); 
+            gen.hideElements(transform.position.y+offset); 
         }
     }
 
