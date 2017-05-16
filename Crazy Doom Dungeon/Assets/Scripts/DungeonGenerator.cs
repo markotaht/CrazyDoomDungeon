@@ -56,32 +56,34 @@ public class DungeonGenerator : MonoBehaviour {
             
        //     visualizeMap();
             navmesh = true;
+            hideElements(player.transform.position.y);
             uicontroller.ShowLoading(false);
         }
-        else
-        {
-            for (int i = 0; i < usedParts.Count; i++)
-            {
-                if(usedParts[i].transform.position.y > player.transform.position.y+4)
-                {
-                    usedParts[i].SetActive(false);
-                }
-                else
-                {
-                    usedParts[i].SetActive(true);
-                }
-            }
+    }
 
-            for (int i = 0; i < enemies.Count; i++)
+    public void hideElements(float y)
+    {
+        for (int i = 0; i < usedParts.Count; i++)
+        {
+            if (usedParts[i].transform.position.y > y + 2)
             {
-                if (enemies[i].transform.position.y > player.transform.position.y + 4)
-                {
-                    enemies[i].SetActive(false);
-                }
-                else
-                {
-                    enemies[i].SetActive(true);
-                }
+                usedParts[i].SetActive(false);
+            }
+            else
+            {
+                usedParts[i].SetActive(true);
+            }
+        }
+
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i].transform.position.y > y + 2)
+            {
+                enemies[i].SetActive(false);
+            }
+            else
+            {
+                enemies[i].SetActive(true);
             }
         }
     }
