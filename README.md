@@ -1,4 +1,4 @@
-# CrazyDoomDungeon
+# Crazy Doom Dungeon
 
 ## Releases
 [**Download and play!**](http://kodu.ut.ee/~marko93/DoomDungeon/)
