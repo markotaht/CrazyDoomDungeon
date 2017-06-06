@@ -1,7 +1,9 @@
 # CrazyDoomDungeon
 
-Releases: http://kodu.ut.ee/~marko93/DoomDungeon/
+## Releases
+**Download and play!**: http://kodu.ut.ee/~marko93/DoomDungeon/
 
+## Poster
 ![Poster](/Posters/CDDposter.jpg)
 
 ### On OSX:
