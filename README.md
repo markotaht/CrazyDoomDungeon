@@ -1,7 +1,7 @@
 # Crazy Doom Dungeon
 
 ## Releases
-[**Download and play!**](http://kodu.ut.ee/~marko93/DoomDungeon/)
+[**Click here, choose a version, download and PLAY!**](http://kodu.ut.ee/~marko93/DoomDungeon/)
 
 ## Poster
 ![Poster](/Posters/CDDposter.jpg)
