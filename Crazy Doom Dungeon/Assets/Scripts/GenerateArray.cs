@@ -18,6 +18,10 @@ public class GenerateArray : MonoBehaviour {
     {
         coveredArea = new List<Vector3>();
         int childrencount = transform.childCount;
+        if (transform.rotation.eulerAngles.y * 1000000 % 10000 != 0)
+        {
+            Debug.Log(transform.rotation.eulerAngles.y * 1000000 % 10000);
+        }
         for(int i = 0; i < childrencount; i++)
         {
             GameObject child = transform.GetChild(i).gameObject;

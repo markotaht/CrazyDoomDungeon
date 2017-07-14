@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Spawner : MonoBehaviour {
 
@@ -24,11 +25,15 @@ public class Spawner : MonoBehaviour {
 	void Update () {
         if (spawn)
         {
-            int amount = Random.Range(1, maxAmount);
+            int amount = UnityEngine.Random.Range(1, maxAmount);
             for (int i = 0; i < amount; i++)
             {
-                GameObject obj = Instantiate(item, transform.position + Vector3.up, Quaternion.Euler(0, Random.Range(0, 360), 0));
-                transform.parent.parent.SendMessage("AddEnemy", obj);
+                GameObject obj = Instantiate(item, transform.position + Vector3.up, Quaternion.Euler(0, UnityEngine.Random.Range(0, 360), 0));
+                try
+                {
+                    transform.parent.parent.SendMessage("AddEnemy", obj);
+                }
+                catch (NullReferenceException e) { }
             }
             enabled = false;
         }

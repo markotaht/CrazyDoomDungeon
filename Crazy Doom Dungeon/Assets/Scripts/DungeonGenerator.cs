@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using System;
 
 public class DungeonGenerator : MonoBehaviour {
 
@@ -24,6 +25,9 @@ public class DungeonGenerator : MonoBehaviour {
 
     private bool navmesh = false;
     private bool hide = false;
+
+    [SerializeField]
+    private int seed;
     private Dictionary<string, string[]> rules = new Dictionary<string, string[]>()
     {
         {"Room", new string[] { "Corridor" } },
@@ -32,10 +36,11 @@ public class DungeonGenerator : MonoBehaviour {
     };
 
     // Use this for initialization
-    void Start () {
+    void Start () { 
+        UnityEngine.Random.seed = seed;
         uicontroller = GameObject.FindObjectOfType<UIController>() as UIController;
         dungeonParts = dungeonParts.Concat(rooms).ToArray();
-        GameObject startDungeonPart = dungeonParts[Random.Range(0, dungeonParts.Length)];
+        GameObject startDungeonPart = dungeonParts[UnityEngine.Random.Range(0, dungeonParts.Length)];
         CreateDungeon(startDungeonPart, iterations);
 
         
@@ -55,7 +60,7 @@ public class DungeonGenerator : MonoBehaviour {
             createNavMesh();
             AddPlayer();
             
-       //     visualizeMap();
+            visualizeMap();
             navmesh = true;
             uicontroller.ShowLoading(false);
         }else if (!hide)
@@ -63,6 +68,7 @@ public class DungeonGenerator : MonoBehaviour {
             hideElements(player.transform.position.y+2);
             hide = true;
         }
+// Debug.LogWarning(map[(int)(-6+center.x),(int)(-1+center.y),(int)(-2+center.z)]);
     }
 
     public void hideElements(float y)
@@ -113,7 +119,55 @@ public class DungeonGenerator : MonoBehaviour {
         }
     }
 
-    bool CreateDungeon(GameObject prefab, int depth, GameObject exit = null)
+    void CreateDungeon(GameObject start, int iterations)
+    {
+        Queue<GameObject> exits = new Queue<GameObject>();
+        GameObject part = Instantiate(start, Vector3.zero, Quaternion.identity) as GameObject;
+        AddToMap(part);
+        part.transform.parent = transform;
+        getExits(part, ref exits);
+
+        for (int i = 0; i < iterations; i++)
+        {
+            int count = exits.Count();
+            for (; count > 0; count--)
+            {
+                GameObject exit = exits.Peek();
+                List<GameObject> possible = dungeonParts.Where(c => rules[exit.transform.parent.tag].Any(tag => tag == c.tag)).ToList();
+                while (possible.Count != 0)
+                {
+                    GameObject prefab = possible[UnityEngine.Random.Range(0, possible.Count)];
+                    GameObject newPart = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
+                    List<GameObject> matchingExit = getExits(newPart);
+                    while (matchingExit.Count != 0)
+                    {
+                        GameObject newExit = matchingExit[UnityEngine.Random.Range(0, matchingExit.Count)];
+                        MatchExits(exit, newExit);
+                        if (CheckFit(newPart))
+                        {
+                            exits.Dequeue();
+                            getExits(newPart, ref exits, newExit);
+                            AddToMap(newPart);
+                            newPart.transform.parent = transform;
+                            break;
+                        }
+                        matchingExit.Remove(newExit);
+                    }
+                    if (matchingExit.Count == 0)
+                    {
+                        possible.Remove(prefab);
+                        DestroyObject(newPart);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+    }
+/*
+    bool CreateDungeon(GameObject prefab, int depth, GameObject exit = null, bool print= false)
     {   
         GameObject part = Instantiate(prefab, Vector3.zero, Quaternion.identity) as GameObject;
         List<GameObject> exits = getExits(part);
@@ -122,12 +176,14 @@ public class DungeonGenerator : MonoBehaviour {
             List<GameObject> unTestedExits = getExits(part);
             bool fits = false;
             while (!fits) {
+
                 if (unTestedExits.Count == 0) break;
 
-                GameObject chosenExit = unTestedExits[Random.Range(0, unTestedExits.Count)];
+                GameObject chosenExit = unTestedExits[UnityEngine.Random.Range(0, unTestedExits.Count)];
                 unTestedExits.Remove(chosenExit);
                    
                 MatchExits(exit, chosenExit);
+
                 if (CheckFit(part))
                 {
                     AddToMap(part);
@@ -148,14 +204,17 @@ public class DungeonGenerator : MonoBehaviour {
         bool anymatch = false;
         while (depth >= 0 && exits.Count > 0)
         {
-            GameObject nextExit = exits[Random.Range(0, exits.Count)];
+
+            GameObject nextExit = exits[UnityEngine.Random.Range(0, exits.Count)];
             exits.Remove(nextExit);
             List<GameObject> possible = dungeonParts.Where(c => rules[part.tag].Any(tag => tag == c.tag)).ToList();
+
             while (possible.Count > 0)
             {
-                GameObject newPart = possible[Random.Range(0, possible.Count)];
+                GameObject newPart = possible[UnityEngine.Random.Range(0, possible.Count)];
                 possible.Remove(newPart);
-                if (CreateDungeon(newPart, depth - 1, nextExit))
+
+                if (CreateDungeon(newPart, depth - 1, nextExit, exit == null))
                 {
                     anymatch = true;
                     break;
@@ -172,7 +231,7 @@ public class DungeonGenerator : MonoBehaviour {
         part.transform.parent = transform;
         return true;
     }
-/*
+
     void CreateDungeon(GameObject startDungeonPart, int iterations)
     {
         GameObject part = Instantiate(startDungeonPart, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
@@ -220,35 +279,35 @@ public class DungeonGenerator : MonoBehaviour {
             if(exit.transform.parent.tag == "Junction")
             {
                 //TODO Valida corridor ja sinna otsa panna room
-                GameObject newPart = dungeonParts[Random.Range(0, rooms.Length)];
+                GameObject newPart = dungeonParts[UnityEngine.Random.Range(0, rooms.Length)];
                 while(newPart.tag != "Corridor")
                 {
-                    newPart = dungeonParts[Random.Range(0, rooms.Length)];
+                    newPart = dungeonParts[UnityEngine.Random.Range(0, rooms.Length)];
                 }
                 newPart = Instantiate(newPart) as GameObject;
                 newPart.transform.parent = transform;
                 List<GameObject> newModuleExits = getExits(newPart);
-                int index = Random.Range(0, newModuleExits.Count);
+                int index = UnityEngine.Random.Range(0, newModuleExits.Count);
                 GameObject chosenExit = newModuleExits[index];
                 MatchExits(exit, chosenExit);
                 AddToMap(newPart);
 
                 GameObject otherExit = newModuleExits[(index + 1) % 2];
-                GameObject newPart2 = rooms[Random.Range(0, rooms.Length)];
+                GameObject newPart2 = rooms[UnityEngine.Random.Range(0, rooms.Length)];
                 newPart2 = Instantiate(newPart2) as GameObject;
                 newPart2.transform.parent = transform;
                 List<GameObject> newModuleExits2 = getExits(newPart2);
-                GameObject chosenExit2 = newModuleExits2[Random.Range(0, newModuleExits2.Count)];
+                GameObject chosenExit2 = newModuleExits2[UnityEngine.Random.Range(0, newModuleExits2.Count)];
                 MatchExits(otherExit, chosenExit2);
                 AddToMap(newPart2);
             }
             else if(exit.transform.parent.tag == "Corridor")
             {
-                GameObject newPart = rooms[Random.Range(0, rooms.Length)];
+                GameObject newPart = rooms[UnityEngine.Random.Range(0, rooms.Length)];
                 newPart = Instantiate(newPart) as GameObject;
                 newPart.transform.parent = transform;
                 List<GameObject> newModuleExits = getExits(newPart);
-                GameObject chosenExit = newModuleExits[Random.Range(0, newModuleExits.Count)];
+                GameObject chosenExit = newModuleExits[UnityEngine.Random.Range(0, newModuleExits.Count)];
                 MatchExits(exit, chosenExit);
                 AddToMap(newPart);
             }
@@ -260,11 +319,21 @@ public class DungeonGenerator : MonoBehaviour {
         GameObject newPart;
         do
         {
-            newPart = dungeonParts[Random.Range(0, dungeonParts.Length)];
+            newPart = dungeonParts[UnityEngine.Random.Range(0, dungeonParts.Length)];
         } while (!rules[oldPart].Any(tag => tag == newPart.tag));
         return newPart;
     }
 
+    void getExits(GameObject part, ref Queue<GameObject> exits, GameObject exit = null)
+    {
+        for (int i = 0; i < part.transform.childCount; i++)
+        {
+            if (part.transform.GetChild(i).tag == "Exit" && (exit == null || part.transform.GetChild(i).gameObject != exit))
+            {
+                exits.Enqueue(part.transform.GetChild(i).gameObject);
+            }
+        }
+    }
     List<GameObject> getExits(GameObject part)
     {
         List<GameObject> exits = new List<GameObject>();
@@ -280,10 +349,12 @@ public class DungeonGenerator : MonoBehaviour {
 
     void MatchExits(GameObject exit1, GameObject exit2)
     {
+        
         GameObject newPart = exit2.transform.parent.gameObject;
         Vector3 forwardToMach = -exit1.transform.forward;
-        float correctiveRotation = Azimuth(forwardToMach) - Azimuth(exit2.transform.forward);
-        newPart.transform.RotateAround(exit2.transform.position, Vector3.up, Mathf.Round(correctiveRotation));
+        int correctiveRotation = (int)(Azimuth(forwardToMach) - Azimuth(exit2.transform.forward));
+        newPart.transform.RotateAround(exit2.transform.position, Vector3.up, correctiveRotation);
+      //  Debug.Log(Mathf.Round(correctiveRotation));
         Vector3 correctiveTranslation = exit1.transform.position - exit2.transform.position;
         newPart.transform.position += correctiveTranslation;
     }
@@ -314,7 +385,7 @@ public class DungeonGenerator : MonoBehaviour {
         }
     }
 
-    bool CheckFit(GameObject part)
+    bool CheckFit(GameObject part, bool print = false)
     {
         List<Vector3> coords = part.GetComponent<GenerateArray>().getArea();
         for (int i = 0; i < coords.Count; i++)
@@ -323,7 +394,15 @@ public class DungeonGenerator : MonoBehaviour {
             int x = (int)(point.x + center.x);
             int y = (int)(point.y / 8 + center.y);
             int z = (int)(point.z + center.z);
-            if (map[x, y, z] != 0) return false;
+            try
+            {
+                if (print && map[x,y,z] != 0) Debug.Log(map[x,y,z]);
+                if (map[x, y, z] != 0) return false;
+            }catch(Exception e)
+            {
+                if (print) Debug.Log("Mapist väljas");
+                return false;
+            }
         }
         return true;
     }
@@ -340,7 +419,7 @@ public class DungeonGenerator : MonoBehaviour {
         InputHandler handler = gameObject.AddComponent(typeof(InputHandler)) as InputHandler;
         handler.setPlayer(player.GetComponent<PlayerController>());
     //    var pos = player.transform.position;
-    //    pos.y = transform.position.y;
+    //    posif (print) Debug.Log(map[x, y, z] != 0);.y = transform.position.y;
         Camera camera = Camera.main;
         CameraFollow follow = camera.gameObject.AddComponent(typeof(CameraFollow)) as CameraFollow;
         follow.setTarget(player.transform);
