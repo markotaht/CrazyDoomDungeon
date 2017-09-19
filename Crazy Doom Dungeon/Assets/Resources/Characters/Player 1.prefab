@@ -26,6 +26,9 @@ GameObject:
   - component: {fileID: 114039432019875532}
   - component: {fileID: 114114796703195990}
   - component: {fileID: 136675943143866614}
+  - component: {fileID: 114068398964451072}
+  - component: {fileID: 114057482938265946}
+  - component: {fileID: 114821662254422568}
   m_Layer: 8
   m_Name: Player 1
   m_TagString: Player
@@ -469,6 +472,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 6
+--- !u!114 &114057482938265946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1090738376793868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18635854adae4114d8f90483a5375fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skin: {fileID: 0}
+  InventoryWindow: {fileID: 0}
+  CloseIcon: {fileID: 0}
+  Grids: []
+--- !u!114 &114068398964451072
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1090738376793868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b23f58d00fbce5241ab00713807d9b48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114114796703195990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -491,7 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d808c6e95f9dda5469d5c072ffcc936e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 2800000, guid: e69c70d80df2ecd4abd2fc7987f311d1, type: 3}
   WeaponRange: 3
   WeaponDamage: 2
   WeaponWindupSpeed: 0.5
@@ -514,6 +543,45 @@ MonoBehaviour:
   WeaponWinddownSpeed: 0.4
   ammoType: {fileID: 1593676875895614, guid: 6eda7be729c95cc409735395460d25f9, type: 2}
   positionOffset: {fileID: 4189720693767456}
+--- !u!114 &114821662254422568
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1090738376793868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb680eb2fc4287b42b3b8d9416605cc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skin: {fileID: 0}
+  EquipmentWindow: {fileID: 0}
+  CloseIcon: {fileID: 0}
+  Head:
+    m_Text: 
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  Headpos: {x: 160, y: 60}
+  Body:
+    m_Text: 
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  Bodypos: {x: 160, y: 150}
+  Legs:
+    m_Text: 
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  Legspos: {x: 160, y: 240}
+  LeftHand:
+    m_Text: 
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  LeftHandpos: {x: 80, y: 150}
+  RightHand:
+    m_Text: 
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  RightHandpos: {x: 240, y: 150}
 --- !u!114 &114910610244028332
 MonoBehaviour:
   m_ObjectHideFlags: 1

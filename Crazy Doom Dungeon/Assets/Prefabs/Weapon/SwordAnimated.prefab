@@ -182,8 +182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d808c6e95f9dda5469d5c072ffcc936e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 2800000, guid: e69c70d80df2ecd4abd2fc7987f311d1, type: 3}
   WeaponRange: 3
   WeaponDamage: 1
   WeaponWindupSpeed: 0.5
-  WeaponAttackSpeed: 1
+  WeaponWinddownSpeed: 0

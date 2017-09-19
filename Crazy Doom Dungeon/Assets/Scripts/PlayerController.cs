@@ -40,6 +40,15 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    public void Move(Vector2 target)
+    {
+        if (alive && attackController.canMove())
+        {
+            attackController.StopAttacking();
+            movementController.Move(target);
+        }
+    }
+
     public void Attack(Transform target)
     {
         if (alive && target.gameObject.GetComponent<BasicAI>().isAlive())
