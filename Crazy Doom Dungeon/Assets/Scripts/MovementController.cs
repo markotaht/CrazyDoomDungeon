@@ -20,6 +20,12 @@ public class MovementController : MonoBehaviour {
         agent.speed = MoveSpeed;
     }
 
+    public void Move(Vector2 diff)
+    {
+        agent.destination = new Vector3(transform.position.x + diff.x, 0, transform.position.z + diff.y);
+        agent.speed = MoveSpeed;
+    }
+
     public void Move(Vector3 target)
     {
         //  this.target = target;

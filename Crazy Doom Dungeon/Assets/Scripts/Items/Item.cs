@@ -6,6 +6,6 @@ using UnityEngine.UI;
 public class Item : MonoBehaviour {
 
     [SerializeField]
-    public Sprite sprite;
+    public Texture sprite;
 	
 }

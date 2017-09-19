@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 using UnityEngine;
 
 public class InputHandler : MonoBehaviour {
@@ -26,6 +27,7 @@ public class InputHandler : MonoBehaviour {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         Physics.Raycast(ray, out hit,100);
+        move.Execute(AGameManager.Instance().MovementDirection(), currentActor);
 
         target = hit.point;
         if (Input.GetMouseButton(0))

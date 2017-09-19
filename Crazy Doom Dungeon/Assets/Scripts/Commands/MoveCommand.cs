@@ -24,4 +24,10 @@ public class MoveCommand : Command {
     {
         controller.Move(target);
     }
+
+    public override void Execute(Vector2 diff, PlayerController controller)
+    {
+        controller.Move(diff);
+    }
+
 }

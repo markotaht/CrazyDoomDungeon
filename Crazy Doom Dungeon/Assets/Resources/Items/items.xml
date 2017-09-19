@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ItemCollection>
+  <Items>
+    <DatabaseItem name="Sword">
+      <Damage>20</Damage>
+    </DatabaseItem>
+    <DatabaseItem name="Wand">
+      <Damage>10</Damage>
+    </DatabaseItem>
+  </Items>
+</ItemCollection>
