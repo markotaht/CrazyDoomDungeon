@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour {
 
@@ -17,6 +18,10 @@ public class UIController : MonoBehaviour {
     private GameObject[] deathScreen;
     private GameObject[] winScreen;
     private Text loadingText;
+    
+    private GameObject UIButtons;
+    public Button startButton;
+    public Button quitButton;
 
     private int mobCount = 0;
     private Text mobCounter;
@@ -31,6 +36,10 @@ public class UIController : MonoBehaviour {
         loadingText = GameObject.FindGameObjectWithTag("Loading").GetComponent<Text>();
         mobCounter = GameObject.FindGameObjectWithTag("EnemyCounter").GetComponent<Text>();
         timeCounter = GameObject.FindGameObjectWithTag("TimeCounter").GetComponent<Text>();
+        UIButtons = GameObject.FindGameObjectWithTag("UIButtons");
+        UIButtons.SetActive(false);
+        startButton.onClick.AddListener(StartNewGame);
+        quitButton.onClick.AddListener(QuitGame);
     }
 
     private void Update()
@@ -40,6 +49,20 @@ public class UIController : MonoBehaviour {
         {
             timeCounter.text = "Time: " + (timer / 60).ToString("D2") + ":" + ((timer % 3600) % 60).ToString("D2");
         }
+    }
+
+    private void StartNewGame()
+    {
+        Time.timeScale = 1;
+        Debug.Log("New Game");
+        ShowLoading(true);
+        SceneManager.LoadScene("Diana");
+    }
+
+    private void QuitGame()
+    {
+        Debug.Log("Quit");
+        Application.Quit();
     }
 
     public void UpdateHealthBar()
@@ -83,6 +106,7 @@ public class UIController : MonoBehaviour {
         {
             ds.GetComponent<Text>().enabled = true;
         }
+        UIButtons.SetActive(true);
     }
 
     public void ShowWinScreen()
@@ -92,6 +116,7 @@ public class UIController : MonoBehaviour {
         {
             ws.GetComponent<Text>().enabled = true;
         }
+        UIButtons.SetActive(true);
     }
 
     public void ShowLoading(bool show)

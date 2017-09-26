@@ -21,6 +21,7 @@ TagManager:
   - TimeCounter
   - UI
   - WinScreen
+  - UIButtons
   layers:
   - Default
   - TransparentFX
