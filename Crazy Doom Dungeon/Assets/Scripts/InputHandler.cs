@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InputHandler : MonoBehaviour {
 
@@ -28,22 +29,28 @@ public class InputHandler : MonoBehaviour {
         Physics.Raycast(ray, out hit,100);
 
         target = hit.point;
+        //Rewrite to mouse down and up or smthing
         if (Input.GetMouseButton(0))
         {
             if (!pressed)
             {
-                if (hit.collider)
+
+                //prolly doesn't work on touch screen
+                if (!EventSystem.current.IsPointerOverGameObject())
                 {
-                    pressed = true;
-                    if (hit.collider.gameObject.tag != "Enemy")
+                    if (hit.collider)
                     {
-                        moving = true;
-                        move.Execute(target, currentActor);
-                    }
-                    else
-                    {
-                        attacking = hit.collider.gameObject;
-                        attack.Execute(hit.collider.gameObject.transform, currentActor);
+                        pressed = true;
+                        if (hit.collider.gameObject.tag != "Enemy")
+                        {
+                            moving = true;
+                            move.Execute(target, currentActor);
+                        }
+                        else
+                        {
+                            attacking = hit.collider.gameObject;
+                            attack.Execute(hit.collider.gameObject.transform, currentActor);
+                        }
                     }
                 }
             }
@@ -84,7 +91,7 @@ public class InputHandler : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            swap.Execute(Vector3.up, currentActor);
+            SwapWeapon();
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -102,5 +109,10 @@ public class InputHandler : MonoBehaviour {
     public void setPlayer(PlayerController controller)
     {
         currentActor = controller;
+    }
+
+    public void SwapWeapon()
+    {
+        swap.Execute(Vector3.up, currentActor);
     }
 }
