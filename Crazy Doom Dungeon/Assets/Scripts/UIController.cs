@@ -75,7 +75,10 @@ public class UIController : MonoBehaviour {
     public void UpdateMobCounter(int change)
     {
         mobCount += change;
-        mobCounter.text = "Bears: " + mobCount;
+        if(mobCounter != null)
+        {
+            mobCounter.text = "Bears: " + mobCount;
+        }
         if(mobCount == 0)
         {
             ShowWinScreen();
