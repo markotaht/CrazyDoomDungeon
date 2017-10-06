@@ -22,6 +22,7 @@ public class UIController : MonoBehaviour {
     private GameObject UIButtons;
     public Button startButton;
     public Button quitButton;
+    public GameObject controlPanel;
 
     private int mobCount = 0;
     private Text mobCounter;
@@ -104,6 +105,7 @@ public class UIController : MonoBehaviour {
 
     public void ShowDeathScreen()
     {
+        controlPanel.SetActive(false);
         countingTime = false;
         foreach(GameObject ds in deathScreen)
         {
@@ -114,6 +116,7 @@ public class UIController : MonoBehaviour {
 
     public void ShowWinScreen()
     {
+        controlPanel.SetActive(false);
         countingTime = false;
         foreach(GameObject ws in winScreen)
         {
