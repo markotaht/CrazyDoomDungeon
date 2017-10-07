@@ -35,19 +35,19 @@ public class VJHandler : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointe
         float x = (jsContainer.rectTransform.pivot.x == 1f) ? position.x * 2 + 1 : position.x * 2 - 1;
         float y = (jsContainer.rectTransform.pivot.y == 1f) ? position.y * 2 + 1 : position.y * 2 - 1;
 
-        InputDirection = new Vector3(x, y, 0);
+        InputDirection = new Vector3(x, 0, y); //to scenespace, original x, y, 0
         InputDirection = (InputDirection.magnitude > 1) ? InputDirection.normalized : InputDirection;
 
         //to define the area in which joystick can move around
         joystick.rectTransform.anchoredPosition = new Vector3(InputDirection.x * (jsContainer.rectTransform.sizeDelta.x / 3)
-                                                               , InputDirection.y * (jsContainer.rectTransform.sizeDelta.y) / 3);
+                                                               , InputDirection.z * (jsContainer.rectTransform.sizeDelta.y) / 3);
 
     }
 
     public void OnPointerDown(PointerEventData ped)
     {
 
-        OnDrag(ped);
+        //OnDrag(ped);
     }
 
     public void OnPointerUp(PointerEventData ped)

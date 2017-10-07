@@ -17,18 +17,28 @@ public class PlayerController : MonoBehaviour {
     private float health;
     private bool alive = true;
 
+
+    private Rigidbody rb;
+
     // Use this for initialization
-	void Start () {
+    void Start () {
         attackController = GetComponent<AttackController>();
         equipmentHandler = GetComponent<EquipmentHandler>();
         movementController = GetComponent<MovementController>();
         uicontroller = GameObject.FindObjectOfType<UIController>() as UIController;
         health = maxHealth;
-	}
+        //rb = GetComponent<Rigidbody>();
+    }
 
     void Update()
     {
-
+        //Debug.Log(transform.position.y);
+        if(transform.position.y != 0)
+        {
+            transform.position = new Vector3(transform.position.x, 1.1f, transform.position.z);
+        }
+        //rb.velocity = Vector3.zero;
+        //rb.angularVelocity = Vector3.zero;
     }
 
     public void Move(Vector3 target)
@@ -88,6 +98,13 @@ public class PlayerController : MonoBehaviour {
         health = Mathf.Min(health + hp, maxHealth);
         uicontroller.GiveHealth(hp);
     }
-
+    /*
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(rb.angularVelocity);
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        
+    }*/
 }
 

@@ -201,4 +201,11 @@ public class BasicAI : MonoBehaviour {
         }
         return false;
     }
+    /*
+    private void OnCollisionEnter(Collision collision)
+    {
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+    }*/
 }

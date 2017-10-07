@@ -54,8 +54,7 @@ public class DungeonGenerator : MonoBehaviour {
         {
             createNavMesh();
             AddPlayer();
-            
-       //     visualizeMap();
+            //     visualizeMap();
             navmesh = true;
             uicontroller.ShowLoading(false);
         }else if (!hide)
@@ -336,7 +335,7 @@ public class DungeonGenerator : MonoBehaviour {
     void AddPlayer()
     {
         player = Resources.Load<GameObject>("Characters/Player 1");
-        player = Instantiate(player, new Vector3(0, 0.75f, 1.24f), Quaternion.identity);
+        player = Instantiate(player, new Vector3(0, 1.1f, 1.24f), Quaternion.identity);
         //InputHandler handler = gameObject.AddComponent(typeof(InputHandler)) as InputHandler;
         InputHandler handler = gameObject.GetComponent<InputHandler>();
         handler.setPlayer(player.GetComponent<PlayerController>());

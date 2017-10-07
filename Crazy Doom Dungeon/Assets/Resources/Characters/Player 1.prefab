@@ -25,7 +25,8 @@ GameObject:
   - component: {fileID: 114938423659660780}
   - component: {fileID: 114039432019875532}
   - component: {fileID: 114114796703195990}
-  - component: {fileID: 136675943143866614}
+  - component: {fileID: 136679800675276754}
+  - component: {fileID: 143068586780059218}
   m_Layer: 8
   m_Name: Player 1
   m_TagString: Player
@@ -225,7 +226,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1090738376793868}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20, y: 1, z: 0}
+  m_LocalPosition: {x: -20, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4299850255981692}
@@ -463,7 +464,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1090738376793868}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 772601814c6f02648aeaa439c71291b8, type: 3}
   m_Name: 
@@ -538,7 +539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquippedWeapon: {fileID: 114688025868947542}
   SecondaryWeapon: {fileID: 114331823669102758}
---- !u!136 &136675943143866614
+--- !u!136 &136679800675276754
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -546,10 +547,27 @@ CapsuleCollider:
   m_GameObject: {fileID: 1090738376793868}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 1
   m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!143 &143068586780059218
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1090738376793868}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1.8
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195762256933961964
 NavMeshAgent:
@@ -557,7 +575,7 @@ NavMeshAgent:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1090738376793868}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 6
