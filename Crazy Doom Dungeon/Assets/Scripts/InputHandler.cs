@@ -21,7 +21,6 @@ public class InputHandler : MonoBehaviour {
     public VJHandler jsMovement;
 
     private Vector3 direction;
-    private float xMin, xMax, yMin, yMax;
 
 
     public float turningRate = 360f;
@@ -30,11 +29,6 @@ public class InputHandler : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //Initialization of boundaries
-        xMax = 500; // I used 50 because the size of player is 100*100
-        xMin = -500;
-        yMax = 500;
-        yMin = -500;
     }
     
 
@@ -43,63 +37,18 @@ public class InputHandler : MonoBehaviour {
 
         cc = currentActor.GetComponent<CharacterController>();
         cc.detectCollisions = true;
+
         //Joystick movement
-        direction = Quaternion.AngleAxis(45, Vector3.up)*  jsMovement.InputDirection; //InputDirection can be used as per the need of your project
+        direction = Quaternion.AngleAxis(45, Vector3.up)*  jsMovement.InputDirection;
         Transform actor = currentActor.transform;
-        //currentActor.transform.position += direction * moveSpeed * Time.deltaTime;
         cc.Move(direction * moveSpeed * Time.deltaTime);
         
         if (direction != Vector3.zero)
         {
             _targetRotation = Quaternion.LookRotation(direction, Vector3.up);
-            //actor.rotation = Quaternion.LookRotation(direction, Vector3.up);
             actor.rotation = Quaternion.RotateTowards(actor.rotation, _targetRotation, turningRate * Time.deltaTime);
         }
         
-
-        /*
-        if (direction.magnitude != 0)
-        {
-
-            Transform actor = currentActor.transform;
-            float rotSpeed = 3000;
-            //target += direction * moveSpeed;
-            //Vector3 target = currentActor.gameObject.transform.position + (direction)*2;
-            currentActor.transform.position += direction * moveSpeed * Time.deltaTime;
-
-            //Calculate angle we need to rotate
-            float angle = Vector3.Angle(actor.forward, direction);
-
-            //Do we rotate to the left or right
-            if (Vector3.Cross(actor.forward, direction).y < 0)
-            {
-                rotSpeed *= -1;
-            }
-
-            //If we already are at the rotaton dont rotate
-            if (angle > 1)
-            {
-                //Calculate the next rotation we want
-                Quaternion desired = Quaternion.Euler(actor.eulerAngles.x, actor.eulerAngles.y + rotSpeed * Time.deltaTime, actor.eulerAngles.z);
-
-                //If we are near the desired rotation, set rotation to desired rotation
-                if (angle <= 1)
-                {
-                    actor.rotation = desired;
-                }
-
-                //If we have not finished rotation then rotate
-                else if (!actor.rotation.Equals(desired))
-                {
-                    Debug.Log("here");
-                    actor.rotation = Quaternion.Slerp(actor.rotation, desired, Time.deltaTime * 10);
-                }
-            }
-          //  currentActor.transform.rotation *= Quaternion.FromToRotation(currentActor.transform.rotation * Vector3.forward, direction);
-            //currentActor.transform.position = new Vector3(Mathf.Clamp(currentActor.transform.position.x, xMin, xMax), 0f, Mathf.Clamp(currentActor.transform.position.y, yMin, yMax));//to restric movement of player
-            //move.Execute(target, currentActor);
-        }*/
-
         /*Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         Physics.Raycast(ray, out hit,100);

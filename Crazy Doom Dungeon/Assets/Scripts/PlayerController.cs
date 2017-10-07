@@ -27,18 +27,14 @@ public class PlayerController : MonoBehaviour {
         movementController = GetComponent<MovementController>();
         uicontroller = GameObject.FindObjectOfType<UIController>() as UIController;
         health = maxHealth;
-        //rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        //Debug.Log(transform.position.y);
-        if(transform.position.y != 0)
+        if(transform.position.y != 1.1f)
         {
             transform.position = new Vector3(transform.position.x, 1.1f, transform.position.z);
         }
-        //rb.velocity = Vector3.zero;
-        //rb.angularVelocity = Vector3.zero;
     }
 
     public void Move(Vector3 target)
@@ -98,13 +94,5 @@ public class PlayerController : MonoBehaviour {
         health = Mathf.Min(health + hp, maxHealth);
         uicontroller.GiveHealth(hp);
     }
-    /*
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(rb.angularVelocity);
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-        
-    }*/
 }
 

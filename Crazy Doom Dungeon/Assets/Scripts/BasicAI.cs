@@ -172,11 +172,6 @@ public class BasicAI : MonoBehaviour {
         movementController.DetachAgent();
         transform.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
         transform.SendMessage("DropSomething");
-        //TODO: remove
-        if (GetComponent<Renderer>())
-        {
-            GetComponent<Renderer>().material.color = Color.red;
-        }
         uicontroller.UpdateMobCounter(-1);
     }
 
@@ -201,11 +196,4 @@ public class BasicAI : MonoBehaviour {
         }
         return false;
     }
-    /*
-    private void OnCollisionEnter(Collision collision)
-    {
-        Rigidbody rb = GetComponent<Rigidbody>();
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-    }*/
 }
