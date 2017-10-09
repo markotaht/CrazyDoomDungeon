@@ -140,4 +140,9 @@ public class InputHandler : MonoBehaviour {
     {
         swap.Execute(Vector3.up, currentActor);
     }
+
+    public void Attack()
+    {
+        Debug.Log("ATTACK!");
+    }
 }
