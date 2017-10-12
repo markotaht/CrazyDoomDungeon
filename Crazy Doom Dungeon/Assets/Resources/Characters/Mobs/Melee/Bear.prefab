@@ -470,8 +470,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drops:
   - {fileID: 1564079223435970, guid: 59cb363771cd1b440bac04b80d2b5970, type: 2}
+  - {fileID: 1065249813180878, guid: 6d55a002ca214dd47beae2497e025daf, type: 2}
   droprate:
   - 0.4
+  - 1
 --- !u!114 &114688127840249308
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ItemCollection>
+<ItemCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Items>
-    <DatabaseItem name="Sword">
-      <Damage>20</Damage>
+    <DatabaseItem id="1" xsi:type="DatabaseWeapon">
+      <Name>Sword</Name>
+      <Damage>2</Damage>
+      <Sprite>MeleeWeapon</Sprite>
+      <Model>Mudel1</Model>
+      <Stackable>false</Stackable>
     </DatabaseItem>
-    <DatabaseItem name="Wand">
-      <Damage>10</Damage>
+    <DatabaseItem id="2" xsi:type="DatabaseWeapon">
+      <Name>Wand</Name>
+      <Damage>1</Damage>
+      <Sprite>RangedWeapon</Sprite>
+      <Model>Mudel2</Model>
+      <Stackable>false</Stackable>
+    </DatabaseItem>
+    <DatabaseItem id="3" xsi:type="DatabaseConsumable">
+      <Name>Health potion</Name>
+      <HealthIncrease>20</HealthIncrease>
+      <Sprite>RangedWeapon</Sprite>
+      <Model>HealthPotion</Model>
+      <Stackable>true</Stackable>
     </DatabaseItem>
   </Items>
 </ItemCollection>
