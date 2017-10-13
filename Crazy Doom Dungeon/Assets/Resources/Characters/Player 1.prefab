@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114114796703195990}
   - component: {fileID: 136679800675276754}
   - component: {fileID: 143068586780059218}
+  - component: {fileID: 135529363146405534}
   m_Layer: 8
   m_Name: Player 1
   m_TagString: Player
@@ -226,7 +227,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1090738376793868}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20, y: 0, z: 0}
+  m_LocalPosition: {x: -0.13773775, y: -0.22739458, z: -0.6859598}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4299850255981692}
@@ -458,6 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4647be8b58ec434ea135209cb3e67b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyFinderCollider: {fileID: 135529363146405534}
 --- !u!114 &114048015986157738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -539,6 +541,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquippedWeapon: {fileID: 114688025868947542}
   SecondaryWeapon: {fileID: 114331823669102758}
+--- !u!135 &135529363146405534
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1090738376793868}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 10
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136679800675276754
 CapsuleCollider:
   m_ObjectHideFlags: 1

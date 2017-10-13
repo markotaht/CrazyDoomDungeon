@@ -155,7 +155,7 @@ public class BasicAI : MonoBehaviour {
                 float angle = Vector3.Dot(dir.normalized, transform.rotation * Vector3.forward);
                 if (Mathf.Rad2Deg * Mathf.Acos(angle) <= viewcone)
                 {
-                    Debug.DrawRay(transform.position, dir);
+                    //Debug.DrawRay(transform.position, dir);
                     target = player.position;
                     targetSelf = false;
                     return true;

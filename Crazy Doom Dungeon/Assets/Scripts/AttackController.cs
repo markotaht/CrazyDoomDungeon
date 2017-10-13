@@ -8,7 +8,6 @@ public class AttackController : MonoBehaviour {
     enum State { READY_TO_ATTACK, ATTACK_WINDUP, ATTACK_WINDDOWN };
     private State current_state = State.READY_TO_ATTACK;
 
-    private Transform target;
     private float range;
     private Weapon weapon;
     
@@ -16,15 +15,29 @@ public class AttackController : MonoBehaviour {
     private float attackWindup;
 
     private float attackCountdown;
-    
+
+    //post rework stuff
+    //public SphereCollider enemyFinderCollider;
+    public List<Collider> CloseEnemies;
+    private float viewcone = 80;
+    public Transform target;
+
     // Use this for initialization
     void Start () {
-		
+        CloseEnemies = new List<Collider>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        attackCountdown -= Time.deltaTime;
+        //Check if target is in view, find new target if needed
+        if(target == null || !IsInView(target))
+        {
+            target = null;
+            FindNewTarget();
+        }
+
+        //Old stuff
+        /*attackCountdown -= Time.deltaTime;
         switch (current_state)
         {
             case State.READY_TO_ATTACK:
@@ -69,6 +82,7 @@ public class AttackController : MonoBehaviour {
                 }
                 break;
         }
+        */
 	}
 
     public void Attack(Transform target, Weapon weapon)
@@ -159,5 +173,64 @@ public class AttackController : MonoBehaviour {
     public Weapon getWep()
     {
         return weapon;
+    }
+
+    private void FindNewTarget()
+    {
+        Transform closest = null;
+        float closestMagn = float.PositiveInfinity;
+        foreach (Collider c in CloseEnemies)
+        {
+            Vector3 dir = c.transform.position - transform.position;
+            float angle = Vector3.Dot(dir.normalized, transform.rotation * Vector3.forward);
+            if (Mathf.Rad2Deg * Mathf.Acos(angle) <= viewcone)
+            {
+                Debug.DrawRay(transform.position, dir);
+                if(dir.magnitude < closestMagn)
+                {
+                    closest = c.transform;
+                    closestMagn = dir.magnitude;
+                }
+            }
+        }
+        if (closest != null)
+        {
+            target = closest;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            CloseEnemies.Add(other);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            CloseEnemies.Remove(other);
+            if(other.transform == target)
+            {
+                target = null;
+            }
+        }
+    }
+
+    private bool IsInView(Transform viewTransform)
+    {
+        if (CloseEnemies.Contains(viewTransform.GetComponent<Collider>()))
+        {
+            Vector3 dir = viewTransform.position - transform.position;
+            float angle = Vector3.Dot(dir.normalized, transform.rotation * Vector3.forward);
+            if (Mathf.Rad2Deg * Mathf.Acos(angle) <= viewcone)
+            {
+                Debug.DrawRay(transform.position, dir);
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -94,5 +94,10 @@ public class PlayerController : MonoBehaviour {
         health = Mathf.Min(health + hp, maxHealth);
         uicontroller.GiveHealth(hp);
     }
+
+    public void Attack()
+    {
+
+    }
 }
 

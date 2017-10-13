@@ -28,26 +28,33 @@ public class InputHandler : MonoBehaviour {
     private CharacterController cc;
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
     }
     
 
-    // Update is called once per frame
     void Update () {
 
-        cc = currentActor.GetComponent<CharacterController>();
-        cc.detectCollisions = true;
+        //Makes collision checks work on player character
+        if(cc == null)
+        {
+            cc = currentActor.GetComponent<CharacterController>();
+            cc.detectCollisions = true;
+        }
 
         //Joystick movement
-        direction = Quaternion.AngleAxis(45, Vector3.up)*  jsMovement.InputDirection;
+        direction = Quaternion.AngleAxis(45, Vector3.up) * jsMovement.InputDirection;
         Transform actor = currentActor.transform;
         cc.Move(direction * moveSpeed * Time.deltaTime);
         
+        //Player rotation
         if (direction != Vector3.zero)
         {
             _targetRotation = Quaternion.LookRotation(direction, Vector3.up);
             actor.rotation = Quaternion.RotateTowards(actor.rotation, _targetRotation, turningRate * Time.deltaTime);
         }
+
+
         
         /*Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -117,11 +124,6 @@ public class InputHandler : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Q))
         {
             SwapWeapon();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            move.Execute(currentActor.transform.position, currentActor);
         }
 
         if (Input.GetKey("escape"))
