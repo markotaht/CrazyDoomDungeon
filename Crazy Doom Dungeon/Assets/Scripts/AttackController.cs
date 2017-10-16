@@ -18,9 +18,9 @@ public class AttackController : MonoBehaviour {
 
     //post rework stuff
     //public SphereCollider enemyFinderCollider;
-    public List<Collider> CloseEnemies;
+    private List<Collider> CloseEnemies;
     private float viewcone = 80;
-    public Transform target;
+    private Transform target;
 
     // Use this for initialization
     void Start () {
@@ -30,18 +30,18 @@ public class AttackController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Check if target is in view, find new target if needed
-        if(target == null || !IsInView(target))
+        if(target == null || !IsInView(target) || !target.GetComponent<BasicAI>().isAlive())
         {
             target = null;
             FindNewTarget();
         }
 
         //Old stuff
-        /*attackCountdown -= Time.deltaTime;
+        attackCountdown -= Time.deltaTime;
         switch (current_state)
         {
             case State.READY_TO_ATTACK:
-                if (target != null && target.GetComponent<BasicAI>().isAlive())
+                /*if (target != null && target.GetComponent<BasicAI>().isAlive())
                 {
                     float dist = Vector3.Distance(transform.position, target.position);
                     if (dist > range)
@@ -62,12 +62,14 @@ public class AttackController : MonoBehaviour {
                         attackCountdown = attackWindup;
                         current_state = State.ATTACK_WINDUP;
                     }
-                }
+                }*/
                 break;
 
             case State.ATTACK_WINDUP:
-                if(attackCountdown <= 0)
+                Debug.Log("in attack windup");
+                if (attackCountdown <= 0)
                 {
+                    Debug.Log("attack countdown <=0");
                     weapon.DoAttack(target);
                     attackCountdown = attackWinddown;
                     current_state = State.ATTACK_WINDDOWN;
@@ -75,18 +77,65 @@ public class AttackController : MonoBehaviour {
                 break;
 
             case State.ATTACK_WINDDOWN:
-                if(attackCountdown <= 0)
+                Debug.Log("in attack winddown");
+                if (attackCountdown <= 0)
                 {
-                    target = null;
+                    Debug.Log("attack winddown over");
+                    //target = null;
                     current_state = State.READY_TO_ATTACK;
                 }
                 break;
         }
-        */
+        
 	}
+
+    public void Attack(Weapon weapon)
+    {
+        Debug.Log("Attack(1) in controller");
+        switch (current_state)
+        {
+            case State.READY_TO_ATTACK:
+                Debug.Log("Ready to attack");
+                //start attacking new
+                if (target != null)
+                {
+                    SetTargetAndWeapon(target, weapon);
+
+                    //float dist = Vector3.Distance(transform.position, target.position);
+                    /*if (dist > range)
+                    {
+                        current_state = State.READY_TO_ATTACK;
+                        GetComponent<MovementController>().Move(transform.position + (target.position - transform.position).normalized * (dist - range + 1));
+                    }
+                    else
+                    {*/
+                    Debug.Log("target isn't null");
+                    current_state = State.ATTACK_WINDUP;
+
+                    //Stop and turn to enemy
+                    /*GetComponent<MovementController>().Move(transform.position);
+                    Vector3 planarTarget = new Vector3(target.position.x, 0, target.position.z);
+                    Vector3 planarPosition = new Vector3(transform.position.x, 0, transform.position.z);
+                    Vector3 direction = planarTarget - planarPosition;
+                    transform.rotation = Quaternion.LookRotation(direction.normalized);
+                    */
+                    weapon.StartAttack(target);
+                    attackCountdown = attackWindup;
+                    //}
+                }
+                break;
+
+            case State.ATTACK_WINDDOWN:
+            case State.ATTACK_WINDUP:
+                break;
+        }
+
+    }
 
     public void Attack(Transform target, Weapon weapon)
     {
+        Debug.Log("Attack(2) in controller");
+        /*
         switch (current_state)
         {
             case State.READY_TO_ATTACK:
@@ -118,11 +167,11 @@ public class AttackController : MonoBehaviour {
             case State.ATTACK_WINDDOWN:
             case State.ATTACK_WINDUP:
                 break;
-        }
+        }*/
     }
     private void SetTargetAndWeapon(Transform target, Weapon weapon)
     {
-        this.target = target;
+        //this.target = target;
         this.weapon = weapon;
         range = weapon.getRange();
         attackWindup = weapon.getWindupSpeed();
@@ -186,7 +235,7 @@ public class AttackController : MonoBehaviour {
             if (Mathf.Rad2Deg * Mathf.Acos(angle) <= viewcone)
             {
                 Debug.DrawRay(transform.position, dir);
-                if(dir.magnitude < closestMagn)
+                if(dir.magnitude < closestMagn && c.GetComponent<BasicAI>().isAlive())
                 {
                     closest = c.transform;
                     closestMagn = dir.magnitude;

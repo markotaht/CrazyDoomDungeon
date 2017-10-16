@@ -167,9 +167,11 @@ public class BasicAI : MonoBehaviour {
 
     public void Die()
     {
+        if (!Alive) return;
         animator.SetTrigger("die");
         Alive = false;
         movementController.DetachAgent();
+        GetComponent<BoxCollider>().enabled = false;
         transform.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
         transform.SendMessage("DropSomething");
         uicontroller.UpdateMobCounter(-1);
