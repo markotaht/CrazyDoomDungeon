@@ -32,6 +32,10 @@ public class AttackController : MonoBehaviour {
         //Check if target is in view, find new target if needed
         if(target == null || !IsInView(target) || !target.GetComponent<BasicAI>().isAlive())
         {
+            if(target != null)
+            {
+                target.GetComponent<BasicAI>().Target(false);
+            }
             target = null;
             FindNewTarget();
         }
@@ -245,6 +249,7 @@ public class AttackController : MonoBehaviour {
         if (closest != null)
         {
             target = closest;
+            closest.GetComponent<BasicAI>().Target(true);
         }
     }
 

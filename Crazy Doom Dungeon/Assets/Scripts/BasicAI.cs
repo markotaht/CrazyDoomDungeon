@@ -27,6 +27,8 @@ public class BasicAI : MonoBehaviour {
     private float defence; //cannot be 0, <1 make attacks worse
     [SerializeField]
     private float range;
+    [SerializeField]
+    private GameObject targetIndicator;
 
     private Animator animator;
 
@@ -197,5 +199,10 @@ public class BasicAI : MonoBehaviour {
             fromSeeingPlayer = 0;
         }
         return false;
+    }
+
+    public void Target(bool targeted)
+    {
+        targetIndicator.SetActive(targeted);
     }
 }
