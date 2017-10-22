@@ -11,8 +11,14 @@ public class DatabaseWeapon : DatabaseItem {
     [XmlElement("Damage")]
     public float damage;
 
+    public override GameObject GetModel(Transform parent)
+    {
+        return GameObject.Instantiate(Model, parent);
+    }
+
     public override void Use()
     {
-        throw new NotImplementedException();
+   //     EquipmentGUI w = GameObject.FindObjectOfType<EquipmentGUI>();
+   //     w.AddPrimary(this);
     }
 }

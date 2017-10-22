@@ -1,16 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DragItem : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private DatabaseItem item;
+    public DatabaseItem Item
+    {
+        get
+        {
+            return item;
+        }
+        set
+        {
+            item = value;
+            GetComponent<Image>().sprite = item.Sprite;
+        }
+    }
 }

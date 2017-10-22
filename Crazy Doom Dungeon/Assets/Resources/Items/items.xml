@@ -6,7 +6,7 @@
       <Name>Sword</Name>
       <Damage>2</Damage>
       <Sprite>MeleeWeapon</Sprite>
-      <Model>Mudel1</Model>
+      <Model>SwordAnimated</Model>
       <Stackable>false</Stackable>
     </DatabaseItem>
     <DatabaseItem id="2" xsi:type="DatabaseWeapon">

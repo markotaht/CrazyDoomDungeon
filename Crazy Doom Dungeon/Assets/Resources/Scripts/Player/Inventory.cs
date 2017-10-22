@@ -5,37 +5,43 @@ public class Inventory : MonoBehaviour
 
     private InventoryGUI GUI;
 
+    [SerializeField]
+    GameObject inventoryItemPefab;
+
     //  public Image[] itemImages = new Image[numItemSlots];
     public const int numItemSlots = 25;
-    private DatabaseItem[] items = new DatabaseItem[numItemSlots];
+    private GameObject[] items = new GameObject[numItemSlots];
 
     private void Start()
     {
         GUI = InventoryGUI.instance;
    //     GUI.SetInventorySize(numItemSlots);
-        InventoryGUI.ItemAction += useItem;
+  //      InventoryGUI.ItemAction += useItem;
     }
 
-    public void AddItem(long id)
+    public void AddItem(int item)
     {
-        DatabaseItem item = ItemLoader.instance.getItem(id);
+        //  DatabaseItem item = ItemLoader.instance.getItem(id);
+        GameObject temp = Instantiate(inventoryItemPefab, GUI.transform);
+        temp.GetComponent<DragItem>().Item = ItemLoader.instance.getItem(item);
         for (int i = 0; i < items.Length; i++)
         {
             if (items[i] == null)
             {
-                items[i] = item;
-                GUI.AddItem(i, item);
+                items[i] = temp;
+                GUI.AddItem(i, temp);
                 //   itemImages[i].sprite = itemToAdd.sprite;
                 //   itemImages[i].enabled = true;
                 break;
-            }else if(items[i].Id == id && item.stackable)
+            }
+            /*else if(items[i].Id == id && item.stackable)
             {
                 GUI.IncreaseCount(i);
                 break;
-            }
+            }*/
         }
     }
-
+/*
     public void RemoveItem(DatabaseItem itemToRemove)
     {
         for (int i = 0; i < items.Length; i++)
@@ -57,10 +63,10 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-
-    public void useItem(int id)
+    */
+ /*   public void useItem(int id)
     {
         items[id].Use();
         RemoveItem(items[id]);
-    }
+    }*/
 }

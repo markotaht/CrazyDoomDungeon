@@ -9,35 +9,36 @@ public class ItemDescriptionGUI : MonoBehaviour {
 
     public Image itemImage;
     public Text count;
-    private InventorySlot DBitem;
+    private DatabaseItem DBitem;
 
     private void Start()
     {
         instance = this;
     }
 
-    public void setItem(InventorySlot item)
+    public void setItem(GameObject item)
     {
-        DBitem = item;
+        
+        DBitem = item.GetComponent<DragItem>().Item;
         if (item != null)
         {
-            itemImage.sprite = item.Item.Sprite;
-            count.text = item.count.ToString();
+            itemImage.sprite = DBitem.Sprite;
+        //    count.text = item.count.ToString();
         }else
         {
             itemImage.sprite = null;
-            count.text = "0";
+        //    count.text = "0";
         }
     }
 
     public void Use()
     {
-        DBitem.Item.Use();
-        count.text = DBitem.count.ToString();
-        if(DBitem.count == 0)
-        {
+        DBitem.Use();
+    //    count.text = DBitem.count.ToString();
+    //    if(DBitem.count == 0)
+    //    {
             setItem(null);
-        }
+    //    }
     }
 
     public void Drop()

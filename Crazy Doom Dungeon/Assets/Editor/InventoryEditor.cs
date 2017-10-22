@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(Inventory))]
+//[CustomEditor(typeof(Inventory))]
 public class InventoryEditor : Editor
 {
     private bool[] showItemSlots = new bool[Inventory.numItemSlots];

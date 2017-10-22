@@ -27,7 +27,6 @@ GameObject:
   - component: {fileID: 114114796703195990}
   - component: {fileID: 136675943143866614}
   - component: {fileID: 114068398964451072}
-  - component: {fileID: 114821662254422568}
   - component: {fileID: 54858618663535654}
   m_Layer: 8
   m_Name: Player 1
@@ -545,45 +544,6 @@ MonoBehaviour:
   WeaponWinddownSpeed: 0.4
   ammoType: {fileID: 1593676875895614, guid: 6eda7be729c95cc409735395460d25f9, type: 2}
   positionOffset: {fileID: 4189720693767456}
---- !u!114 &114821662254422568
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1090738376793868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb680eb2fc4287b42b3b8d9416605cc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skin: {fileID: 0}
-  EquipmentWindow: {fileID: 0}
-  CloseIcon: {fileID: 0}
-  Head:
-    m_Text: 
-    m_Image: {fileID: 0}
-    m_Tooltip: 
-  Headpos: {x: 160, y: 60}
-  Body:
-    m_Text: 
-    m_Image: {fileID: 0}
-    m_Tooltip: 
-  Bodypos: {x: 160, y: 150}
-  Legs:
-    m_Text: 
-    m_Image: {fileID: 0}
-    m_Tooltip: 
-  Legspos: {x: 160, y: 240}
-  LeftHand:
-    m_Text: 
-    m_Image: {fileID: 0}
-    m_Tooltip: 
-  LeftHandpos: {x: 80, y: 150}
-  RightHand:
-    m_Text: 
-    m_Image: {fileID: 0}
-    m_Tooltip: 
-  RightHandpos: {x: 240, y: 150}
 --- !u!114 &114910610244028332
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -606,8 +566,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a1e98b293b47f448e4eb531fa12403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EquippedWeapon: {fileID: 114688025868947542}
-  SecondaryWeapon: {fileID: 114331823669102758}
+  EquippedWeapon: {fileID: 114331823669102758}
+  SecondaryWeapon: {fileID: 114688025868947542}
 --- !u!136 &136675943143866614
 CapsuleCollider:
   m_ObjectHideFlags: 1

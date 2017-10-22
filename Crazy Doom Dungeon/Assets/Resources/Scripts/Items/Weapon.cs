@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Weapon : Item{
+public abstract class Weapon : PickupItem{
 
     [SerializeField]
     private float WeaponRange;
@@ -16,17 +16,17 @@ public abstract class Weapon : Item{
 
     protected Animator animator;
 
-    private void Awake()
+  /*  private void Awake()
     {
-       // DBitem = ItemLoader.instance.getItem(id);
+        DBitem = ItemLoader.instance.getItem(DatabaseID);
         animator = GetComponent<Animator>();
-    }
+        Debug.Log(DBitem);
+    }*/
 
     protected override void StartItem()
     {
-        Debug.Log("Here");
         WeaponDamage = ((DatabaseWeapon)DBitem).damage;
-        Debug.Log(((DatabaseWeapon)DBitem).damage);
+        animator = GetComponent<Animator>();
     }
 
 

@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EquipmentGUI : MonoBehaviour {
-
+public class EquipmentGUI : MonoBehaviour, IHasChanged {
+    /*
     private bool EquipmentOn = false;
 
     [SerializeField]
@@ -108,5 +109,39 @@ public class EquipmentGUI : MonoBehaviour {
             GUI.DragWindow(new Rect(WindowPos.x, WindowPos.y, 10000, 40));
             GUI.EndGroup();
         }
+    }*/
+
+    public static EquipmentGUI instance;
+    public EquipmentSlot primaryWeapon;
+    public EquipmentSlot secondaryWeapon;
+    public GameObject inventoryItemPefab;
+
+    private void Start()
+    {
+        instance = this;
+    }
+
+    public void AddPrimary(GameObject item)
+    {
+        GameObject temp = Instantiate(inventoryItemPefab, transform);
+        temp.GetComponent<DragItem>().Item = item.GetComponent<Item>().getDBItem();
+        temp.transform.parent = primaryWeapon.transform;
+    }
+
+    public void AddSecondary(GameObject item)
+    {
+        GameObject temp = Instantiate(inventoryItemPefab, transform);
+        temp.GetComponent<DragItem>().Item = item.GetComponent<Item>().getDBItem();
+        temp.transform.parent = secondaryWeapon.transform;
+    }
+
+    public void HasChanged()
+    {
+       // throw new NotImplementedException();
+    }
+
+    public void HasChanged(bool primary)
+    {
+       // throw new NotImplementedException();
     }
 }

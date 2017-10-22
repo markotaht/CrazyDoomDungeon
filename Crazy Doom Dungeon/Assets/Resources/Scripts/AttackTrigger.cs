@@ -7,7 +7,7 @@ public class AttackTrigger : MonoBehaviour {
 
     private void Start()
     {
-        controller = transform.parent.parent.gameObject.GetComponent<AttackController>();
+        controller = FindObjectOfType<AttackController>();
     }
 
     void OnCollisionEnter(Collision other)

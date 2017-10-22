@@ -6,29 +6,55 @@ using System;
 
 using UnityEngine.UI;
 
-public class InventoryGUI : MonoBehaviour {
+public class InventoryGUI : MonoBehaviour, IHasChanged {
 
     public static InventoryGUI instance;
 
-    public GameObject grid;
+    [SerializeField] Transform slots;
+    [SerializeField]
+    RectTransform inventory;
+    [SerializeField]
+    RectTransform mainInventory;
 
     public static Action<int> ItemAction;
-    public List<InventorySlot> Grids = new List<InventorySlot>();
+//    public List<InventorySlot> Grids = new List<InventorySlot>();
 
     private void Start()
     {
         instance = this;
-        gameObject.SetActive(false);
-        foreach(Transform child in grid.transform)
+    //    gameObject.SetActive(false);
+      /*  foreach(Transform child in grid.transform)
         {
             Grids.Add(child.GetComponent<InventorySlot>());
-        }
+        }*/
     }
 
     public void Toggle()
     {
-        this.gameObject.SetActive(!this.gameObject.active);
+        mainInventory.gameObject.SetActive(!mainInventory.gameObject.active);
+        inventory.gameObject.SetActive(!inventory.gameObject.active);
     }
+
+    public void AddItem(int index, GameObject item)
+    {
+        item.transform.SetParent(slots.GetChild(index).transform);
+        //Grids[index].AddItem(item);
+        //Grids[index].image = item.sprite;
+        //Grids[index].text = item.name;
+
+    }
+
+    public void HasChanged()
+    {
+        //throw new NotImplementedException();
+    }
+
+    public void HasChanged(bool primary)
+    {
+
+    }
+
+    /*
     /*
     private bool InventoryOn = false;
     private Vector2 scrollBarChopGrid = Vector2.zero;
@@ -140,7 +166,7 @@ public class InventoryGUI : MonoBehaviour {
             GUI.EndGroup();
         }
     }
-    */
+    /*
     public void AddItem(int index, DatabaseItem item)
     {
         Grids[index].AddItem(item);
@@ -170,6 +196,7 @@ public class InventoryGUI : MonoBehaviour {
     //    Grids[index].image = null;
     //    Grids[index].text = null;
     }
+    */
     /*
     public void SetInventorySize(int size)
     {

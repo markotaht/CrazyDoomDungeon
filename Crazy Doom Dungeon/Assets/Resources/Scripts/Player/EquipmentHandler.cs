@@ -32,20 +32,26 @@ public class EquipmentHandler : MonoBehaviour {
     }*/
 
     [SerializeField]
-    private Weapon EquippedWeapon;
+    public Weapon EquippedWeapon;
 
     [SerializeField]
-    private Weapon SecondaryWeapon;
+    public Weapon SecondaryWeapon;
 
     private EquipmentGUI GUI;
     
 	// Use this for initialization
 	void Start () {
-        GUI = GetComponent<EquipmentGUI>();
-        if(SecondaryWeapon != null)
+        GUI = EquipmentGUI.instance;
+        if (SecondaryWeapon != null)
+        {
+            GUI.AddSecondary(SecondaryWeapon.gameObject);
             SecondaryWeapon.gameObject.SetActive(false);
-        if(EquippedWeapon != null)
+        }
+        if (EquippedWeapon != null)
+        {
+            GUI.AddPrimary(EquippedWeapon.gameObject);
             EquippedWeapon.gameObject.SetActive(true);
+        }
 	}
 	
     public Weapon getWeapon()
@@ -58,7 +64,35 @@ public class EquipmentHandler : MonoBehaviour {
         Weapon temp = EquippedWeapon;
         EquippedWeapon = SecondaryWeapon;
         SecondaryWeapon = temp;
+        if(SecondaryWeapon != null)
         SecondaryWeapon.gameObject.SetActive(false);
+        if(EquippedWeapon != null)
         EquippedWeapon.gameObject.SetActive(true);
+    }
+
+    public void SetSecondary(Weapon wep)
+    {
+        if (wep != null)
+        {
+            wep.transform.parent = transform;
+            wep.gameObject.SetActive(false);
+        }else
+        {
+            Destroy(SecondaryWeapon.gameObject);
+        }
+        SecondaryWeapon = wep;
+    }
+
+    public void SetPrimary(Weapon wep)
+    {
+        if (wep != null)
+        {
+            wep.transform.parent = transform;
+            wep.gameObject.SetActive(true);
+        }else
+        {
+            Destroy(EquippedWeapon.gameObject);
+        }
+        EquippedWeapon = wep;
     }
 }

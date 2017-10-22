@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour {
+public class InventorySlot2 : MonoBehaviour {
 
     private Button button;
     private DatabaseItem item;
@@ -52,7 +52,7 @@ public class InventorySlot : MonoBehaviour {
     {
         if (item != null)
         {
-            ItemDescriptionGUI.instance.setItem(this);
+     //       ItemDescriptionGUI.instance.setItem(this);
         }
     }
 }

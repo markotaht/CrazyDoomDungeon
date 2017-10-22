@@ -51,4 +51,6 @@ public abstract class DatabaseItem{
     }
 
     public abstract void Use();
+
+    public abstract GameObject GetModel(Transform parent);
 }

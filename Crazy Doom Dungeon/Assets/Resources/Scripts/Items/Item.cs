@@ -30,4 +30,15 @@ public abstract class Item : MonoBehaviour {
 
     public abstract void Use();
 
+    public DatabaseItem getDBItem()
+    {
+        if(DBitem == null)
+        {
+            DBitem = ItemLoader.instance.getItem(DatabaseID);
+            name = DBitem.name;
+            sprite = DBitem.Sprite;
+        }
+        return DBitem;
+    }
+
 }
