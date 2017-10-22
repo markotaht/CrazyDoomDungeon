@@ -27,6 +27,8 @@ public class BasicAI : MonoBehaviour {
     private float defence; //cannot be 0, <1 make attacks worse
     [SerializeField]
     private float range;
+    [SerializeField]
+    private GameObject targetIndicator;
 
     private Animator animator;
 
@@ -155,7 +157,7 @@ public class BasicAI : MonoBehaviour {
                 float angle = Vector3.Dot(dir.normalized, transform.rotation * Vector3.forward);
                 if (Mathf.Rad2Deg * Mathf.Acos(angle) <= viewcone)
                 {
-                    Debug.DrawRay(transform.position, dir);
+                    //Debug.DrawRay(transform.position, dir);
                     target = player.position;
                     targetSelf = false;
                     return true;
@@ -167,16 +169,13 @@ public class BasicAI : MonoBehaviour {
 
     public void Die()
     {
+        if (!Alive) return;
         animator.SetTrigger("die");
         Alive = false;
         movementController.DetachAgent();
+        GetComponent<BoxCollider>().enabled = false;
         transform.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
         transform.SendMessage("DropSomething");
-        //TODO: remove
-        if (GetComponent<Renderer>())
-        {
-            GetComponent<Renderer>().material.color = Color.red;
-        }
         uicontroller.UpdateMobCounter(-1);
     }
 
@@ -200,5 +199,10 @@ public class BasicAI : MonoBehaviour {
             fromSeeingPlayer = 0;
         }
         return false;
+    }
+
+    public void Target(bool targeted)
+    {
+        targetIndicator.SetActive(targeted);
     }
 }
