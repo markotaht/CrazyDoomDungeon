@@ -29,6 +29,7 @@ public abstract class Slot : MonoBehaviour, IDropHandler, IPointerClickHandler{
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log("Here");
         ItemDescriptionGUI.instance.setItem(item);
     }
 

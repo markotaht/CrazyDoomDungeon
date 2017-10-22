@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 136679800675276754}
   - component: {fileID: 143068586780059218}
   - component: {fileID: 135529363146405534}
+  - component: {fileID: 114253395813272972}
   m_Layer: 8
   m_Name: Player 1
   m_TagString: Player
@@ -459,7 +460,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4647be8b58ec434ea135209cb3e67b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyFinderCollider: {fileID: 135529363146405534}
 --- !u!114 &114048015986157738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -483,6 +483,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32fffa41b3efbc4786e4c7d4372c0a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114253395813272972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1090738376793868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b23f58d00fbce5241ab00713807d9b48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryItemPefab: {fileID: 1835616754896014, guid: b5c12ecda1a5de34680fbb7ebe8e8110,
+    type: 2}
 --- !u!114 &114331823669102758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -495,8 +508,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
+  DatabaseID: 1
+  name: 
   WeaponRange: 3
-  WeaponDamage: 2
   WeaponWindupSpeed: 0.5
   WeaponWinddownSpeed: 0.5
 --- !u!114 &114688025868947542
@@ -511,8 +525,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 4ab06e467846b8a40b1abe506d537fd3, type: 3}
+  DatabaseID: 2
+  name: 
   WeaponRange: 8
-  WeaponDamage: 1
   WeaponWindupSpeed: 0.25
   WeaponWinddownSpeed: 0.4
   ammoType: {fileID: 1593676875895614, guid: 6eda7be729c95cc409735395460d25f9, type: 2}
