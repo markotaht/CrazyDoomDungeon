@@ -16,6 +16,9 @@ public class InventoryGUI : MonoBehaviour, IHasChanged {
     [SerializeField]
     RectTransform mainInventory;
 
+    [SerializeField]
+    Text currency;
+
     public static Action<int> ItemAction;
 //    public List<InventorySlot> Grids = new List<InventorySlot>();
 
@@ -52,6 +55,11 @@ public class InventoryGUI : MonoBehaviour, IHasChanged {
     public void HasChanged(bool primary)
     {
 
+    }
+
+    public void UpdateCurrencyCounter(int currency)
+    {
+        this.currency.text = "Money: " + currency;
     }
 
     /*

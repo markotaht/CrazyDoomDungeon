@@ -24,6 +24,9 @@ public abstract class DatabaseItem{
     [XmlElement("Stackable")]
     public bool stackable;
 
+    [XmlElement("Value")]
+    public int value;
+
     private Sprite _sprite;
     public Sprite Sprite
     {

@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465788, g: 0.49641335, b: 0.5748172, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -356,45 +356,15 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224407676582344564, guid: da9bf0425cae5df419868a20d41b8784,
+    - target: {fileID: 114271673834839016, guid: da9bf0425cae5df419868a20d41b8784,
         type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0.74986327
-      objectReference: {fileID: 0}
-    - target: {fileID: 224407676582344564, guid: da9bf0425cae5df419868a20d41b8784,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114401360165801198, guid: da9bf0425cae5df419868a20d41b8784,
-        type: 2}
-      propertyPath: m_FontData.m_BestFit
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114401360165801198, guid: da9bf0425cae5df419868a20d41b8784,
+    - target: {fileID: 114271673834839016, guid: da9bf0425cae5df419868a20d41b8784,
         type: 2}
-      propertyPath: m_FontData.m_MaxSize
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 224407676582344564, guid: da9bf0425cae5df419868a20d41b8784,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0.9476225
-      objectReference: {fileID: 0}
-    - target: {fileID: 224407676582344564, guid: da9bf0425cae5df419868a20d41b8784,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
+      propertyPath: m_Interactable
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224407676582344564, guid: da9bf0425cae5df419868a20d41b8784,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224407676582344564, guid: da9bf0425cae5df419868a20d41b8784,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0.053551022
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da9bf0425cae5df419868a20d41b8784, type: 2}

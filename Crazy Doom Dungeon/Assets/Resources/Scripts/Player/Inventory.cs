@@ -12,6 +12,8 @@ public class Inventory : MonoBehaviour
     public const int numItemSlots = 25;
     private GameObject[] items = new GameObject[numItemSlots];
 
+    public static int Currency = 8;
+
     private void Start()
     {
         GUI = InventoryGUI.instance;
@@ -40,6 +42,12 @@ public class Inventory : MonoBehaviour
                 break;
             }*/
         }
+    }
+
+    public static void ChangeMoneyAmount(int moneyChange)
+    {
+        Currency += moneyChange;
+        InventoryGUI.instance.UpdateCurrencyCounter(Currency);
     }
 /*
     public void RemoveItem(DatabaseItem itemToRemove)

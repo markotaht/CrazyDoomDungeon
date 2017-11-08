@@ -19,9 +19,8 @@ public abstract class Slot : MonoBehaviour, IDropHandler, IPointerClickHandler{
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (!item)
+        if (!item && SetItem(DragHandler.draggingObject))
         {
-            SetItem(DragHandler.draggingObject);
             DragHandler.draggingObject.transform.SetParent(transform);
             ExecuteEvents.ExecuteHierarchy<IHasChanged>(gameObject,null,(x,y) => x.HasChanged());
         }
@@ -29,9 +28,8 @@ public abstract class Slot : MonoBehaviour, IDropHandler, IPointerClickHandler{
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Here");
         ItemDescriptionGUI.instance.setItem(item);
     }
 
-    protected abstract void SetItem(GameObject obj);
+    protected abstract bool SetItem(GameObject obj);
 }

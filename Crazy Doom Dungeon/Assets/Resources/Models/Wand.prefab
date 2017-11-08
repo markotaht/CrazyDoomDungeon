@@ -185,8 +185,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 4ab06e467846b8a40b1abe506d537fd3, type: 3}
+  DatabaseID: 2
+  name: 
   WeaponRange: 8
-  WeaponDamage: 1
   WeaponWindupSpeed: 0.25
   WeaponWinddownSpeed: 0.4
   ammoType: {fileID: 1510452665976400, guid: 39f4a904e7a5d364b8a927a603b92245, type: 2}

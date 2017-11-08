@@ -311,8 +311,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a1e98b293b47f448e4eb531fa12403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EquippedWeapon: {fileID: 114185837972661000}
-  SecondaryWeapon: {fileID: 0}
+  EquippedWeapon: {fileID: 0}
+  SecondaryWeapon: {fileID: 114185837972661000}
 --- !u!114 &114185837972661000
 MonoBehaviour:
   m_ObjectHideFlags: 1

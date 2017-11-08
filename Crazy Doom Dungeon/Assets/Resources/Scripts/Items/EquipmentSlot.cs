@@ -9,10 +9,11 @@ public class EquipmentSlot : Slot {
     [SerializeField]
     public bool Primary = true;
 
-    protected override void SetItem(GameObject obj)
+    protected override bool SetItem(GameObject obj)
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         GameObject weapon = obj.GetComponent<DragItem>().Item.GetModel(player.transform);
+        weapon.GetComponent<BoxCollider>().enabled = false;
         EquipmentSlot prevSlot = obj.transform.parent.GetComponent<EquipmentSlot>();
         if (Primary)
         {
@@ -29,5 +30,6 @@ public class EquipmentSlot : Slot {
                 player.GetComponent<EquipmentHandler>().SetPrimary(null);
             }
         }
+        return true;
     }
 }

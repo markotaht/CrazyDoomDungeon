@@ -5,16 +5,18 @@
     <DatabaseItem id="1" xsi:type="DatabaseWeapon">
       <Name>Sword</Name>
       <Damage>2</Damage>
-      <Sprite>MeleeWeapon</Sprite>
+      <Sprite>SwordSprite</Sprite>
       <Model>SwordAnimated</Model>
       <Stackable>false</Stackable>
+      <Value>2</Value>
     </DatabaseItem>
     <DatabaseItem id="2" xsi:type="DatabaseWeapon">
       <Name>Wand</Name>
       <Damage>1</Damage>
       <Sprite>RangedWeapon</Sprite>
-      <Model>Mudel2</Model>
+      <Model>Wand</Model>
       <Stackable>false</Stackable>
+      <Value>2</Value>
     </DatabaseItem>
     <DatabaseItem id="3" xsi:type="DatabaseConsumable">
       <Name>Health potion</Name>
@@ -22,6 +24,7 @@
       <Sprite>RangedWeapon</Sprite>
       <Model>HealthPotion</Model>
       <Stackable>true</Stackable>
+      <Value>8</Value>
     </DatabaseItem>
   </Items>
 </ItemCollection>
