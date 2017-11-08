@@ -23,13 +23,17 @@ public class RangedWeapon : Weapon {
 
     public override void DoAttack(Transform target)
     {
-        Vector3 direction = target.position - transform.position;
+        //MA EI OSKA! if target == null -> target.pos = pos in front of player/weapon
+        Debug.Log(target);
+        Vector3 targetPos = (target != null ? target.position : (transform.position + 10*transform.forward));
+        Vector3 direction = targetPos - transform.position;
         GameObject ammo = Instantiate(ammoType);
-        direction += ammo.transform.rotation.eulerAngles;
+        // direction += ammo.transform.rotation.eulerAngles;
         //ammo.transform.position = transform.position + transform.rotation * Vector3.forward * 2;
         ammo.transform.position = positionOffset.position;// + transform.rotation * Vector3.forward * 0.5f; //for arrow
         ammo.transform.rotation = Quaternion.LookRotation(direction);
-        Projectile pro = ammo.GetComponent<Projectile>();
-        pro.attack(target);
+        //Projectile pro = ammo.GetComponent<Projectile>();
+        StraightProjectile pro = ammo.GetComponent<StraightProjectile>();
+        pro.attack(targetPos);
     }
 }

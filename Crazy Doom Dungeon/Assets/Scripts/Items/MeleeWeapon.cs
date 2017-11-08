@@ -18,10 +18,12 @@ public class MeleeWeapon : Weapon {
     public override void StartAttack(Transform target)
     {
         animator.SetTrigger("attack");
+        //GetComponent<MeshCollider>().enabled = true;
     }
 
     public override void DoAttack(Transform target)
     {
-        bool killed = target.GetComponent<BasicAI>().WasHit(getDamage());
+        //bool killed = target.GetComponent<BasicAI>().WasHit(getDamage());
     }
+    
 }

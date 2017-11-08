@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Diana.unity
     guid: c2a0780a7c166804e8e0ca73d1be20a0
+  - enabled: 0
+    path: Assets/Scenes/Marko.unity
+    guid: 914f70ad48290ed43a627a67f463e9d6

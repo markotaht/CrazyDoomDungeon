@@ -145,7 +145,7 @@ public class InputHandler : MonoBehaviour {
 
     public void Attack()
     {
-        Debug.Log("ATTACK!");
+        //Debug.Log("ATTACK!");
         currentActor.Attack();
     }
 }

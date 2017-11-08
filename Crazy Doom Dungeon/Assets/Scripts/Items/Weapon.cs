@@ -12,6 +12,8 @@ public abstract class Weapon : Item{
     private float WeaponWindupSpeed;
     [SerializeField]
     private float WeaponWinddownSpeed;
+    [SerializeField]
+    private Collider WeaponCollider;
 
     protected Animator animator;
 
@@ -51,5 +53,19 @@ public abstract class Weapon : Item{
         return WeaponWinddownSpeed;
     }
 
-    
+    public void EnableCollider()
+    {
+        if (WeaponCollider != null)
+        {
+            WeaponCollider.enabled = true;
+        }
+    }
+
+    public void DisableCollider()
+    {
+        if (WeaponCollider != null)
+        {
+            WeaponCollider.enabled = false;
+        }
+    }
 }

@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour {
 
     public void Attack()
     {
-        Debug.Log("Attack in playercontroller");
+        //Debug.Log("Attack in playercontroller");
         attackController.Attack(equipmentHandler.getWeapon());
     }
 }
