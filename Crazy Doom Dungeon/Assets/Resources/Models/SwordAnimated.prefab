@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4660510881582236}
   - component: {fileID: 95649447161262044}
   - component: {fileID: 114578750095890030}
+  - component: {fileID: 65107114665125458}
   m_Layer: 0
   m_Name: SwordAnimated
   m_TagString: Untagged
@@ -143,6 +144,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 0b7bf9f4587bf2649a763d797c81f0f0, type: 3}
+--- !u!65 &65107114665125458
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1105884196171036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95649447161262044
 Animator:
   serializedVersion: 3
@@ -183,7 +196,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 2800000, guid: e69c70d80df2ecd4abd2fc7987f311d1, type: 3}
+  DatabaseID: 1
+  name: 
   WeaponRange: 3
-  WeaponDamage: 1
   WeaponWindupSpeed: 0.5
   WeaponWinddownSpeed: 0
