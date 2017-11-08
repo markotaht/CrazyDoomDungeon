@@ -9,38 +9,50 @@ public class StraightProjectile : MonoBehaviour
     [SerializeField]
     private float damage;
     [SerializeField]
-    private Vector3 rotation;
+    private float maxDistance;
+    //[SerializeField]
+    //private Vector3 rotation;
 
     private Vector3 direction;
     private bool attacking = false;
-    private Transform target;
+    private float distanceTravelled = 0;
+    //private Transform target;
 
-    private Rigidbody rb;
+    //private Rigidbody rb;
 
-    private float timetolive = 10;
+    //private float timetolive = 10;
 
     // Use this for initialization
     void Awake()
     {
+        attacking = false;
+        distanceTravelled = 0;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (attacking)
+        if (attacking && distanceTravelled < maxDistance)
         {
-            Vector3 destination = target.position;
+            distanceTravelled += Time.deltaTime * speed * 10;
+            /*Vector3 destination = target.position;
             if (Vector3.Distance(destination, transform.position) < 1)
             {
                 target.GetComponent<BasicAI>().WasHit(damage);
                 Destroy(gameObject);
             }
             Vector3 direction = (target.position - transform.position).normalized;
-            transform.rotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.LookRotation(direction);*/
             transform.position = transform.position + Time.deltaTime * speed * direction;
+            //Debug.Log(distanceTravelled);
+        }
+        else if (distanceTravelled >= maxDistance)
+        {
+            Destroy(gameObject);
         }
     }
-
+    /*
     public void setDirection(Vector3 direction)
     {
         this.direction = direction;
@@ -51,12 +63,25 @@ public class StraightProjectile : MonoBehaviour
 
         Vector3 velocity = new Vector3(0, speed * Mathf.Sin(angle), speed * Mathf.Cos(angle));
         Vector3 finalVel = Quaternion.LookRotation(direction) * velocity;
-        rb.AddForce(finalVel * GetComponent<Rigidbody>().mass, ForceMode.Impulse);
+        //rb.AddForce(finalVel * GetComponent<Rigidbody>().mass, ForceMode.Impulse);
+    }
+    */
+    public void attack(Vector3 targetPos)
+    {
+        //target = newTarget;
+        //targetPos.y = transform.position.y;
+        attacking = true;
+        direction = (targetPos - transform.position).normalized;
+        direction.y = 0;
+        direction = direction.normalized;
     }
 
-    public void attack(Transform newTarget)
+    private void OnTriggerEnter(Collider other)
     {
-        target = newTarget;
-        attacking = true;
+        BasicAI enemy = other.GetComponent<BasicAI>();
+        if (enemy)
+        {
+            enemy.WasHit(damage);
+        }
     }
 }

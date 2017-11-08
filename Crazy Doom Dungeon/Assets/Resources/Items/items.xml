@@ -4,9 +4,9 @@
   <Items>
     <DatabaseItem id="1" xsi:type="DatabaseWeapon">
       <Name>Sword</Name>
-      <Damage>2</Damage>
+      <Damage>1</Damage>
       <Sprite>SwordSprite</Sprite>
-      <Model>SwordAnimated</Model>
+      <Model>SwipeSword</Model>
       <Stackable>false</Stackable>
       <Value>2</Value>
     </DatabaseItem>

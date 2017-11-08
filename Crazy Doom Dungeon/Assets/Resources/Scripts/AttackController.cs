@@ -70,10 +70,10 @@ public class AttackController : MonoBehaviour {
                 break;
 
             case State.ATTACK_WINDUP:
-                Debug.Log("in attack windup");
+                //Debug.Log("in attack windup");
                 if (attackCountdown <= 0)
                 {
-                    Debug.Log("attack countdown <=0");
+                    //Debug.Log("attack countdown <=0");
                     weapon.DoAttack(target);
                     attackCountdown = attackWinddown;
                     current_state = State.ATTACK_WINDDOWN;
@@ -81,10 +81,10 @@ public class AttackController : MonoBehaviour {
                 break;
 
             case State.ATTACK_WINDDOWN:
-                Debug.Log("in attack winddown");
+                //Debug.Log("in attack winddown");
                 if (attackCountdown <= 0)
                 {
-                    Debug.Log("attack winddown over");
+                    //Debug.Log("attack winddown over");
                     //target = null;
                     current_state = State.READY_TO_ATTACK;
                 }
@@ -95,13 +95,13 @@ public class AttackController : MonoBehaviour {
 
     public void Attack(Weapon weapon)
     {
-        Debug.Log("Attack(1) in controller");
+        //Debug.Log("Attack(1) in controller");
         switch (current_state)
         {
             case State.READY_TO_ATTACK:
-                Debug.Log("Ready to attack");
+                //Debug.Log("Ready to attack");
                 //start attacking new
-                if (target != null)
+                //if (target != null)
                 {
                     SetTargetAndWeapon(target, weapon);
 
@@ -113,7 +113,7 @@ public class AttackController : MonoBehaviour {
                     }
                     else
                     {*/
-                    Debug.Log("target isn't null");
+                    //Debug.Log("target isn't null");
                     current_state = State.ATTACK_WINDUP;
 
                     //Stop and turn to enemy
@@ -138,7 +138,7 @@ public class AttackController : MonoBehaviour {
 
     public void Attack(Transform target, Weapon weapon)
     {
-        Debug.Log("Attack(2) in controller");
+        //Debug.Log("Attack(2) in controller");
         /*
         switch (current_state)
         {
