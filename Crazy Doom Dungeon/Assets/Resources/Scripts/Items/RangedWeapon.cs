@@ -11,13 +11,13 @@ public class RangedWeapon : Weapon {
     private Transform positionOffset;
     
     // Use this for initialization
-    void Start () {
+   // void Start () {
 
-	}
+	//}
 
     public override void StartAttack(Transform target)
     {
-
+        Debug.Log(animator);
         animator.SetTrigger("attack");
     }
 
