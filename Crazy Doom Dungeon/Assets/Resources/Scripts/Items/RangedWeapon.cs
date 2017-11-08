@@ -17,14 +17,12 @@ public class RangedWeapon : Weapon {
 
     public override void StartAttack(Transform target)
     {
-        Debug.Log(animator);
         animator.SetTrigger("attack");
     }
 
     public override void DoAttack(Transform target)
     {
-        //MA EI OSKA! if target == null -> target.pos = pos in front of player/weapon
-        Debug.Log(target);
+        //if target == null -> target.pos = pos in front of player/weapon
         Vector3 targetPos = (target != null ? target.position : (transform.position + 10*transform.forward));
         Vector3 direction = targetPos - transform.position;
         GameObject ammo = Instantiate(ammoType);

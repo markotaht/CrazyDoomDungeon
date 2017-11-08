@@ -4,16 +4,16 @@
   <Items>
     <DatabaseItem id="1" xsi:type="DatabaseWeapon">
       <Name>Sword</Name>
-      <Damage>2</Damage>
+      <Damage>1</Damage>
       <Sprite>MeleeWeapon</Sprite>
-      <Model>SwordAnimated</Model>
+      <Model>SwipeSword</Model>
       <Stackable>false</Stackable>
     </DatabaseItem>
     <DatabaseItem id="2" xsi:type="DatabaseWeapon">
       <Name>Wand</Name>
       <Damage>1</Damage>
       <Sprite>RangedWeapon</Sprite>
-      <Model>Mudel2</Model>
+      <Model>Wand</Model>
       <Stackable>false</Stackable>
     </DatabaseItem>
     <DatabaseItem id="3" xsi:type="DatabaseConsumable">

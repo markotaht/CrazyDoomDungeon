@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 64109072766073106}
   - component: {fileID: 54245963172335754}
   - component: {fileID: 114025010413238336}
+  - component: {fileID: 114954967704091966}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -183,7 +184,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
+  DatabaseID: 1
+  name: 
   WeaponRange: 3
-  WeaponDamage: 1
   WeaponWindupSpeed: 0.5
-  WeaponWinddownSpeed: 0
+  WeaponWinddownSpeed: 0.5
+  WeaponCollider: {fileID: 64109072766073106}
+--- !u!114 &114954967704091966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1258064293585166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec137cd4b66e0e4dba5fd478353136b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
