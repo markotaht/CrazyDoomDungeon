@@ -461,6 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4647be8b58ec434ea135209cb3e67b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackCooldownImage: {fileID: 0}
 --- !u!114 &114048015986157738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -544,7 +545,7 @@ MonoBehaviour:
   name: 
   WeaponRange: 3
   WeaponWindupSpeed: 0.5
-  WeaponWinddownSpeed: 0
+  WeaponWinddownSpeed: 0.5
   WeaponCollider: {fileID: 64778965978405004}
 --- !u!114 &114938423659660780
 MonoBehaviour:

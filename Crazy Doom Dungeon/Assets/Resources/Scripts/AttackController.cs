@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AttackController : MonoBehaviour {
 
@@ -21,6 +22,7 @@ public class AttackController : MonoBehaviour {
     private List<Collider> CloseEnemies;
     private float viewcone = 80;
     private Transform target;
+    public Image attackCooldownImage;
 
     // Use this for initialization
     void Start () {
@@ -70,6 +72,7 @@ public class AttackController : MonoBehaviour {
                 break;
 
             case State.ATTACK_WINDUP:
+                attackCooldownImage.fillAmount = ((attackCountdown + attackWinddown) /(attackWindup + attackWinddown));
                 //Debug.Log("in attack windup");
                 if (attackCountdown <= 0)
                 {
@@ -81,6 +84,7 @@ public class AttackController : MonoBehaviour {
                 break;
 
             case State.ATTACK_WINDDOWN:
+                attackCooldownImage.fillAmount = (attackCountdown / (attackWindup + attackWinddown));
                 //Debug.Log("in attack winddown");
                 if (attackCountdown <= 0)
                 {
