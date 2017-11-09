@@ -78,7 +78,7 @@ public class StraightProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        BasicAI enemy = other.GetComponent<BasicAI>();
+        ABaseAI enemy = other.GetComponent<ABaseAI>();
         if (enemy)
         {
             enemy.WasHit(damage);

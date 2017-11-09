@@ -24,8 +24,6 @@ public class BasicAI : ABaseAI {
     private float defence; //cannot be 0, <1 make attacks worse
     [SerializeField]
     private float range;
-    [SerializeField]
-    private GameObject targetIndicator;
 
     private Health _health;
     private Animator animator;
