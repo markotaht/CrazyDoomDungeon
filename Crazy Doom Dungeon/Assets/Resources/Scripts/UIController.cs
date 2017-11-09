@@ -141,4 +141,14 @@ public class UIController : MonoBehaviour {
         yield return new WaitForSeconds(0.2f);
         hit.enabled = false;
     }
+
+    public Image GetAttackCooldownImage()
+    {
+        Image attackCooldownImage = controlPanel.transform.Find("Attack Button").Find("Cooldown").GetComponent<Image>();
+        if(attackCooldownImage == null)
+        {
+            Debug.LogError("Could not find UI -> \"Attack Button\" -> \"Cooldown\", check names!");
+        }
+        return attackCooldownImage;
+    }
 }
