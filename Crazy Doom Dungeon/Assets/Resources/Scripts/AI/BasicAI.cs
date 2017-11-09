@@ -5,14 +5,11 @@ using UnityEngine.AI;
 //using System;
 
 [RequireComponent(typeof(MovementController))]
-public class BasicAI : MonoBehaviour {
+public class BasicAI : ABaseAI {
 
     Vector3 target;
     bool targetSelf = true;
     Transform player;
-
-    private float maxHealth = 100;
-    private float health;
 
     enum State { READY_TO_ATTACK, ATTACK_WINDUP, ATTACK_WINDDOWN };
     private State current_state = State.READY_TO_ATTACK;
@@ -30,9 +27,9 @@ public class BasicAI : MonoBehaviour {
     [SerializeField]
     private GameObject targetIndicator;
 
+    private Health _health;
     private Animator animator;
 
-    private bool Alive = true;
     private bool sawPlayer = false;
     private float fromSeeingPlayer = 0;
     private bool playerKilled = false;
@@ -54,8 +51,9 @@ public class BasicAI : MonoBehaviour {
     private UIController uicontroller;
     private MovementController movementController;
     // Use this for initialization
-    void Start () {
-        health = maxHealth;
+    void Start ()
+    {
+        _health = GetComponent<Health>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         movementController = GetComponent<MovementController>();
         animator = GetComponent<Animator>();
@@ -65,19 +63,6 @@ public class BasicAI : MonoBehaviour {
 
         uicontroller = GameObject.FindGameObjectWithTag("UI").GetComponent<UIController>();
         uicontroller.UpdateMobCounter(1);
-    }
-
-    private void OnGUI()
-    {
-        Vector2 target_pos;
-        target_pos = Camera.main.WorldToScreenPoint(transform.position);
-        GUI.depth = 100;
-        GUI.BeginGroup(new Rect(target_pos.x - 30, Screen.height - target_pos.y - 50, 60, 5));
-            GUI.DrawTexture(new Rect(0, 0, 60, 5), healthEmpty);
-            GUI.BeginGroup(new Rect(0, 0, 60 * health/maxHealth, 5));
-                GUI.DrawTexture(new Rect(0, 0, 60, 5), healthFull);
-            GUI.EndGroup();
-        GUI.EndGroup();
     }
 
     // Update is called once per frame
@@ -179,16 +164,11 @@ public class BasicAI : MonoBehaviour {
         uicontroller.UpdateMobCounter(-1);
     }
 
-   public bool isAlive()
-    {
-        return Alive;
-    }
-
-    public bool WasHit(float wepStrength)
+    public override bool WasHit(float wepStrength)
     {
         float hitStrength = 100 * wepStrength / defence;
-        health -= hitStrength;
-        if (health <= 0)
+        _health.GotHit(hitStrength);
+        if (_health.CurrentHealth <= 0)
         {
             Die();
             return true;
@@ -199,10 +179,5 @@ public class BasicAI : MonoBehaviour {
             fromSeeingPlayer = 0;
         }
         return false;
-    }
-
-    public void Target(bool targeted)
-    {
-        targetIndicator.SetActive(targeted);
     }
 }

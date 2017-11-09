@@ -30,15 +30,16 @@ public class AttackController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //Check if target is in view, find new target if needed
-        if(target == null || !IsInView(target) || !target.GetComponent<BasicAI>().isAlive())
+        if(target == null || !IsInView(target) || !target.GetComponent<ABaseAI>().isAlive())
         {
             if(target != null)
             {
-                target.GetComponent<BasicAI>().Target(false);
+                target.GetComponent<ABaseAI>().Target(false);
             }
             target = null;
             FindNewTarget();
         }
+
 
         //Old stuff
         attackCountdown -= Time.deltaTime;
@@ -239,7 +240,7 @@ public class AttackController : MonoBehaviour {
             if (Mathf.Rad2Deg * Mathf.Acos(angle) <= viewcone)
             {
                 Debug.DrawRay(transform.position, dir);
-                if(dir.magnitude < closestMagn && c.GetComponent<BasicAI>().isAlive())
+                if(dir.magnitude < closestMagn && c.GetComponent<ABaseAI>().isAlive())
                 {
                     closest = c.transform;
                     closestMagn = dir.magnitude;
@@ -249,7 +250,7 @@ public class AttackController : MonoBehaviour {
         if (closest != null)
         {
             target = closest;
-            closest.GetComponent<BasicAI>().Target(true);
+            closest.GetComponent<ABaseAI>().Target(true);
         }
     }
 
