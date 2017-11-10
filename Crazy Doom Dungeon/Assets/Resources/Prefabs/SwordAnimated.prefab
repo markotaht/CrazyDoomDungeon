@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 23126297975122018}
   - component: {fileID: 64109072766073106}
   - component: {fileID: 54245963172335754}
-  - component: {fileID: 114025010413238336}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -173,17 +172,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114025010413238336
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1258064293585166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49457c4d87b99db40b0537d7a9c429ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114578750095890030
 MonoBehaviour:
   m_ObjectHideFlags: 1

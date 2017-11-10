@@ -12,6 +12,7 @@ public class AttackTrigger : MonoBehaviour {
 
     void OnCollisionEnter(Collision other)
     {
+        Debug.Log("AttackTrigger, collision");
         if(other.gameObject.tag == "Enemy")
         {
             if (controller.isAttacking())

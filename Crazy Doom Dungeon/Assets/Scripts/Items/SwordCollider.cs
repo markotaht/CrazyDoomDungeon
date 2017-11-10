@@ -30,7 +30,6 @@ public class SwordCollider : MonoBehaviour {
 
     public void EnableCollider(bool enable)
     {
-        //GetComponent<MeshCollider>().enabled = enable;
         swordCollider.enabled = enable;
     }
 }

@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 23481797734541616}
   - component: {fileID: 64778965978405004}
   - component: {fileID: 54224115062178308}
-  - component: {fileID: 114955910493939504}
   - component: {fileID: 114189226680585662}
   m_Layer: 0
   m_Name: Sword
@@ -560,17 +559,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EquippedWeapon: {fileID: 114253922604474896}
   SecondaryWeapon: {fileID: 114315317285033396}
---- !u!114 &114955910493939504
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1074648641907708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49457c4d87b99db40b0537d7a9c429ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &135529363146405534
 SphereCollider:
   m_ObjectHideFlags: 1
