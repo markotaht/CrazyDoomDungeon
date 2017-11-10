@@ -11,6 +11,8 @@ public class StraightProjectile : MonoBehaviour
     [SerializeField]
     private float maxDistance;
 
+    public ParticleSystem particles;
+
     private Vector3 direction;
     private bool attacking = false;
     private float distanceTravelled = 0;
@@ -33,6 +35,9 @@ public class StraightProjectile : MonoBehaviour
         }
         else if (distanceTravelled >= maxDistance)
         {
+            particles.Stop();
+            particles.gameObject.transform.SetParent(null);
+            Destroy(particles.transform.gameObject, 0.5f);
             Destroy(gameObject);
         }
     }

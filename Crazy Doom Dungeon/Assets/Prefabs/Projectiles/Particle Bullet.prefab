@@ -38,7 +38,6 @@ GameObject:
   - component: {fileID: 4738753984202216}
   - component: {fileID: 114913752869523432}
   - component: {fileID: 135151055274815994}
-  - component: {fileID: 114996983355331034}
   m_Layer: 0
   m_Name: Particle Bullet
   m_TagString: Untagged
@@ -158,17 +157,6 @@ MonoBehaviour:
   speed: 8
   damage: 1
   maxDistance: 100
---- !u!114 &114996983355331034
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1593676875895614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7768b3c3ce206c40a0005f50bd684a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   particles: {fileID: 198783382488114766}
 --- !u!122 &122285696397877332
 Halo:
