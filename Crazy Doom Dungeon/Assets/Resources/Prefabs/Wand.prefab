@@ -190,5 +190,6 @@ MonoBehaviour:
   WeaponRange: 8
   WeaponWindupSpeed: 0.25
   WeaponWinddownSpeed: 0.4
+  WeaponCollider: {fileID: 0}
   ammoType: {fileID: 1510452665976400, guid: 39f4a904e7a5d364b8a927a603b92245, type: 2}
   positionOffset: {fileID: 4435103388147296}

@@ -47,7 +47,7 @@ public abstract class DatabaseItem{
         {
             if(_model == null)
             {
-                _model = Resources.Load<GameObject>("Models/" + model_name);
+                _model = Resources.Load<GameObject>("Prefabs/" + model_name);
             }
             return _model;
         }

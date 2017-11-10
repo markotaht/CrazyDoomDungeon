@@ -1943,6 +1943,7 @@ MonoBehaviour:
   shop: {fileID: 224407690567298122}
   inventory: {fileID: 224472581447168780}
   StoreInventory: {fileID: 224499477990532996}
+  itemPrefab: {fileID: 0}
 --- !u!114 &114170132016604492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3855,6 +3856,7 @@ MonoBehaviour:
   slots: {fileID: 224536728011506182}
   inventory: {fileID: 224472581447168780}
   mainInventory: {fileID: 224494356432591266}
+  currency: {fileID: 0}
 --- !u!114 &114698818858707610
 MonoBehaviour:
   m_ObjectHideFlags: 1

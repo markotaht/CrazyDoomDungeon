@@ -201,3 +201,4 @@ MonoBehaviour:
   WeaponRange: 3
   WeaponWindupSpeed: 0.5
   WeaponWinddownSpeed: 0
+  WeaponCollider: {fileID: 0}
