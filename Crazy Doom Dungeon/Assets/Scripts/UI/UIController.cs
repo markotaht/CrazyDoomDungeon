@@ -57,7 +57,7 @@ public class UIController : MonoBehaviour {
         Time.timeScale = 1;
         Debug.Log("New Game");
         ShowLoading(true);
-        SceneManager.LoadScene("Diana");
+        SceneManager.LoadScene("GrindingMode");
     }
 
     private void QuitGame()

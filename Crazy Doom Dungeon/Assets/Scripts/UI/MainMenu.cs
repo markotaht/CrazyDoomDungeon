@@ -23,14 +23,14 @@ public class MainMenu : MonoBehaviour {
     {
         Time.timeScale = 1;
         Debug.Log("Story mode");
-        SceneManager.LoadScene("Story");
+        SceneManager.LoadScene("StoryMode");
     }
 
     private void StartNewGame()
     {
         Time.timeScale = 1;
-        Debug.Log("New Game");
-        SceneManager.LoadScene("Diana");
+        Debug.Log("Grind Mode");
+        SceneManager.LoadScene("GrindingMode");
     }
 
     private void Tutorial()
