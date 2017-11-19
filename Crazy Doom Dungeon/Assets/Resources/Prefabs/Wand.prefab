@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4435072891124850}
   - component: {fileID: 114598031949308478}
   - component: {fileID: 95732437890522394}
+  - component: {fileID: 65368641828461150}
   m_Layer: 8
   m_Name: Wand
   m_TagString: Weapon
@@ -156,6 +157,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65368641828461150
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1273563454042332}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95732437890522394
 Animator:
   serializedVersion: 3
@@ -191,5 +204,5 @@ MonoBehaviour:
   WeaponWindupSpeed: 0.25
   WeaponWinddownSpeed: 0.4
   WeaponCollider: {fileID: 0}
-  ammoType: {fileID: 1510452665976400, guid: 39f4a904e7a5d364b8a927a603b92245, type: 2}
+  ammoType: {fileID: 1593676875895614, guid: 7f813db47a2fa064f973f4dc3d7a4f36, type: 2}
   positionOffset: {fileID: 4435103388147296}

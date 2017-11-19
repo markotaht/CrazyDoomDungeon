@@ -61,6 +61,7 @@ public class EquipmentHandler : MonoBehaviour {
 
     public void swapWeapon()
     {
+        if (SecondaryWeapon == null || EquippedWeapon == null) return;
         Weapon temp = EquippedWeapon;
         EquippedWeapon = SecondaryWeapon;
         SecondaryWeapon = temp;
