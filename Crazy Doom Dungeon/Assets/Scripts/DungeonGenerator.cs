@@ -47,7 +47,7 @@ public class DungeonGenerator : MonoBehaviour {
         if (Input.GetButton("Restart"))
         {
             Time.timeScale = 1;
-            uicontroller.ShowLoading(true);
+            //uicontroller.ShowLoading(true);
             SceneManager.LoadScene("Diana");
         }
         if (!navmesh)
@@ -56,7 +56,7 @@ public class DungeonGenerator : MonoBehaviour {
             AddPlayer();
             //     visualizeMap();
             navmesh = true;
-            uicontroller.ShowLoading(false);
+            //uicontroller.ShowLoading(false);
         }else if (!hide)
         {
             hideElements(player.transform.position.y+2);
@@ -338,7 +338,7 @@ public class DungeonGenerator : MonoBehaviour {
         player = Instantiate(player, new Vector3(0, 1.1f, 1.24f), Quaternion.identity);
         player.GetComponent<AttackController>().attackCooldownImage = uicontroller.GetAttackCooldownImage();
         //InputHandler handler = gameObject.AddComponent(typeof(InputHandler)) as InputHandler;
-        InputHandler handler = gameObject.GetComponent<InputHandler>();
+        InputHandler handler = InputHandler.instance;
         handler.setPlayer(player.GetComponent<PlayerController>());
     //    var pos = player.transform.position;
     //    pos.y = transform.position.y;

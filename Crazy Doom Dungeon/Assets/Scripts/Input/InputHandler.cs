@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class InputHandler : MonoBehaviour {
 
+    public static InputHandler instance;
     [SerializeField]
     public PlayerController currentActor;
     
@@ -25,11 +27,12 @@ public class InputHandler : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        instance = this;
     }
     
 
     void Update () {
-
+        if (currentActor == null) return;
         //Makes collision checks work on player character
         if(cc == null)
         {
@@ -75,4 +78,35 @@ public class InputHandler : MonoBehaviour {
     {
         currentActor.Attack();
     }
+
+    public void Pause(bool pause)
+    {
+        if (pause)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+    }
+
+    public void OpenMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void RestartLevel()
+    {
+        Time.timeScale = 1;
+        Debug.Log("Restart Level");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quit");
+        Application.Quit();
+    }
 }
+

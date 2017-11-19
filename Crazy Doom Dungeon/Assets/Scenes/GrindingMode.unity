@@ -220,7 +220,6 @@ GameObject:
   - component: {fileID: 240371635}
   - component: {fileID: 240371636}
   - component: {fileID: 240371637}
-  - component: {fileID: 240371638}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -320,27 +319,6 @@ MonoBehaviour:
   m_VoxelSize: 0.33333334
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &240371638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 240371633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84fc184085c6e364ea54f66128a19b90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentActor: {fileID: 0}
-  moveSpeed: 5
-  jsMovement: {fileID: 1270921387}
-  turningRate: 360
---- !u!114 &1270921387 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114049024490993548, guid: dac576d2ba3d49347b422e30c2e12b7c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1631940567}
-  m_Script: {fileID: 11500000, guid: 4ec5f3501b9746f408d05a9345489429, type: 3}
 --- !u!1001 &1631940567
 Prefab:
   m_ObjectHideFlags: 0
@@ -436,76 +414,6 @@ Prefab:
     - target: {fileID: 224560106754647422, guid: dac576d2ba3d49347b422e30c2e12b7c,
         type: 2}
       propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114372308849932690, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 240371638}
-    - target: {fileID: 114042155879151558, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 240371638}
-    - target: {fileID: 224441414115977056, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224441414115977056, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224441414115977056, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 118.26581
-      objectReference: {fileID: 0}
-    - target: {fileID: 224441414115977056, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224441414115977056, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 236.53162
-      objectReference: {fileID: 0}
-    - target: {fileID: 224441414115977056, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224792115572762796, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224792115572762796, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224792115572762796, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 118.26581
-      objectReference: {fileID: 0}
-    - target: {fileID: 224792115572762796, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224792115572762796, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 236.53162
-      objectReference: {fileID: 0}
-    - target: {fileID: 224792115572762796, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

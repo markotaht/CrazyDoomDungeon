@@ -17,7 +17,11 @@ public class DropController : MonoBehaviour {
             if(rnd <= droprate[i])
             {
                 GameObject go =Instantiate(drops[i], transform.position, Quaternion.identity);
-                go.AddComponent<TutorialStep>();
+
+                if (gameObject.GetComponent<ABaseAI>() == null)
+                {
+                    go.AddComponent<TutorialStep>();
+                }
             }
         }
     }

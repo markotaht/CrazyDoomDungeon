@@ -17,12 +17,16 @@ public class UIController : MonoBehaviour {
     private Image hit;
     private GameObject[] deathScreen;
     private GameObject[] winScreen;
-    private Text loadingText;
+    //private Text loadingText;
     
-    private GameObject UIButtons;
-    public Button startButton;
-    public Button quitButton;
+    //private GameObject UIButtons;
+    //public Button startButton;
+    //public Button quitButton;
     public GameObject controlPanel;
+    public GameObject menuPanel;
+    public Button resumeButton;
+    public Text pauseText;
+    public GameObject winPanel;
 
     private int mobCount = 0;
     private Text mobCounter;
@@ -34,13 +38,13 @@ public class UIController : MonoBehaviour {
         hit = GameObject.FindGameObjectWithTag("Hit").GetComponent<Image>();
         deathScreen = GameObject.FindGameObjectsWithTag("DeathScreen");
         winScreen = GameObject.FindGameObjectsWithTag("WinScreen");
-        loadingText = GameObject.FindGameObjectWithTag("Loading").GetComponent<Text>();
+        //loadingText = GameObject.FindGameObjectWithTag("Loading").GetComponent<Text>();
         mobCounter = GameObject.FindGameObjectWithTag("EnemyCounter").GetComponent<Text>();
         timeCounter = GameObject.FindGameObjectWithTag("TimeCounter").GetComponent<Text>();
-        UIButtons = GameObject.FindGameObjectWithTag("UIButtons");
-        UIButtons.SetActive(false);
-        startButton.onClick.AddListener(StartNewGame);
-        quitButton.onClick.AddListener(QuitGame);
+        //UIButtons = GameObject.FindGameObjectWithTag("UIButtons");
+        //UIButtons.SetActive(false);
+        //startButton.onClick.AddListener(StartNewGame);
+        //quitButton.onClick.AddListener(QuitGame);
     }
 
     private void Update()
@@ -50,20 +54,6 @@ public class UIController : MonoBehaviour {
         {
             timeCounter.text = "Time: " + (timer / 60).ToString("D2") + ":" + ((timer % 3600) % 60).ToString("D2");
         }
-    }
-
-    private void StartNewGame()
-    {
-        Time.timeScale = 1;
-        Debug.Log("New Game");
-        ShowLoading(true);
-        SceneManager.LoadScene("GrindingMode");
-    }
-
-    private void QuitGame()
-    {
-        Debug.Log("Quit");
-        Application.Quit();
     }
 
     public void UpdateHealthBar()
@@ -107,29 +97,39 @@ public class UIController : MonoBehaviour {
     {
         controlPanel.SetActive(false);
         countingTime = false;
-        foreach(GameObject ds in deathScreen)
+        /*foreach(GameObject ds in deathScreen)
         {
             ds.GetComponent<Text>().enabled = true;
-        }
-        UIButtons.SetActive(true);
+        }*/
+        pauseText.text = "WASTED";
+        pauseText.color = Color.red;
+        pauseText.GetComponent<Outline>().effectColor = Color.black;
+        resumeButton.interactable = false;
+        menuPanel.SetActive(true);
+
+        //UIButtons.SetActive(true);
     }
 
     public void ShowWinScreen()
     {
         controlPanel.SetActive(false);
         countingTime = false;
-        foreach(GameObject ws in winScreen)
+        /*foreach(GameObject ws in winScreen)
         {
             ws.GetComponent<Text>().enabled = true;
-        }
-        UIButtons.SetActive(true);
+        }*/
+        winPanel.SetActive(true);
+        pauseText.text = "GOOD JOB!";
+        pauseText.color = Color.green;
+        pauseText.GetComponent<Outline>().effectColor = Color.black;
+        //UIButtons.SetActive(true);
     }
-
+    /*
     public void ShowLoading(bool show)
     {
         loadingText.enabled = show;
     }
-
+    */
     public void GotHit()
     {
         StartCoroutine(Flash());
