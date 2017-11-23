@@ -8,17 +8,15 @@ public class TutorialController : MonoBehaviour {
     [SerializeField]
     private GameObject[] tutorial_steps;
 
-    private int currentStep = 0;
 	// Use this for initialization
 	void Start () {
         instance = this;
-        tutorial_steps[currentStep].SetActive(true);
+        tutorial_steps[0].SetActive(true);
 	}
 
-    public void NextStep()
+    public void NextStep(int step)
     {
-        Debug.Log("here");
-        tutorial_steps[currentStep].SetActive(false);
-        tutorial_steps[++currentStep].SetActive(true);
+        tutorial_steps[step].SetActive(false);
+        tutorial_steps[step+1].SetActive(true);
     }
 }

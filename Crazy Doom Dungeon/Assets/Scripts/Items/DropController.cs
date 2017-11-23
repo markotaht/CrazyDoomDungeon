@@ -21,6 +21,7 @@ public class DropController : MonoBehaviour {
                 if (gameObject.GetComponent<ABaseAI>() == null)
                 {
                     go.AddComponent<TutorialStep>();
+                    go.GetComponent<TutorialStep>().tutorial_step = 2;
                 }
             }
         }
