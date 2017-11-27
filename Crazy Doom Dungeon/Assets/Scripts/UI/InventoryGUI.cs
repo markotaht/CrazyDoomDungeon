@@ -22,7 +22,7 @@ public class InventoryGUI : MonoBehaviour, IHasChanged {
     public static Action<int> ItemAction;
 //    public List<InventorySlot> Grids = new List<InventorySlot>();
 
-    private void Start()
+    private void Awake()
     {
         instance = this;
     //    gameObject.SetActive(false);

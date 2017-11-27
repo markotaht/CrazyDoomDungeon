@@ -369,6 +369,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: da9bf0425cae5df419868a20d41b8784, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &897317516 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1099655423510380, guid: da9bf0425cae5df419868a20d41b8784,
+    type: 2}
+  m_PrefabInternal: {fileID: 450637168}
 --- !u!1 &970013303
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,3 +439,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &2008847438 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1786903937180522, guid: da9bf0425cae5df419868a20d41b8784,
+    type: 2}
+  m_PrefabInternal: {fileID: 450637168}
+--- !u!114 &2008847439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2008847438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ee5ffa7c3e754459693944c6a1f544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentActor: {fileID: 0}
+  moveSpeed: 1
+  jsMovement: {fileID: 0}
+  turningRate: 360
+  menuPanel: {fileID: 897317516}

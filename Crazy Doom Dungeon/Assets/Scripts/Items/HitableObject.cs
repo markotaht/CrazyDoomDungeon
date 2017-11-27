@@ -17,5 +17,6 @@ public class HitableObject : MonoBehaviour {
     {
         dc.DropSomething();
         GetComponent<BoxCollider>().enabled = false;
+        Destroy(gameObject);
     }
 }

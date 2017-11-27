@@ -340,8 +340,11 @@ public class DungeonGenerator : MonoBehaviour {
         //InputHandler handler = gameObject.AddComponent(typeof(InputHandler)) as InputHandler;
         InputHandler handler = InputHandler.instance;
         handler.setPlayer(player.GetComponent<PlayerController>());
-    //    var pos = player.transform.position;
-    //    pos.y = transform.position.y;
+
+        AInputHandler handler2 = ControllerInputHandler.instance;
+        handler2.setPlayer(player.GetComponent<PlayerController>());
+        //    var pos = player.transform.position;
+        //    pos.y = transform.position.y;
         Camera camera = Camera.main;
         CameraFollow follow = camera.gameObject.AddComponent(typeof(CameraFollow)) as CameraFollow;
         follow.setTarget(player.transform);

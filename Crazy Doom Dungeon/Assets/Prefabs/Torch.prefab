@@ -35,7 +35,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4880533368982946}
   - component: {fileID: 108281811741691628}
-  - component: {fileID: 95974119703371746}
   m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
@@ -184,23 +183,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &95974119703371746
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1287780364291620}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 011db0706ee86364997c801d97eeb6b1, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!108 &108281811741691628
 Light:
   m_ObjectHideFlags: 1
@@ -212,7 +194,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 0.76551723, b: 0, a: 1}
   m_Intensity: 3
-  m_Range: 12
+  m_Range: 14
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -226,11 +208,11 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
