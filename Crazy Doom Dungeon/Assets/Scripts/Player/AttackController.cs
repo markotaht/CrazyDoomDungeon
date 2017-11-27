@@ -6,23 +6,22 @@ using UnityEngine.UI;
 
 public class AttackController : MonoBehaviour {
 
-    enum State { READY_TO_ATTACK, ATTACK_WINDUP, ATTACK_WINDDOWN };
+    enum State { READY_TO_ATTACK, ATTACKING };
     private State current_state = State.READY_TO_ATTACK;
 
     private float range;
     private Weapon weapon;
-    
-    private float attackWinddown;
-    private float attackWindup;
+
+    private float attackCooldown;
 
     private float attackCountdown;
-
-    //post rework stuff
-    //public SphereCollider enemyFinderCollider;
+    
     private List<Collider> CloseEnemies;
     private float viewcone = 80;
     private Transform target;
     public Image attackCooldownImage;
+    public Image swapCooldownImage;
+
 
     // Use this for initialization
     void Start () {
@@ -48,94 +47,35 @@ public class AttackController : MonoBehaviour {
         switch (current_state)
         {
             case State.READY_TO_ATTACK:
-                /*if (target != null && target.GetComponent<BasicAI>().isAlive())
-                {
-                    float dist = Vector3.Distance(transform.position, target.position);
-                    if (dist > range)
-                    {
-                        GetComponent<MovementController>().Move(transform.position + (target.position - transform.position).normalized * (dist - range + 1));
-                    }
-                    else
-                    {
-
-                        //Stop and turn to enemy
-                        GetComponent<MovementController>().Move(transform.position);
-                        Vector3 planarTarget = new Vector3(target.position.x, 0, target.position.z);
-                        Vector3 planarPosition = new Vector3(transform.position.x, 0, transform.position.z);
-                        Vector3 direction = planarTarget - planarPosition;
-                        transform.rotation = Quaternion.LookRotation(direction.normalized);
-
-                        weapon.StartAttack(target);
-                        attackCountdown = attackWindup;
-                        current_state = State.ATTACK_WINDUP;
-                    }
-                }*/
                 break;
-
-            case State.ATTACK_WINDUP:
-                attackCooldownImage.fillAmount = ((attackCountdown + attackWinddown) /(attackWindup + attackWinddown));
-                //Debug.Log("in attack windup");
-                if (attackCountdown <= 0)
+            case State.ATTACKING:
+                attackCooldownImage.fillAmount = (attackCountdown / attackCooldown);
+                swapCooldownImage.fillAmount = (attackCountdown / attackCooldown);
+                if(attackCountdown <= 0)
                 {
-                    //Debug.Log("attack countdown <=0");
-                    weapon.DoAttack(target);
-                    attackCountdown = attackWinddown;
-                    current_state = State.ATTACK_WINDDOWN;
-                }
-                break;
-
-            case State.ATTACK_WINDDOWN:
-                attackCooldownImage.fillAmount = (attackCountdown / (attackWindup + attackWinddown));
-                //Debug.Log("in attack winddown");
-                if (attackCountdown <= 0)
-                {
-                    //Debug.Log("attack winddown over");
-                    //target = null;
                     current_state = State.READY_TO_ATTACK;
                 }
                 break;
         }
-        
-	}
+
+    }
 
     public void Attack(Weapon weapon)
     {
-        //Debug.Log("Attack(1) in controller");
         switch (current_state)
         {
             case State.READY_TO_ATTACK:
-                //Debug.Log("Ready to attack");
-                //start attacking new
-                //if (target != null)
                 {
                     SetTargetAndWeapon(target, weapon);
-
-                    //float dist = Vector3.Distance(transform.position, target.position);
-                    /*if (dist > range)
-                    {
-                        current_state = State.READY_TO_ATTACK;
-                        GetComponent<MovementController>().Move(transform.position + (target.position - transform.position).normalized * (dist - range + 1));
-                    }
-                    else
-                    {*/
-                    //Debug.Log("target isn't null");
-                    current_state = State.ATTACK_WINDUP;
-
-                    //Stop and turn to enemy
-                    /*GetComponent<MovementController>().Move(transform.position);
-                    Vector3 planarTarget = new Vector3(target.position.x, 0, target.position.z);
-                    Vector3 planarPosition = new Vector3(transform.position.x, 0, transform.position.z);
-                    Vector3 direction = planarTarget - planarPosition;
-                    transform.rotation = Quaternion.LookRotation(direction.normalized);
-                    */
+                    
+                    current_state = State.ATTACKING;
+                    
                     weapon.StartAttack(target);
-                    attackCountdown = attackWindup;
-                    //}
+                    attackCountdown = attackCooldown;
                 }
                 break;
-
-            case State.ATTACK_WINDDOWN:
-            case State.ATTACK_WINDUP:
+                
+            case State.ATTACKING:
                 break;
         }
 
@@ -143,48 +83,12 @@ public class AttackController : MonoBehaviour {
 
     public void Attack(Transform target, Weapon weapon)
     {
-        //Debug.Log("Attack(2) in controller");
-        /*
-        switch (current_state)
-        {
-            case State.READY_TO_ATTACK:
-                //start attacking new
-                SetTargetAndWeapon(target, weapon);
-
-                float dist = Vector3.Distance(transform.position, target.position);
-                if (dist > range)
-                {
-                    current_state = State.READY_TO_ATTACK;
-                    GetComponent<MovementController>().Move(transform.position + (target.position - transform.position).normalized * (dist - range + 1));
-                }
-                else
-                {
-                    current_state = State.ATTACK_WINDUP;
-
-                    //Stop and turn to enemy
-                    GetComponent<MovementController>().Move(transform.position);
-                    Vector3 planarTarget = new Vector3(target.position.x, 0, target.position.z);
-                    Vector3 planarPosition = new Vector3(transform.position.x, 0, transform.position.z);
-                    Vector3 direction = planarTarget - planarPosition;
-                    transform.rotation = Quaternion.LookRotation(direction.normalized);
-
-                    weapon.StartAttack(target);
-                    attackCountdown = attackWindup;
-                }
-                break;
-                
-            case State.ATTACK_WINDDOWN:
-            case State.ATTACK_WINDUP:
-                break;
-        }*/
     }
     private void SetTargetAndWeapon(Transform target, Weapon weapon)
     {
-        //this.target = target;
         this.weapon = weapon;
         range = weapon.getRange();
-        attackWindup = weapon.getWindupSpeed();
-        attackWinddown = weapon.getWinddownSpeed();
+        attackCooldown = weapon.getCooldown();
     }
     
     public void StopAttacking()
@@ -195,8 +99,7 @@ public class AttackController : MonoBehaviour {
                 target = null;
                 break;
                 
-            case State.ATTACK_WINDUP:
-            case State.ATTACK_WINDDOWN:
+            case State.ATTACKING:
                 break;
         }
     }
@@ -208,8 +111,7 @@ public class AttackController : MonoBehaviour {
             case State.READY_TO_ATTACK:
                 return true;
                 
-            case State.ATTACK_WINDUP:
-            case State.ATTACK_WINDDOWN:
+            case State.ATTACKING:
                 return false;
         }
         return false;
@@ -222,8 +124,7 @@ public class AttackController : MonoBehaviour {
             case State.READY_TO_ATTACK:
                 return false;
                 
-            case State.ATTACK_WINDUP:
-            case State.ATTACK_WINDDOWN:
+            case State.ATTACKING:
                 return true;
         }
         return false;
