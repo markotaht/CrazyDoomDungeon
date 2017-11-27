@@ -1403,27 +1403,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10384bff9cd60734e8435f3d9b08ae4c, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &675910978 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1882031313739098, guid: dac576d2ba3d49347b422e30c2e12b7c,
-    type: 2}
-  m_PrefabInternal: {fileID: 744885704}
---- !u!114 &675910979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 675910978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40be574243f4bd84598f90507ed2a0ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentActor: {fileID: 1868678715}
-  moveSpeed: 5
-  jsMovement: {fileID: 0}
-  turningRate: 360
-  menuPanel: {fileID: 1119813286}
 --- !u!1 &681903330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1645,60 +1624,19 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114599571007496998, guid: dac576d2ba3d49347b422e30c2e12b7c,
+        type: 2}
+      propertyPath: currentActor
+      value: 
+      objectReference: {fileID: 1868678715}
     - target: {fileID: 114310812276454238, guid: dac576d2ba3d49347b422e30c2e12b7c,
         type: 2}
       propertyPath: currentActor
       value: 
       objectReference: {fileID: 1868678715}
-    - target: {fileID: 114579964537960600, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 744885705}
-    - target: {fileID: 114579964537960600, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Pause
-      objectReference: {fileID: 0}
-    - target: {fileID: 114585651783315998, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 744885705}
-    - target: {fileID: 114585651783315998, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RestartLevel
-      objectReference: {fileID: 0}
-    - target: {fileID: 114934602360442592, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 744885705}
-    - target: {fileID: 114934602360442592, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenMainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 114799817068420816, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 744885705}
-    - target: {fileID: 114799817068420816, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: QuitGame
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dac576d2ba3d49347b422e30c2e12b7c, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &744885705 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114310812276454238, guid: dac576d2ba3d49347b422e30c2e12b7c,
-    type: 2}
-  m_PrefabInternal: {fileID: 744885704}
-  m_Script: {fileID: 11500000, guid: 84fc184085c6e364ea54f66128a19b90, type: 3}
 --- !u!1001 &818857912
 Prefab:
   m_ObjectHideFlags: 0
@@ -2272,11 +2210,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4851606510841046, guid: 10384bff9cd60734e8435f3d9b08ae4c,
     type: 2}
   m_PrefabInternal: {fileID: 1110151694}
---- !u!1 &1119813286 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1840329573943726, guid: dac576d2ba3d49347b422e30c2e12b7c,
-    type: 2}
-  m_PrefabInternal: {fileID: 744885704}
 --- !u!1001 &1172154490
 Prefab:
   m_ObjectHideFlags: 0

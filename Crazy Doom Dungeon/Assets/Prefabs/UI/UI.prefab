@@ -1736,6 +1736,7 @@ GameObject:
   - component: {fileID: 114581719127693504}
   - component: {fileID: 114577709109324390}
   - component: {fileID: 114310812276454238}
+  - component: {fileID: 114599571007496998}
   m_Layer: 5
   m_Name: UI
   m_TagString: UI
@@ -5342,6 +5343,22 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &114599571007496998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1882031313739098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40be574243f4bd84598f90507ed2a0ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentActor: {fileID: 0}
+  moveSpeed: 5
+  jsMovement: {fileID: 0}
+  turningRate: 360
+  menuPanel: {fileID: 1840329573943726}
 --- !u!114 &114608546957551404
 MonoBehaviour:
   m_ObjectHideFlags: 1
