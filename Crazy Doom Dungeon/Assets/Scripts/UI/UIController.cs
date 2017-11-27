@@ -151,4 +151,14 @@ public class UIController : MonoBehaviour {
         }
         return attackCooldownImage;
     }
+
+    public Image GetSwapCooldownImage()
+    {
+        Image swapCooldownImage = controlPanel.transform.Find("Swap wep Button").Find("Cooldown").GetComponent<Image>();
+        if (swapCooldownImage == null)
+        {
+            Debug.LogError("Could not find UI -> \"Swap wep Button\" -> \"Cooldown\", check names!");
+        }
+        return swapCooldownImage;
+    }
 }

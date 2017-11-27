@@ -701,6 +701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldownImage: {fileID: 1297993280}
+  swapCooldownImage: {fileID: 0}
 --- !u!114 &224907624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1624,9 +1625,55 @@ Prefab:
       propertyPath: currentActor
       value: 
       objectReference: {fileID: 1868678715}
+    - target: {fileID: 114579964537960600, guid: dac576d2ba3d49347b422e30c2e12b7c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 744885705}
+    - target: {fileID: 114579964537960600, guid: dac576d2ba3d49347b422e30c2e12b7c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 114585651783315998, guid: dac576d2ba3d49347b422e30c2e12b7c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 744885705}
+    - target: {fileID: 114585651783315998, guid: dac576d2ba3d49347b422e30c2e12b7c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 114934602360442592, guid: dac576d2ba3d49347b422e30c2e12b7c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 744885705}
+    - target: {fileID: 114934602360442592, guid: dac576d2ba3d49347b422e30c2e12b7c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenMainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 114799817068420816, guid: dac576d2ba3d49347b422e30c2e12b7c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 744885705}
+    - target: {fileID: 114799817068420816, guid: dac576d2ba3d49347b422e30c2e12b7c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dac576d2ba3d49347b422e30c2e12b7c, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &744885705 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114310812276454238, guid: dac576d2ba3d49347b422e30c2e12b7c,
+    type: 2}
+  m_PrefabInternal: {fileID: 744885704}
+  m_Script: {fileID: 11500000, guid: 84fc184085c6e364ea54f66128a19b90, type: 3}
 --- !u!1001 &818857912
 Prefab:
   m_ObjectHideFlags: 0

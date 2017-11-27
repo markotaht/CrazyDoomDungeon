@@ -461,6 +461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldownImage: {fileID: 0}
+  swapCooldownImage: {fileID: 0}
 --- !u!114 &114048015986157738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -523,8 +524,7 @@ MonoBehaviour:
   DatabaseID: 2
   name: 
   WeaponRange: 8
-  WeaponWindupSpeed: 0.25
-  WeaponWinddownSpeed: 0.4
+  WeaponCooldown: 0.65
   WeaponCollider: {fileID: 0}
   ammoType: {fileID: 1593676875895614, guid: 7f813db47a2fa064f973f4dc3d7a4f36, type: 2}
   positionOffset: {fileID: 4692734979259056}
@@ -543,8 +543,7 @@ MonoBehaviour:
   DatabaseID: 1
   name: 
   WeaponRange: 3
-  WeaponWindupSpeed: 0.5
-  WeaponWinddownSpeed: 0.5
+  WeaponCooldown: 1
   WeaponCollider: {fileID: 64778965978405004}
 --- !u!114 &114938423659660780
 MonoBehaviour:

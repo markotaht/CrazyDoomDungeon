@@ -337,6 +337,7 @@ public class DungeonGenerator : MonoBehaviour {
         player = Resources.Load<GameObject>("Characters/Player 1");
         player = Instantiate(player, new Vector3(0, 1.1f, 1.24f), Quaternion.identity);
         player.GetComponent<AttackController>().attackCooldownImage = uicontroller.GetAttackCooldownImage();
+        player.GetComponent<AttackController>().swapCooldownImage = uicontroller.GetSwapCooldownImage();
         //InputHandler handler = gameObject.AddComponent(typeof(InputHandler)) as InputHandler;
         InputHandler handler = InputHandler.instance;
         handler.setPlayer(player.GetComponent<PlayerController>());

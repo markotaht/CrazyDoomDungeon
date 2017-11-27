@@ -10,9 +10,7 @@ public abstract class Weapon : PickupItem{
   //  [SerializeField]
     private float WeaponDamage;
     [SerializeField]
-    private float WeaponWindupSpeed;
-    [SerializeField]
-    private float WeaponWinddownSpeed;
+    private float WeaponCooldown;
     [SerializeField]
     private Collider WeaponCollider;
 
@@ -33,7 +31,7 @@ public abstract class Weapon : PickupItem{
 
 
     public abstract void StartAttack(Transform target);
-    public abstract void DoAttack(Transform target);
+    public abstract void DoAttack();
 
     public override void Use()
     {
@@ -57,14 +55,9 @@ public abstract class Weapon : PickupItem{
         return animator;
     }
 
-    public float getWindupSpeed()
+    public float getCooldown()
     {
-        return WeaponWindupSpeed;
-    }
-
-    public float getWinddownSpeed()
-    {
-        return WeaponWinddownSpeed;
+        return WeaponCooldown;
     }
 
     public void EnableCollider()

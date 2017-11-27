@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(DropController))]
-public class HitableObject : MonoBehaviour {
+public class HittableObject : MonoBehaviour {
 
     DropController dc;
 

@@ -16,7 +16,7 @@ public class MeleeWeapon : Weapon {
         //GetComponent<MeshCollider>().enabled = true;
     }
 
-    public override void DoAttack(Transform target)
+    public override void DoAttack()
     {
         //bool killed = target.GetComponent<BasicAI>().WasHit(getDamage());
     }

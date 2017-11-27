@@ -201,8 +201,7 @@ MonoBehaviour:
   DatabaseID: 2
   name: 
   WeaponRange: 8
-  WeaponWindupSpeed: 0.25
-  WeaponWinddownSpeed: 0.4
+  WeaponCooldown: 0.65
   WeaponCollider: {fileID: 0}
   ammoType: {fileID: 1593676875895614, guid: 7f813db47a2fa064f973f4dc3d7a4f36, type: 2}
   positionOffset: {fileID: 4435103388147296}

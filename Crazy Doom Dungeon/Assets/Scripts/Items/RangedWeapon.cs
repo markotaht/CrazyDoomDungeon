@@ -9,18 +9,20 @@ public class RangedWeapon : Weapon {
     private GameObject ammoType;
     [SerializeField]
     private Transform positionOffset;
+    private Transform target;
     
     // Use this for initialization
    // void Start () {
 
 	//}
 
-    public override void StartAttack(Transform target)
+    public override void StartAttack(Transform _target)
     {
         animator.SetTrigger("attack");
+        target = _target;
     }
 
-    public override void DoAttack(Transform target)
+    public override void DoAttack()
     {
         //if target == null -> target.pos = pos in front of player/weapon
         Vector3 targetPos = (target != null ? target.position : (transform.position + 10*transform.forward));
