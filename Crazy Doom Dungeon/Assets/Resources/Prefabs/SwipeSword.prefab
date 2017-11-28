@@ -188,8 +188,7 @@ MonoBehaviour:
   DatabaseID: 1
   name: 
   WeaponRange: 3
-  WeaponWindupSpeed: 0.5
-  WeaponWinddownSpeed: 0.5
+  WeaponCooldown: 1
   WeaponCollider: {fileID: 64109072766073106}
 --- !u!114 &114954967704091966
 MonoBehaviour:

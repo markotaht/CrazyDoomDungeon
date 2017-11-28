@@ -5,7 +5,7 @@
     <DatabaseItem id="1" xsi:type="DatabaseWeapon">
       <Name>Sword</Name>
       <Damage>1</Damage>
-      <Sprite>SwordSprite</Sprite>
+      <Sprite>SwipeSwordSprite</Sprite>
       <Model>SwipeSword</Model>
       <Stackable>false</Stackable>
       <Value>2</Value>
@@ -13,7 +13,7 @@
     <DatabaseItem id="2" xsi:type="DatabaseWeapon">
       <Name>Wand</Name>
       <Damage>1</Damage>
-      <Sprite>RangedWeapon</Sprite>
+      <Sprite>WandSprite</Sprite>
       <Model>Wand</Model>
       <Stackable>false</Stackable>
       <Value>2</Value>
