@@ -21,6 +21,8 @@ public class AttackController : MonoBehaviour {
     private Transform target;
     public Image attackCooldownImage;
     public Image swapCooldownImage;
+    public Button attackButton;
+    public Button swapButton;
 
 
     // Use this for initialization
@@ -53,6 +55,8 @@ public class AttackController : MonoBehaviour {
                 swapCooldownImage.fillAmount = (attackCountdown / attackCooldown);
                 if(attackCountdown <= 0)
                 {
+
+                    attackButton.interactable = true;
                     current_state = State.READY_TO_ATTACK;
                 }
                 break;
@@ -72,6 +76,7 @@ public class AttackController : MonoBehaviour {
                     
                     weapon.StartAttack(target);
                     attackCountdown = attackCooldown;
+                    attackButton.interactable = false;
                 }
                 break;
                 

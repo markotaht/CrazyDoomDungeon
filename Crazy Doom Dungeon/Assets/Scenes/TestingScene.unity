@@ -688,6 +688,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &723605186 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114372308849932690, guid: dac576d2ba3d49347b422e30c2e12b7c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1014728120}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &727075968
 Prefab:
   m_ObjectHideFlags: 0
@@ -738,6 +744,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7eb4da176fc388042840dadce1695176, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &760745933 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114042155879151558, guid: dac576d2ba3d49347b422e30c2e12b7c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1014728120}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &883480907
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,6 +1020,16 @@ Prefab:
       propertyPath: swapCooldownImage
       value: 
       objectReference: {fileID: 1576490509}
+    - target: {fileID: 114039432019875532, guid: 60dcaced15d60724aacebc614c207b4e,
+        type: 2}
+      propertyPath: swapButton
+      value: 
+      objectReference: {fileID: 760745933}
+    - target: {fileID: 114039432019875532, guid: 60dcaced15d60724aacebc614c207b4e,
+        type: 2}
+      propertyPath: attackButton
+      value: 
+      objectReference: {fileID: 723605186}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 60dcaced15d60724aacebc614c207b4e, type: 2}
   m_IsPrefabParent: 0
