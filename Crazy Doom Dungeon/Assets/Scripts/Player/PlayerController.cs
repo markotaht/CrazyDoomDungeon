@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour {
         if (alive)
         {
             equipmentHandler.swapWeapon();
+            attackController.SwapOnCooldown();
         }
     }
 

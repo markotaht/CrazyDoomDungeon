@@ -26,6 +26,7 @@ public abstract class Weapon : PickupItem{
     protected override void StartItem()
     {
         WeaponDamage = ((DatabaseWeapon)DBitem).damage;
+        Debug.Log("StartItem " + WeaponDamage);
         animator = GetComponent<Animator>();
     }
 

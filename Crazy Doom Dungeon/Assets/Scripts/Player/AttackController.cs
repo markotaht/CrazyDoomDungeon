@@ -23,6 +23,8 @@ public class AttackController : MonoBehaviour {
     public Image swapCooldownImage;
     public Button attackButton;
     public Button swapButton;
+    private float swapCooldown = 0.5f;
+    private float swapCooldownCounter = 0;
 
 
     // Use this for initialization
@@ -46,16 +48,22 @@ public class AttackController : MonoBehaviour {
 
         //Old stuff
         attackCountdown -= Time.deltaTime;
+        swapCooldownCounter -= Time.deltaTime;
         switch (current_state)
         {
             case State.READY_TO_ATTACK:
+                swapCooldownImage.fillAmount = (swapCooldownCounter / swapCooldown);
+                if (swapCooldownCounter <= 0)
+                {
+                    swapButton.interactable = true;
+                }
                 break;
             case State.ATTACKING:
                 attackCooldownImage.fillAmount = (attackCountdown / attackCooldown);
                 swapCooldownImage.fillAmount = (attackCountdown / attackCooldown);
                 if(attackCountdown <= 0)
                 {
-
+                    swapButton.interactable = true;
                     attackButton.interactable = true;
                     current_state = State.READY_TO_ATTACK;
                 }
@@ -76,6 +84,7 @@ public class AttackController : MonoBehaviour {
                     
                     weapon.StartAttack(target);
                     attackCountdown = attackCooldown;
+                    swapButton.interactable = false;
                     attackButton.interactable = false;
                 }
                 break;
@@ -84,6 +93,12 @@ public class AttackController : MonoBehaviour {
                 break;
         }
 
+    }
+
+    internal void SwapOnCooldown()
+    {
+        swapButton.interactable = false;
+        swapCooldownCounter = swapCooldown;
     }
 
     public void Attack(Transform target, Weapon weapon)
