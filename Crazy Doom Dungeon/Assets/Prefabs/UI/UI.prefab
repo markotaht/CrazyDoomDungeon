@@ -2257,7 +2257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -3685,7 +3685,7 @@ MonoBehaviour:
   currentActor: {fileID: 0}
   moveSpeed: 5
   jsMovement: {fileID: 0}
-  turningRate: 960
+  turningRate: 720
   menuPanel: {fileID: 1840329573943726}
   swap: {fileID: 114042155879151558}
 --- !u!114 &114370636361577406
@@ -3723,7 +3723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -5375,7 +5375,7 @@ MonoBehaviour:
   currentActor: {fileID: 0}
   moveSpeed: 5
   jsMovement: {fileID: 0}
-  turningRate: 960
+  turningRate: 720
   menuPanel: {fileID: 1840329573943726}
   swap: {fileID: 114042155879151558}
 --- !u!114 &114608546957551404
@@ -5519,7 +5519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -6650,7 +6650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
