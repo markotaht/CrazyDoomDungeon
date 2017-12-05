@@ -12,6 +12,8 @@ public class ControllerInputHandler : AInputHandler
     [SerializeField]
     private GameObject menuPanel;
 
+    [SerializeField]
+    private Button swap;
     // Use this for initialization
     void Start()
     {
@@ -52,7 +54,11 @@ public class ControllerInputHandler : AInputHandler
 
         if (Input.GetButtonDown("Swap"))
         {
-            SwapWeapon();
+            if (swap.interactable)
+            {
+                swap.onClick.Invoke();
+            }
+         //   SwapWeapon();
         }
 
         if (Input.GetButtonDown("Menu"))
