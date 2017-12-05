@@ -21,8 +21,8 @@
     <DatabaseItem id="3" xsi:type="DatabaseConsumable">
       <Name>Health potion</Name>
       <HealthIncrease>20</HealthIncrease>
-      <Sprite>RangedWeapon</Sprite>
-      <Model>HealthPotion</Model>
+      <Sprite>PotionSprite</Sprite>
+      <Model>Potion</Model>
       <Stackable>true</Stackable>
       <Value>8</Value>
     </DatabaseItem>
