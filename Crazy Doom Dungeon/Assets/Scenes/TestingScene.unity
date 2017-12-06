@@ -912,12 +912,12 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114310812276454238, guid: dac576d2ba3d49347b422e30c2e12b7c,
+    - target: {fileID: 114599571007496998, guid: dac576d2ba3d49347b422e30c2e12b7c,
         type: 2}
       propertyPath: currentActor
       value: 
       objectReference: {fileID: 13261040}
-    - target: {fileID: 114599571007496998, guid: dac576d2ba3d49347b422e30c2e12b7c,
+    - target: {fileID: 114310812276454238, guid: dac576d2ba3d49347b422e30c2e12b7c,
         type: 2}
       propertyPath: currentActor
       value: 
