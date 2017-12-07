@@ -1,16 +1,27 @@
 fileFormatVersion: 2
-guid: 0b7bf9f4587bf2649a763d797c81f0f0
-timeCreated: 1491935217
+guid: f358e716280897f45b04c1b2b7160a75
+timeCreated: 1512577083
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cube
-    6400000: //RootNode
+    100000: Circle
+    100002: Cube
+    100004: Cube.001
+    100006: //RootNode
+    400000: Circle
+    400002: Cube
+    400004: Cube.001
+    400006: //RootNode
+    2300000: Circle
+    2300002: Cube
+    2300004: Cube.001
+    3300000: Circle
+    3300002: Cube
+    3300004: Cube.001
+    4300000: Cube.001
+    4300002: Cube
+    4300004: Circle
   materials:
     importMaterials: 1
     materialName: 0
@@ -40,11 +51,11 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
-    importVisibility: 0
+    addColliders: 0
+    importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 1
     useFileUnits: 1
@@ -60,7 +71,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-    normalCalculationMode: 0
+    normalCalculationMode: 4
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

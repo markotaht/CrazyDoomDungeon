@@ -119,6 +119,9 @@ public class UIController : MonoBehaviour {
             ws.GetComponent<Text>().enabled = true;
         }*/
         winPanel.SetActive(true);
+
+        winPanel.transform.GetChild(1).GetComponent<Button>().Select();
+
         pauseText.text = "GOOD JOB!";
         pauseText.color = Color.green;
         pauseText.GetComponent<Outline>().effectColor = Color.black;
