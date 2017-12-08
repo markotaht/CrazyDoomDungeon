@@ -18,10 +18,9 @@ public class ItemDescriptionGUI : MonoBehaviour {
 
     public void setItem(GameObject item)
     {
-        
-        DBitem = item.GetComponent<DragItem>().Item;
         if (item != null)
         {
+            DBitem = item.GetComponent<DragItem>().Item;
             itemImage.sprite = DBitem.Sprite;
         //    count.text = item.count.ToString();
         }else

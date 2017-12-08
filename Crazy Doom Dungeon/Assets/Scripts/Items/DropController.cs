@@ -16,7 +16,7 @@ public class DropController : MonoBehaviour {
             float rnd = Random.Range(0.0f, 1.0f);
             if(rnd <= droprate[i])
             {
-                GameObject go =Instantiate(drops[i], transform.position, Quaternion.identity);
+                GameObject go =Instantiate(drops[i], transform.position, drops[i].transform.rotation);
 
                 if (gameObject.GetComponent<ABaseAI>() == null)
                 {
