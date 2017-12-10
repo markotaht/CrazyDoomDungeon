@@ -319,6 +319,18 @@ MonoBehaviour:
   m_VoxelSize: 0.33333334
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &826322629 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114757136096128096, guid: dac576d2ba3d49347b422e30c2e12b7c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1631940567}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &1157856932 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114085705911928694, guid: dac576d2ba3d49347b422e30c2e12b7c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1631940567}
+  m_Script: {fileID: 11500000, guid: 5083e0df8ef716a4c838d2babd6f6119, type: 3}
 --- !u!1001 &1631940567
 Prefab:
   m_ObjectHideFlags: 0
@@ -420,9 +432,35 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114367129066106910, guid: dac576d2ba3d49347b422e30c2e12b7c,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114599571007496998, guid: dac576d2ba3d49347b422e30c2e12b7c,
+        type: 2}
+      propertyPath: inventoryButton
+      value: 
+      objectReference: {fileID: 1839770667}
+    - target: {fileID: 114599571007496998, guid: dac576d2ba3d49347b422e30c2e12b7c,
+        type: 2}
+      propertyPath: firstSlot
+      value: 
+      objectReference: {fileID: 1157856932}
+    - target: {fileID: 114819475615836190, guid: dac576d2ba3d49347b422e30c2e12b7c,
+        type: 2}
+      propertyPath: useButton
+      value: 
+      objectReference: {fileID: 826322629}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dac576d2ba3d49347b422e30c2e12b7c, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1839770667 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114619638648741082, guid: dac576d2ba3d49347b422e30c2e12b7c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1631940567}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1983715031
 GameObject:
   m_ObjectHideFlags: 0

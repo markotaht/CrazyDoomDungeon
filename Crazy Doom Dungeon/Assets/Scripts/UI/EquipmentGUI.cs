@@ -116,9 +116,27 @@ public class EquipmentGUI : MonoBehaviour, IHasChanged {
     public EquipmentSlot secondaryWeapon;
     public GameObject inventoryItemPefab;
 
+    public EquipmentSlot[] slots;
+
     private void Awake()
     {
         instance = this;
+    }
+
+    public void AddWeapon(DatabaseWeapon item)
+    {
+        for (int i = 0; i < slots.Length; i++)
+        {
+            Debug.Log(slots[i].transform.childCount);
+            if (slots[i].transform.childCount == 0)
+            {
+                GameObject temp = Instantiate(inventoryItemPefab, transform);
+                temp.GetComponent<DragItem>().Item = item;
+                temp.transform.SetParent(slots[i].transform);
+                slots[i].SetItem(item);
+                break;
+            }
+        }
     }
 
     public void AddPrimary(GameObject item)
