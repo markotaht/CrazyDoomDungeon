@@ -221,7 +221,7 @@ Prefab:
   m_IsPrefabParent: 0
 --- !u!114 &276025260 stripped
 MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114805117902153658, guid: dac576d2ba3d49347b422e30c2e12b7c,
+  m_PrefabParentObject: {fileID: 114946605827677712, guid: dac576d2ba3d49347b422e30c2e12b7c,
     type: 2}
   m_PrefabInternal: {fileID: 1014728120}
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -690,7 +690,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &723605186 stripped
 MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114372308849932690, guid: dac576d2ba3d49347b422e30c2e12b7c,
+  m_PrefabParentObject: {fileID: 114187396680207904, guid: dac576d2ba3d49347b422e30c2e12b7c,
     type: 2}
   m_PrefabInternal: {fileID: 1014728120}
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -912,16 +912,21 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114599571007496998, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: currentActor
-      value: 
-      objectReference: {fileID: 13261040}
     - target: {fileID: 114310812276454238, guid: dac576d2ba3d49347b422e30c2e12b7c,
         type: 2}
       propertyPath: currentActor
       value: 
       objectReference: {fileID: 13261040}
+    - target: {fileID: 114599571007496998, guid: dac576d2ba3d49347b422e30c2e12b7c,
+        type: 2}
+      propertyPath: currentActor
+      value: 
+      objectReference: {fileID: 13261040}
+    - target: {fileID: 224979334191671630, guid: dac576d2ba3d49347b422e30c2e12b7c,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0.07468262
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dac576d2ba3d49347b422e30c2e12b7c, type: 2}
   m_IsPrefabParent: 0
