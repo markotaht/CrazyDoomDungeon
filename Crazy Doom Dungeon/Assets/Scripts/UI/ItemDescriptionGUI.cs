@@ -10,6 +10,8 @@ public class ItemDescriptionGUI : MonoBehaviour {
     public Image itemImage;
     public Text count;
     private DatabaseItem DBitem;
+    [SerializeField]
+    private Button useButton;
 
     private void Start()
     {
@@ -22,6 +24,7 @@ public class ItemDescriptionGUI : MonoBehaviour {
         {
             DBitem = item.GetComponent<DragItem>().Item;
             itemImage.sprite = DBitem.Sprite;
+            useButton.Select();
         //    count.text = item.count.ToString();
         }else
         {
@@ -33,10 +36,11 @@ public class ItemDescriptionGUI : MonoBehaviour {
     public void Use()
     {
         DBitem.Use();
+        InventoryGUI.instance.Select();
     //    count.text = DBitem.count.ToString();
     //    if(DBitem.count == 0)
     //    {
-            setItem(null);
+        setItem(null);
     //    }
     }
 

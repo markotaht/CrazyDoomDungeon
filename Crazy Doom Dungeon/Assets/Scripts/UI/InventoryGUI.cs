@@ -62,6 +62,11 @@ public class InventoryGUI : MonoBehaviour, IHasChanged {
         this.currency.text = "Money: " + currency;
     }
 
+    public void Select()
+    {
+        slots.GetChild(0).GetComponent<Selectable>().Select();
+    }
+
     /*
     /*
     private bool InventoryOn = false;

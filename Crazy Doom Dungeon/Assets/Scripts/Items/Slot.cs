@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public abstract class Slot : MonoBehaviour, IDropHandler, IPointerClickHandler{
+public abstract class Slot : Selectable, IDropHandler, IPointerClickHandler, ISubmitHandler{
     public GameObject item
     {
         get
@@ -27,6 +28,11 @@ public abstract class Slot : MonoBehaviour, IDropHandler, IPointerClickHandler{
     }
 
     public void OnPointerClick(PointerEventData eventData)
+    {
+        ItemDescriptionGUI.instance.setItem(item);
+    }
+
+    public void OnSubmit(BaseEventData eventData)
     {
         ItemDescriptionGUI.instance.setItem(item);
     }

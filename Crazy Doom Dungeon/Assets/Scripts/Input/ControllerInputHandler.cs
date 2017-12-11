@@ -13,6 +13,12 @@ public class ControllerInputHandler : AInputHandler
     private GameObject menuPanel;
 
     [SerializeField]
+    private Button inventoryButton;
+
+    [SerializeField]
+    private Slot firstSlot;
+
+    [SerializeField]
     private Button swap;
     // Use this for initialization
     void Start()
@@ -66,6 +72,15 @@ public class ControllerInputHandler : AInputHandler
             Pause(true);
             menuPanel.SetActive(true);
             menuPanel.transform.GetChild(1).GetComponent<Button>().Select();
+        }
+
+        if (Input.GetButtonDown("Inventory"))
+        {
+            if (inventoryButton.interactable)
+            {
+                inventoryButton.onClick.Invoke();
+                firstSlot.Select();
+            }
         }
 
         if (Input.GetKey("escape"))

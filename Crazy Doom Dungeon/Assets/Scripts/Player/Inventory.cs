@@ -23,24 +23,32 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(int item)
     {
-        //  DatabaseItem item = ItemLoader.instance.getItem(id);
-        GameObject temp = Instantiate(inventoryItemPefab, GUI.transform);
-        temp.GetComponent<DragItem>().Item = ItemLoader.instance.getItem(item);
-        for (int i = 0; i < items.Length; i++)
+        DatabaseItem DBItem = ItemLoader.instance.getItem(item);
+        //  DatabaseItem item = ItemLoader.instance.getItem(id)
+        if (DBItem is DatabaseWeapon)
         {
-            if (items[i] == null)
+            EquipmentGUI.instance.AddWeapon(DBItem as DatabaseWeapon);
+        }
+        else
+        {
+            GameObject temp = Instantiate(inventoryItemPefab, GUI.transform);
+            temp.GetComponent<DragItem>().Item = DBItem;
+            for (int i = 0; i < items.Length; i++)
             {
-                items[i] = temp;
-                GUI.AddItem(i, temp);
-                //   itemImages[i].sprite = itemToAdd.sprite;
-                //   itemImages[i].enabled = true;
-                break;
+                if (items[i] == null)
+                {
+                    items[i] = temp;
+                    GUI.AddItem(i, temp);
+                    //   itemImages[i].sprite = itemToAdd.sprite;
+                    //   itemImages[i].enabled = true;
+                    break;
+                }
+                /*else if(items[i].Id == id && item.stackable)
+                {
+                    GUI.IncreaseCount(i);
+                    break;
+                }*/
             }
-            /*else if(items[i].Id == id && item.stackable)
-            {
-                GUI.IncreaseCount(i);
-                break;
-            }*/
         }
     }
 

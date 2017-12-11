@@ -32,4 +32,19 @@ public class EquipmentSlot : Slot {
         }
         return true;
     }
+
+    public void SetItem(DatabaseWeapon wep)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject weapon = wep.GetModel(player.transform);
+        weapon.GetComponent<BoxCollider>().enabled = false;
+        if (Primary)
+        {
+            player.GetComponent<EquipmentHandler>().SetPrimary(weapon.GetComponent<Weapon>());
+        }
+        else
+        {
+            player.GetComponent<EquipmentHandler>().SetSecondary(weapon.GetComponent<Weapon>());
+        }
+    }
 }

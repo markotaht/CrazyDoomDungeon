@@ -18,7 +18,8 @@ public class DatabaseWeapon : DatabaseItem {
 
     public override void Use()
     {
-   //     EquipmentGUI w = GameObject.FindObjectOfType<EquipmentGUI>();
+        EquipmentGUI w = GameObject.FindObjectOfType<EquipmentGUI>();
+        w.AddWeapon(this);
    //     w.AddPrimary(this);
     }
 }
