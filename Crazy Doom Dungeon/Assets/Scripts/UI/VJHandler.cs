@@ -18,6 +18,12 @@ public class VJHandler : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointe
         InputDirection = Vector3.zero;
     }
 
+    public void SetJoystickPosition(float x, float y)
+    {
+        Vector3 position = new Vector3(x* jsContainer.rectTransform.sizeDelta.x / 3, y * jsContainer.rectTransform.sizeDelta.y/3);
+        joystick.rectTransform.anchoredPosition = position;
+    }
+
     public void OnDrag(PointerEventData ped)
     {
         Vector2 position = Vector2.zero;

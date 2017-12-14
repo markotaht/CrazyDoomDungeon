@@ -16,6 +16,9 @@ public class ControllerInputHandler : AInputHandler
     private Button inventoryButton;
 
     [SerializeField]
+    private Button potionButton;
+
+    [SerializeField]
     private Slot firstSlot;
 
     [SerializeField]
@@ -42,7 +45,8 @@ public class ControllerInputHandler : AInputHandler
         float up = Input.GetAxis("Vertical");
 
         direction = Quaternion.AngleAxis(45, Vector3.up) * new Vector3(left,0,up );
-  //      direction = Quaternion.AngleAxis(45, Vector3.up) * jsMovement.InputDirection;
+        //      direction = Quaternion.AngleAxis(45, Vector3.up) * jsMovement.InputDirection;
+        jsMovement.SetJoystickPosition(left, up);
         Transform actor = currentActor.transform;
         cc.Move(direction * moveSpeed * Time.deltaTime);
 
@@ -74,13 +78,14 @@ public class ControllerInputHandler : AInputHandler
             menuPanel.transform.GetChild(1).GetComponent<Button>().Select();
         }
 
-        if (Input.GetButtonDown("Inventory"))
+        if (Input.GetButtonDown("Potion"))
         {
-            if (inventoryButton.interactable)
+            potionButton.onClick.Invoke();
+         /*   if (inventoryButton.interactable)
             {
                 inventoryButton.onClick.Invoke();
                 firstSlot.Select();
-            }
+            }*/
         }
 
         if (Input.GetKey("escape"))

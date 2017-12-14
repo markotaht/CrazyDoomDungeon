@@ -728,7 +728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4647be8b58ec434ea135209cb3e67b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldownImage: {fileID: 744885705}
+  attackCooldownImage: {fileID: 1432526389}
   swapCooldownImage: {fileID: 1297993280}
   attackButton: {fileID: 744885706}
   swapButton: {fileID: 744885707}
@@ -1620,25 +1620,24 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114310812276454238, guid: dac576d2ba3d49347b422e30c2e12b7c,
-        type: 2}
-      propertyPath: currentActor
-      value: 
-      objectReference: {fileID: 1868678715}
     - target: {fileID: 114599571007496998, guid: dac576d2ba3d49347b422e30c2e12b7c,
         type: 2}
       propertyPath: currentActor
       value: 
       objectReference: {fileID: 1868678715}
+    - target: {fileID: 114310812276454238, guid: dac576d2ba3d49347b422e30c2e12b7c,
+        type: 2}
+      propertyPath: currentActor
+      value: 
+      objectReference: {fileID: 1868678715}
+    - target: {fileID: 224979334191671630, guid: dac576d2ba3d49347b422e30c2e12b7c,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 2.2278802
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dac576d2ba3d49347b422e30c2e12b7c, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &744885705 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114805117902153658, guid: dac576d2ba3d49347b422e30c2e12b7c,
-    type: 2}
-  m_PrefabInternal: {fileID: 744885704}
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &744885706 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114372308849932690, guid: dac576d2ba3d49347b422e30c2e12b7c,
@@ -2579,6 +2578,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f358e716280897f45b04c1b2b7160a75, type: 3}
   m_IsPrefabParent: 0
+--- !u!114 &1432526389 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114946605827677712, guid: dac576d2ba3d49347b422e30c2e12b7c,
+    type: 2}
+  m_PrefabInternal: {fileID: 744885704}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1444657120
 GameObject:
   m_ObjectHideFlags: 0

@@ -380,7 +380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1165175543351946
 GameObject:
   m_ObjectHideFlags: 1
@@ -920,6 +920,7 @@ GameObject:
   - component: {fileID: 222661599873894242}
   - component: {fileID: 114545558542005188}
   - component: {fileID: 114372308849932690}
+  - component: {fileID: 114254793956698220}
   m_Layer: 5
   m_Name: Potion Button
   m_TagString: Untagged
@@ -1396,7 +1397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1723819049505322
 GameObject:
   m_ObjectHideFlags: 1
@@ -1791,7 +1792,6 @@ GameObject:
   - component: {fileID: 114577709109324390}
   - component: {fileID: 114310812276454238}
   - component: {fileID: 114599571007496998}
-  - component: {fileID: 114367129066106910}
   m_Layer: 5
   m_Name: UI
   m_TagString: UI
@@ -3624,6 +3624,19 @@ MonoBehaviour:
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &114254793956698220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1466449569876868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220caa0e9d4ff9445ab47df5faea93fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  potionId: 3
+  number: {fileID: 114067161198698856}
 --- !u!114 &114263845133842776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4234,25 +4247,6 @@ MonoBehaviour:
   m_Text: 'SWAP
 
     WEAPON'
---- !u!114 &114367129066106910
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1882031313739098}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40be574243f4bd84598f90507ed2a0ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentActor: {fileID: 0}
-  moveSpeed: 5
-  jsMovement: {fileID: 0}
-  turningRate: 720
-  menuPanel: {fileID: 1840329573943726}
-  inventoryButton: {fileID: 0}
-  firstSlot: {fileID: 0}
-  swap: {fileID: 114042155879151558}
 --- !u!114 &114367626036524432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4342,8 +4336,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114310812276454238}
-        m_MethodName: 
+      - m_Target: {fileID: 114254793956698220}
+        m_MethodName: Use
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6441,10 +6435,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentActor: {fileID: 0}
   moveSpeed: 5
-  jsMovement: {fileID: 0}
+  jsMovement: {fileID: 114049024490993548}
   turningRate: 720
   menuPanel: {fileID: 1840329573943726}
   inventoryButton: {fileID: 114619638648741082}
+  potionButton: {fileID: 114372308849932690}
   firstSlot: {fileID: 114085705911928694}
   swap: {fileID: 114042155879151558}
 --- !u!114 &114608546957551404

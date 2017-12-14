@@ -28,6 +28,9 @@ public class Inventory : MonoBehaviour
         if (DBItem is DatabaseWeapon)
         {
             EquipmentGUI.instance.AddWeapon(DBItem as DatabaseWeapon);
+        }else if(DBItem is DatabaseConsumable)
+        {
+            PotionButton.instance.AddPotion();
         }
         else
         {

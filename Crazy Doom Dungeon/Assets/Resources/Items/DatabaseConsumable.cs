@@ -18,7 +18,7 @@ public class DatabaseConsumable : DatabaseItem{
 
     public override void Use()
     {
-        GameObject go = GameObject.Find("Player 1(Clone)");
+        GameObject go = GameObject.FindGameObjectWithTag("Player");
         go.GetComponent<PlayerController>().GiveHealth(_healthIncrease);
     //    go.GetComponent<Inventory>().RemoveItem(this);
     }

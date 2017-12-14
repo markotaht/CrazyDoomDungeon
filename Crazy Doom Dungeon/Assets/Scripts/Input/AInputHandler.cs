@@ -72,4 +72,9 @@ public abstract class AInputHandler : MonoBehaviour {
             Time.timeScale = 1;
         }
     }
+
+    public void UsePotion()
+    {
+
+    }
 }
