@@ -42,6 +42,8 @@ public class InputHandler : MonoBehaviour {
         //Joystick movement
         direction = Quaternion.AngleAxis(45, Vector3.up) * jsMovement.InputDirection;
         Transform actor = currentActor.transform;
+        //TODO: Magic to make the curve more logaritmic here:
+        Debug.Log(direction + ", " + jsMovement.InputDirection);
         cc.Move(direction * moveSpeed * Time.deltaTime);
         
         //Player rotation
