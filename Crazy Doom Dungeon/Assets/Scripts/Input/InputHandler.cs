@@ -43,6 +43,7 @@ public class InputHandler : MonoBehaviour {
         direction = Quaternion.AngleAxis(45, Vector3.up) * jsMovement.InputDirection;
         Transform actor = currentActor.transform;
         //TODO: Magic to make the curve more logaritmic here:
+        direction = new Vector3(Mathf.Sin(direction.x * Mathf.PI / 2), Mathf.Sin(direction.y * Mathf.PI / 2), Mathf.Sin(direction.z * Mathf.PI / 2));
         Debug.Log(direction + ", " + jsMovement.InputDirection);
         cc.Move(direction * moveSpeed * Time.deltaTime);
         
