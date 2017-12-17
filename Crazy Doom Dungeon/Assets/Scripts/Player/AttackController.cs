@@ -74,6 +74,7 @@ public class AttackController : MonoBehaviour {
 
     public void Attack(Weapon weapon)
     {
+        if (weapon == null) return;
         switch (current_state)
         {
             case State.READY_TO_ATTACK:
@@ -106,6 +107,7 @@ public class AttackController : MonoBehaviour {
     }
     private void SetTargetAndWeapon(Transform target, Weapon weapon)
     {
+        if (weapon == null) return;
         this.weapon = weapon;
         range = weapon.getRange();
         attackCooldown = weapon.getCooldown();

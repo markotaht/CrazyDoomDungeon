@@ -1480,6 +1480,7 @@ GameObject:
   - component: {fileID: 222509834642194564}
   - component: {fileID: 114736298803015604}
   - component: {fileID: 114049024490993548}
+  - component: {fileID: 114563797744323030}
   m_Layer: 5
   m_Name: Joystick Container
   m_TagString: Untagged
@@ -5991,6 +5992,24 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &114563797744323030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1740279578144784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb680eb2fc4287b42b3b8d9416605cc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primaryWeapon: {fileID: 114166326820493182}
+  secondaryWeapon: {fileID: 114447437629441980}
+  inventoryItemPefab: {fileID: 1835616754896014, guid: b5c12ecda1a5de34680fbb7ebe8e8110,
+    type: 2}
+  slots:
+  - {fileID: 114166326820493182}
+  - {fileID: 114447437629441980}
 --- !u!114 &114566320727814610
 MonoBehaviour:
   m_ObjectHideFlags: 1
