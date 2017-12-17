@@ -44,12 +44,12 @@ public class EquipmentHandler : MonoBehaviour {
         GUI = EquipmentGUI.instance;
         if (SecondaryWeapon != null)
         {
-            GUI.AddSecondary(SecondaryWeapon.gameObject);
+            //GUI.AddSecondary(SecondaryWeapon.gameObject);
             SecondaryWeapon.gameObject.SetActive(false);
         }
         if (EquippedWeapon != null)
         {
-            GUI.AddPrimary(EquippedWeapon.gameObject);
+            //GUI.AddPrimary(EquippedWeapon.gameObject);
             EquippedWeapon.gameObject.SetActive(true);
         }
 	}

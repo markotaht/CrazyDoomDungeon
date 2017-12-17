@@ -23,6 +23,9 @@ public class ControllerInputHandler : AInputHandler
 
     [SerializeField]
     private Button swap;
+
+    private bool waszero = false;
+
     // Use this for initialization
     void Start()
     {
@@ -46,7 +49,18 @@ public class ControllerInputHandler : AInputHandler
 
         direction = Quaternion.AngleAxis(45, Vector3.up) * new Vector3(left,0,up );
         //      direction = Quaternion.AngleAxis(45, Vector3.up) * jsMovement.InputDirection;
-        jsMovement.SetJoystickPosition(left, up);
+        Debug.Log(left + ", " + up);
+        if(left != 0 || up != 0)
+        {
+            //sets visual joystick to controller position
+            jsMovement.SetJoystickPosition(left, up);
+            waszero = false;
+        }
+        else if(!waszero && left == 0 && up == 0)
+        {
+            jsMovement.SetJoystickPosition(left, up);
+            waszero = true;
+        }
         Transform actor = currentActor.transform;
         cc.Move(direction * moveSpeed * Time.deltaTime);
 

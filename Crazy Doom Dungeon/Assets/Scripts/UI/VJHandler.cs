@@ -21,6 +21,7 @@ public class VJHandler : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointe
     public void SetJoystickPosition(float x, float y)
     {
         Vector3 position = new Vector3(x* jsContainer.rectTransform.sizeDelta.x / 3, y * jsContainer.rectTransform.sizeDelta.y/3);
+        position = Vector3.ClampMagnitude(position, jsContainer.rectTransform.sizeDelta.x/3);
         joystick.rectTransform.anchoredPosition = position;
     }
 
