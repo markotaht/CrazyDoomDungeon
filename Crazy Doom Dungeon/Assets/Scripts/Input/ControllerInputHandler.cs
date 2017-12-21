@@ -45,7 +45,9 @@ public class ControllerInputHandler : AInputHandler
 
         //Joystick movement
         float left = Input.GetAxis("Horizontal");
+        if (left == 0) left = Input.GetAxis("Horizontal2");
         float up = Input.GetAxis("Vertical");
+        if (up == 0) up = Input.GetAxis("Vertical2");
 
         direction = Quaternion.AngleAxis(45, Vector3.up) * new Vector3(left,0,up );
         //      direction = Quaternion.AngleAxis(45, Vector3.up) * jsMovement.InputDirection;
